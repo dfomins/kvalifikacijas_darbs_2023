@@ -38,9 +38,6 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::group(['middleware'=>['auth']], function(){
     Route::get('profile', [PagesController::class, 'profile'])->name('profile');
-});
-
-Route::group(['middleware'=>['auth']], function(){
     Route::resource('posts', PostsController::class);
 });
 
