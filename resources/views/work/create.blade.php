@@ -5,16 +5,16 @@
         <div class="create-post-panel">
             {!! Form::open(['action' => 'App\Http\Controllers\WorkController@store', 'method' => 'POST']) !!}
             <div class="form-group">
-                {{ Form::label('user_id', 'Darbinieka ID') }}
-                {{ Form::text('user_id', '', ['required', 'class' => 'form-control create-title']) }}
+                {{ Form::label('user_id', 'Darbinieka vārds, uzvārds') }}
+                {{ Form::select('user_id', $users, null, ['required', 'class' => 'form-control create-title']) }}
             </div>
             <div class="form-group">
-                {{ Form::label('object_id', 'Objekta ID') }}
+                {{ Form::label('object_id', 'Objekts') }}
                 {{ Form::text('object_id', '', ['required', 'class' => 'form-control create-title']) }}
             </div>
             <div class="form-group">
                 {{ Form::label('date', 'Datums') }}
-                {{ Form::date('date', date('dd-mm-yyyy'), ['required', 'class' => 'form-control create-title']) }}
+                {{ Form::date('date', null, ['required', 'class' => 'form-control create-title']) }}
             </div>
             <div class="form-group">
                 {{ Form::label('hours', 'Stundas') }}

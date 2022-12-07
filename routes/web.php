@@ -21,9 +21,6 @@ use App\Http\Controllers\LogoutController;
 |
 */
 
-//Route::resource('posts', PostsController::class);
-//Route::resource('notifications', NotifsController::class);
-
 Auth::routes();
 
 Route::group(['middleware'=>['isAdmin']], function() {
@@ -39,10 +36,11 @@ Route::group(['middleware' => ['auth']], function() {
  });
 
 Route::group(['middleware'=>['auth']], function(){
-    Route::get('profile', [PagesController::class, 'profile'])->name('profile');
+    Route::get('/', [PagesController::class, 'profile'])->name('profile');
     Route::resource('posts', PostsController::class);
     Route::get('objects', [ObjectController::class, 'objects']);
     Route::resource('work', WorkController::class);
+    Route::post('search', 'App\Http\Controllers\PagesController@search');
 });
 
 Route::group(['middleware'=>['auth']], function(){

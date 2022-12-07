@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 use App\Models\Work;
+use App\Models\User;
 
 class WorkController extends Controller
 {
@@ -15,8 +17,10 @@ class WorkController extends Controller
      */
     public function index()
     {
-        $works = Work::orderBy('created_at', 'desc')->get();
-        return view ('work.index')->with('works', $works);
+
+        $works = Work::with('user')->get();
+        $users = User::with('works')->get();
+        return view ('work.index', compact('works', 'users'));
     }
 
     /**
@@ -26,7 +30,9 @@ class WorkController extends Controller
      */
     public function create()
     {
-        return view ('work.create');
+        $users = User::select(DB::raw('concat(fname, " ", lname) as full_name'), 'id')->get()->pluck('full_name', 'id');
+        return view ('work.create')->with('users', $users);
+
     }
 
     /**
@@ -37,6 +43,9 @@ class WorkController extends Controller
      */
     public function store(Request $request)
     {
+
+        // return $request;
+
         $work = new Work;
         $work->user_id = $request->input('user_id');
         $work->object_id = $request->input('object_id');
@@ -90,5 +99,11 @@ class WorkController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request) {
+        if ($request->isMethod('post')) {
+            $work=$request->get('user_id');
+        }
     }
 }
