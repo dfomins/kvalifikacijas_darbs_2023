@@ -17,7 +17,7 @@
                 {{ Form::text('street', '', ['required', 'class' => 'form-control create-title']) }}
             </div>
             <div class="form-group">
-                {{ Form::label('body', 'Saturs') }}
+                {{ Form::label('body', 'Informācija') }}
                 {{ Form::textarea('body', '', ['required', 'class' => 'form-control create-body', 'style' => 'resize: none']) }}
             </div>
             {{ Form::submit('Izveidot', ['class' => 'create-btn']) }}
