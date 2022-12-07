@@ -14,7 +14,6 @@
             </div>
             <div class="form-group">
                 {{ Form::label('date', 'Datums') }}
-                {{-- {{ Form::text('date', '', ['required', 'class' => 'form-control create-title']) }}° --}}
                 {{ Form::date('date', date('dd-mm-yyyy'), ['required', 'class' => 'form-control create-title']) }}
             </div>
             <div class="form-group">
