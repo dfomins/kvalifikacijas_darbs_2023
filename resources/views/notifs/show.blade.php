@@ -14,16 +14,19 @@
                         <p>{{ $notif->created_at->format('d-m-Y | H:i') }} || {{ $notif->user->fname }}
                             {{ $notif->user->lname }}</p>
                     </div>
-                    <div class="title-icon-post">
-                        <a href="/notifications/{{ $notif->id }}/edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
-                        {!! Form::open([
-                            'action' => ['App\Http\Controllers\NotifsController@destroy', $notif->id],
-                            'method' => 'DELETE',
-                            'class' => 'btn',
-                        ]) !!}
-                        {{ Form::button('<i class="fa-solid fa-trash fa-xl"></i>', ['type' => 'submit', 'class' => 'delete-btn']) }}
-                        {!! Form::close() !!}
-                    </div>
+                    @if (Auth::user()->role == 1)
+                        <div class="title-icon-post">
+                            <a href="/notifications/{{ $notif->id }}/edit"><i
+                                    class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                            {!! Form::open([
+                                'action' => ['App\Http\Controllers\NotifsController@destroy', $notif->id],
+                                'method' => 'DELETE',
+                                'class' => 'btn',
+                            ]) !!}
+                            {{ Form::button('<i class="fa-solid fa-trash fa-xl"></i>', ['type' => 'submit', 'class' => 'delete-btn']) }}
+                            {!! Form::close() !!}
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="body-content-post-show">

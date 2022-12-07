@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Notif;
-use App\Models\User;
+use App\Models\WorkObject;
 
-class NotifsController extends Controller
+class ObjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class NotifsController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $notifs = Notif::orderBy('created_at', 'desc')->get();
-        return view('notifs.index')->with('notifs', $notifs);
+        $objects = WorkObject::orderBy('created_at', 'asc')->get();
+        return view('objects.index')->with('objects', $objects);
     }
 
     /**
@@ -28,7 +27,7 @@ class NotifsController extends Controller
      */
     public function create()
     {
-        return view ('notifs.create');
+        return view ('objects.create');
     }
 
     /**
@@ -39,13 +38,14 @@ class NotifsController extends Controller
      */
     public function store(Request $request)
     {
-        $notif = new Notif;
-        $notif->title = $request->input('title');
-        $notif->body = $request->input('body');
-        $notif->user_id = auth()->user()->id;
-        $notif->save();
+        $object = new WorkObject;
+        $object->title = $request->input('title');
+        $object->city = $request->input('city');
+        $object->street = $request->input('street');
+        $object->body = $request->input('body');
+        $object->save();
 
-        return redirect('/notifications');
+        return redirect('/objects');
     }
 
     /**
@@ -56,8 +56,8 @@ class NotifsController extends Controller
      */
     public function show($id)
     {
-        $notif = Notif::find($id);
-        return view('notifs.show')->with('notif', $notif);
+        $object = WorkObject::find($id);
+        return view('objects.show')->with('object', $object);
     }
 
     /**
@@ -68,11 +68,11 @@ class NotifsController extends Controller
      */
     public function edit($id)
     {
-        $notif = Notif::find($id);
+        $object = WorkObject::find($id);
         if (auth()->user()->role !==1) {
-            return redirect('/notifications');
+            return redirect('/objects');
         }
-        return view('notifs.edit')->with('notif', $notif);
+        return view('objects.edit')->with('object', $object);
     }
 
     /**
@@ -84,12 +84,14 @@ class NotifsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $notif = Notif::find($id);
-        $notif->title = $request->input('title');
-        $notif->body = $request->input('body');
-        $notif->save();
+        $object = WorkObject::find($id);
+        $object->title = $request->input('title');
+        $object->city = $request->input('city');
+        $object->street = $request->input('street');
+        $object->body = $request->input('body');
+        $object->save();
 
-        return redirect('/notifications');
+        return redirect('/objects');
     }
 
     /**
@@ -100,11 +102,11 @@ class NotifsController extends Controller
      */
     public function destroy($id)
     {
-        $notif = Notif::find($id);
+        $object = WorkObject::find($id);
         if (auth()->user()->role !==1) {
-            return redirect('/notifications');
+            return redirect('/objects');
         }
-        $notif->delete();
-        return redirect('/notifications');
+        $object->delete();
+        return redirect('/objects');
     }
 }

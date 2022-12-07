@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Notif;
-use App\Models\User;
-
-class NotifsController extends Controller
+class WorkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +13,7 @@ class NotifsController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $notifs = Notif::orderBy('created_at', 'desc')->get();
-        return view('notifs.index')->with('notifs', $notifs);
+        return view ('work.index');
     }
 
     /**
@@ -28,7 +23,7 @@ class NotifsController extends Controller
      */
     public function create()
     {
-        return view ('notifs.create');
+        //
     }
 
     /**
@@ -39,13 +34,7 @@ class NotifsController extends Controller
      */
     public function store(Request $request)
     {
-        $notif = new Notif;
-        $notif->title = $request->input('title');
-        $notif->body = $request->input('body');
-        $notif->user_id = auth()->user()->id;
-        $notif->save();
-
-        return redirect('/notifications');
+        //
     }
 
     /**
@@ -56,8 +45,7 @@ class NotifsController extends Controller
      */
     public function show($id)
     {
-        $notif = Notif::find($id);
-        return view('notifs.show')->with('notif', $notif);
+        //
     }
 
     /**
@@ -68,11 +56,7 @@ class NotifsController extends Controller
      */
     public function edit($id)
     {
-        $notif = Notif::find($id);
-        if (auth()->user()->role !==1) {
-            return redirect('/notifications');
-        }
-        return view('notifs.edit')->with('notif', $notif);
+        //
     }
 
     /**
@@ -84,12 +68,7 @@ class NotifsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $notif = Notif::find($id);
-        $notif->title = $request->input('title');
-        $notif->body = $request->input('body');
-        $notif->save();
-
-        return redirect('/notifications');
+        //
     }
 
     /**
@@ -100,11 +79,6 @@ class NotifsController extends Controller
      */
     public function destroy($id)
     {
-        $notif = Notif::find($id);
-        if (auth()->user()->role !==1) {
-            return redirect('/notifications');
-        }
-        $notif->delete();
-        return redirect('/notifications');
+        //
     }
 }

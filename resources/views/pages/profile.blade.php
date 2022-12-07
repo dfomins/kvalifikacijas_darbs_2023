@@ -3,7 +3,16 @@
 @section('content')
     <div class="sidebar">
         <div class="sidebar-content panel-standart">
-            <h3 class="name">{{ auth()->user()->fname }} {{ auth()->user()->lname }}</h3>
+            <h2 class="name">{{ auth()->user()->fname }} {{ auth()->user()->lname }}</h2>
+            @if (Auth::user()->role == 1)
+                <h4 class="work-post">
+                    Vadītājs
+                </h4>
+            @elseif (Auth::user()->role == 2)
+                <h4 class="work-post">
+                    Darbinieks
+                </h4>
+            @endif
             <img src="img/pfp.jpg" alt="Profila bilde" class="sidebar-pfp" />
             <div class="settings">
                 <p>Mainīt profila bildi(-)</p>
