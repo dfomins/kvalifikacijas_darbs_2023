@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\NotifsController;
-use App\Http\Controllers\WorkController;
+use App\Http\Controllers\WorkrecordsController;
 use App\Http\Controllers\ObjectsController;
 use App\Http\Controllers\LogoutController;
 
@@ -39,7 +39,6 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('/', [PagesController::class, 'profile'])->name('profile');
     Route::resource('posts', PostsController::class);
     Route::get('objects', [ObjectController::class, 'objects']);
-    Route::resource('work', WorkController::class);
     Route::post('search', 'App\Http\Controllers\PagesController@search');
 });
 
@@ -61,4 +60,14 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('notifications/{id}/edit', 'App\Http\Controllers\NotifsController@edit')->middleware('isAdmin');
     Route::put('notifications/{id}', 'App\Http\Controllers\NotifsController@update')->middleware('isAdmin');
     Route::delete('notifications/{id}', 'App\Http\Controllers\NotifsController@destroy')->middleware('isAdmin');
+});
+
+Route::group(['middleware'=>['auth']], function(){
+    Route::get('work', 'App\Http\Controllers\WorkrecordsController@index');
+    Route::get('work/create', 'App\Http\Controllers\WorkrecordsController@create')->middleware('isAdmin');
+    Route::post('work', 'App\Http\Controllers\WorkrecordsController@store')->middleware('isAdmin');
+    Route::get('work/{id}', 'App\Http\Controllers\WorkrecordsController@show');
+    Route::get('work/{id}/edit', 'App\Http\Controllers\WorkrecordsController@edit')->middleware('isAdmin');
+    Route::put('work/{id}', 'App\Http\Controllers\WorkrecordsController@update')->middleware('isAdmin');
+    Route::delete('work/{id}', 'App\Http\Controllers\WorkrecordsController@destroy')->middleware('isAdmin');
 });

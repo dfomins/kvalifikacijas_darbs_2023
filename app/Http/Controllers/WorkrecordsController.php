@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\User;
 
-class WorkController extends Controller
+class WorkrecordsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,11 @@ class WorkController extends Controller
      */
     public function index()
     {
-
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
         $works = Work::with('user')->get();
         $users = User::with('works')->get();
-        return view ('work.index', compact('works', 'users'));
+        return view ('workrecords.index', compact('works', 'users'));
     }
 
     /**
@@ -31,8 +32,7 @@ class WorkController extends Controller
     public function create()
     {
         $users = User::select(DB::raw('concat(fname, " ", lname) as full_name'), 'id')->get()->pluck('full_name', 'id');
-        return view ('work.create')->with('users', $users);
-
+        return view ('workrecords.create')->with('users', $users);
     }
 
     /**
