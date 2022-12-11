@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 use App\Models\Post;
 use App\Models\User;
@@ -43,8 +44,14 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
+        $request->validate([
+            'title'=>'required|max:100',
+            'body'=>'required|max:300',
+        ]);
+
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');

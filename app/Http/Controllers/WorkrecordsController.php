@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\User;
 
+use Auth;
+
 class WorkrecordsController extends Controller
 {
     /**

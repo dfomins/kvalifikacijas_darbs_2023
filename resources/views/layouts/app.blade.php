@@ -40,9 +40,9 @@
     <main>
         @yield('content')
     </main>
-    <footer>
+    {{-- <footer>
         asd
-    </footer>
+    </footer> --}}
 </body>
 
 </html>

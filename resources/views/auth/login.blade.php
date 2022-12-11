@@ -1,8 +1,6 @@
 @extends('auth.layouts.app')
 
 @section('content')
-    {{-- <div class="card-header">{{ __('Login') }}</div> --}}
-
     <div class="login-panel">
         <div class="login-panel">
             <img src="../images/logo.png" alt="" />
