@@ -3,13 +3,16 @@
 @section('content')
     <div class="work-window">
         <div class="work-panel panel-standart">
-            <div>
-                <form action="{{ url('search') }}" method="POST">
-                    {{ csrf_field() }}
-                    <input type="text" name="search">
-                    <input type="submit" value="Meklēt">
-                </form>
-            </div>
+            {{-- <form action="{{ url('search') }}" method="POST">
+                {{ csrf_field() }}
+                <input type="text" name="search" placeholder="Meklēšana pēc vārda">
+                <input type="submit" id="btn" value="Meklēt">
+            </form> --}}
+            <form action="">
+                <input type="search" name="search" id="" placeholder="Meklēšana pēc vārda"
+                    value="{{ $search }}">
+                <input type="submit" id="btn" value="Meklēt">
+            </form>
             <table>
                 @if (count($works) > 0)
                     <tr>

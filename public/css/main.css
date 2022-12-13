@@ -440,7 +440,8 @@ footer {
     outline: none;
 }
 
-.login-panel #btn {
+.login-panel,
+.work-panel #btn {
     margin: 10px 0px 20px;
     height: 40px;
     width: 150px;
@@ -456,7 +457,8 @@ footer {
     margin: 10px 0px 30px 0px;
 }
 
-.login-panel #btn:hover {
+.login-panel,
+.work-panel #btn:hover {
     background: rgb(206, 206, 206);
 }
 
@@ -1083,6 +1085,30 @@ footer {
     height: 90vh;
     padding: 20px;
     border-radius: 20px;
+}
+
+.work-panel form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.work-panel input {
+    margin: 10px;
+    padding: 7px;
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.work-panel input:focus {
+    background-color: lightblue;
+    outline: none;
 }
 
 .work-panel table {
