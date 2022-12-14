@@ -3,7 +3,7 @@
 @section('content')
     <div class="create-post-window">
         <div class="create-post-panel">
-            {!! Form::open(['action' => 'App\Http\Controllers\WorkController@store', 'method' => 'POST']) !!}
+            {!! Form::open(['action' => 'App\Http\Controllers\WorkrecordsController@store', 'method' => 'POST']) !!}
             <div class="form-group">
                 {{ Form::label('user_id', 'Darbinieka vārds, uzvārds') }}
                 {{ Form::select('user_id', $users, null, ['required', 'class' => 'form-control create-title']) }}

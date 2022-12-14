@@ -1,7 +1,7 @@
 @extends('auth.layouts.app')
 
 @section('content')
-    <div class="login-panel">
+    <div class="login-window">
         <div class="login-panel">
             <img src="../images/logo.png" alt="" />
             <h1>Pieslēgšanās lapa</h1>

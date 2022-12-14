@@ -30,7 +30,6 @@
                 </div>
                 <li><a href="/work">Atskaites</a></li>
                 <li><a href="/objects">Objekti</a></li>
-                <li><a href="/mail">Saziņa</a></li>
                 <li><a href="/contacts">Kontakti</a></li>
                 <li><a href="/logout">Iziet</a></li>
             </ul>

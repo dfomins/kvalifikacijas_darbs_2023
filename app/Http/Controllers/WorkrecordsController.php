@@ -20,26 +20,20 @@ class WorkrecordsController extends Controller
     public function index(Request $request)
     {
 
-        $search = $request['search'] ?? "";
+        $search = request()->query('search');
+
+        if ($search) {
+            // dd(request()->query('search'));
+            $users = User::with('works')->where('fname', 'LIKE', "%{$search}%")->get();
+        } else {
+            $users = User::with('works')->get();
+        }
 
         $user_id = Auth::user()->id;
         $user = User::find($user_id);
-        // $works = Work::with('user')->get();
+        $works = Work::with('user')->get();
         // $users = User::with('works')->get();
-
-        if ($search != "") {
-            $users = User::with('works')->where('fname', 'LIKE', "%$search%")->orWhere('lname', 'LIKE', "%$search%")->get();
-            $works = Work::with('user')->get();
-        } else {
-            $users = User::with('works')->get();
-            $works = Work::with('user')->get();
-        }
-
-        // $user_id = Auth::user()->id;
-        // $user = User::find($user_id);
-        // $works = Work::with('user')->get();
-        // $users = User::with('works')->get();
-        return view ('workrecords.index', compact('works', 'users', 'search'));
+        return view ('workrecords.index', compact('works', 'users'));
     }
 
     /**
