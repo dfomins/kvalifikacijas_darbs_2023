@@ -1,8 +1,8 @@
 @extends('auth.layouts.app')
 
 @section('content')
-    <div class="login-panel">
-        <div class="login-panel">
+    <div class="login_window">
+        <div class="login_panel">
             <img src="../images/logo.png" alt="" />
             <h1>Reģistrēšanas lapa</h1>
             <form method="POST" action="{{ route('register') }}">
@@ -45,12 +45,9 @@
                     @enderror
                 </span>
 
-                {{--
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"> --}}
-
                 <button type="submit" name="button" id="btn">Reģistrēt</button>
             </form>
+            <a style="cursor: pointer;" onclick="history.back()">Atgriezties</a>
         </div>
     </div>
     </div>

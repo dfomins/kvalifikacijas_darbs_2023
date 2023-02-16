@@ -1,27 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="create-post-window">
-        <div class="create-post-panel">
-            {!! Form::open(['action' => ['App\Http\Controllers\ObjectsController@update', $object->id], 'method' => 'PUT']) !!}
-            <div class="form-group">
+    <div class="object_edit_page_window">
+        <div class="object_edit_panel panel-standart">
+            <div class="object_edit_button_back">
+                <button onclick="history.back()">
+                    <i class="fa-sharp fa-solid fa-arrow-left"></i> Atpakaļ
+                </button>
+            </div>
+            <div class="object_edit_form">
+                {!! Form::open(['action' => ['App\Http\Controllers\ObjectsController@update', $object->id], 'method' => 'PUT']) !!}
                 {{ Form::label('title', 'Nosaukums') }}
-                {{ Form::text('title', $object->title, ['required', 'class' => 'form-control create-title']) }}
-            </div>
-            <div class="form-group">
+                {{ Form::text('title', $object->title, ['required']) }}
                 {{ Form::label('city', 'Pilsēta') }}
-                {{ Form::text('city', $object->city, ['required', 'class' => 'form-control create-title']) }}
-            </div>
-            <div class="form-group">
+                {{ Form::text('city', $object->city, ['required']) }}
                 {{ Form::label('street', 'Iela') }}
-                {{ Form::text('street', $object->street, ['required', 'class' => 'form-control create-title']) }}
-            </div>
-            <div class="form-group">
+                {{ Form::text('street', $object->street, ['required']) }}
                 {{ Form::label('body', 'Informācija') }}
-                {{ Form::textarea('body', $object->body, ['required', 'class' => 'form-control create-body', 'style' => 'resize: none']) }}
+                {{ Form::textarea('body', $object->body, ['required']) }}
+                {{ Form::file('object_img') }}
+                {{ Form::submit('Rediģēt', ['class' => 'create-btn']) }}
+                {!! Form::close() !!}
             </div>
-            {{ Form::submit('Rediģēt', ['class' => 'create-btn']) }}
-            {!! Form::close() !!}
         </div>
     </div>
 @endsection

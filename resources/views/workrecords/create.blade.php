@@ -17,8 +17,12 @@
                 {{ Form::date('date', null, ['required', 'class' => 'form-control create-title']) }}
             </div>
             <div class="form-group">
+
                 {{ Form::label('hours', 'Stundas') }}
-                {{ Form::textarea('hours', '', ['required', 'class' => 'form-control create-body', 'style' => 'resize: none']) }}
+                {{ Form::select('hours', [0, 1, 2, 3, 4, 5, 6, 7, 8], null, ['required', 'class' => 'form-control create-title']) }}
+
+                {{-- {{ Form::label('hours', 'Stundas') }}
+                {{ Form::textarea('hours', '', ['required', 'class' => 'form-control create-body', 'style' => 'resize: none']) }} --}}
             </div>
             {{ Form::submit('Izveidot', ['class' => 'create-btn']) }}
             {!! Form::close() !!}

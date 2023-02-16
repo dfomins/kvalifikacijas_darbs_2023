@@ -1,8 +1,8 @@
 @extends('auth.layouts.app')
 
 @section('content')
-    <div class="login-window">{{ __('Reset Password') }}
-        <div class="login-panel">
+    <div class="login_window">{{ __('Reset Password') }}
+        <div class="login_panel">
             <form method="POST" action="{{ route('password.update') }}">
                 @csrf
                 <h1>Paroles atkopšana</h1>
@@ -26,7 +26,7 @@
                     </span>
                 @enderror
 
-                <label for="password-confirm">{{ __('Paroles atkārtošana') }}</label>
+                <label for="password-confirm">{{ __('Atkārtojiet paroli') }}</label>
 
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
                     autocomplete="new-password">

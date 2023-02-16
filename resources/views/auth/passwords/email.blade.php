@@ -1,37 +1,39 @@
 @extends('auth.layouts.app')
 
 @section('content')
-    <div class="login-panel">
-        <div class="">
-            <h1>{{ __('Paroles atkopšana') }}</h1>
-        </div>
-
-        @if (session('status'))
-            <div style="color: green">
-                {{ session('status') }}
+    <div class="login_window">
+        <div class="login_panel">
+            <div class="">
+                <h1>{{ __('Paroles atkopšana') }}</h1>
             </div>
-        @endif
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+            @if (session('status'))
+                <div style="color: green">
+                    {{ session('status') }}
+                </div>
+            @endif
 
-            <label for="email">{{ __('Ievadiet e-pastu') }}</label>
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
 
-            <input id="email" type="email" class="fail @error('email') is-invalid @enderror" name="email"
-                value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <label for="email">{{ __('Ievadiet e-pastu') }}</label>
 
-            @error('email')
-                <span style="color: red">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
+                <input id="email" type="email" class="fail @error('email') is-invalid @enderror" name="email"
+                    value="{{ old('email') }}" required autocomplete="email" autofocus>
 
-            <button type="submit" id="btn">
-                {{ __('Sūtīt') }}
-            </button>
+                @error('email')
+                    <span style="color: red">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
-            <a href="/login">
-                Pieslēgties</a>
-        </form>
+                <button type="submit" id="btn">
+                    {{ __('Sūtīt') }}
+                </button>
+
+                <a href="/login">
+                    Pieslēgties</a>
+            </form>
+        </div>
     </div>
 @endsection

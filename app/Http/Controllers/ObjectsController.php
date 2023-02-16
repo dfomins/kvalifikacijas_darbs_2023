@@ -38,11 +38,24 @@ class ObjectsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        ]);
+
         $object = new WorkObject;
         $object->title = $request->input('title');
         $object->city = $request->input('city');
         $object->street = $request->input('street');
         $object->body = $request->input('body');
+        if ($request->hasfile('object_img')) {
+            $file = $request->file('object_img');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/objects', $filename);
+            $object->object_img = $filename;
+        }
         $object->save();
 
         return redirect('/objects');
@@ -89,6 +102,21 @@ class ObjectsController extends Controller
         $object->city = $request->input('city');
         $object->street = $request->input('street');
         $object->body = $request->input('body');
+        if ($request->file != '') {
+
+            if ($object->file != '' && $object->file != null) {
+                $file_old = $file.$object->file;
+                unlink($file_old);
+            }
+
+            $file = $request->file;
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/objects', $filename);
+
+            $object->update(['file' => $filename]);
+        }
+        
         $object->save();
 
         return redirect('/objects');

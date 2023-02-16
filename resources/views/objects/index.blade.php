@@ -23,10 +23,8 @@
                 </ol>
             </div>
             @if (Auth::user()->role == 1)
-                {
                 <a href="/objects/create" id="btn"><input type="button" name="button" value="Izveidot jaunu"
                         id="btn" /></a>
-                }
             @endif
         </div>
     </div>

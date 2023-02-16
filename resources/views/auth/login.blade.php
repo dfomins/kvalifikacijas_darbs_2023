@@ -1,13 +1,12 @@
 @extends('auth.layouts.app')
 
 @section('content')
-    <div class="login-window">
-        <div class="login-panel">
-            <img src="../images/logo.png" alt="" />
+    <div class="login_window">
+        <div class="login_panel">
+            <img src="../../public/images/logo.png" alt="" />
             <h1>Pieslēgšanās lapa</h1>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
-
                 <input type="text" name="email" placeholder="E-pasts" value="{{ old('email') }}" />
                 <span style="color: red">
                     @error('email')
@@ -25,8 +24,9 @@
                 <button type="submit" name="button" id="btn">Pieslēgties</button>
 
                 @if (Route::has('password.request'))
-                    <p><a href="{{ route('password.request') }}">Aizmirsāt paroli?</a></p>
+                    <a href="{{ route('password.request') }}">Aizmirsāt paroli?</a>
                 @endif
             </form>
         </div>
-    @endsection
+    </div>
+@endsection
