@@ -19,7 +19,7 @@
                 {{ Form::label('body', 'Informācija') }}
                 {{ Form::textarea('body', $object->body, ['required']) }}
                 {{ Form::file('object_img') }}
-                {{ Form::submit('Rediģēt', ['class' => 'create-btn']) }}
+                {{ Form::submit('Apstiprināt', ['class' => 'note_edit_submit_button']) }}
                 {!! Form::close() !!}
             </div>
         </div>

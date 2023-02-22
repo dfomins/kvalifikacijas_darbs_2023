@@ -14,7 +14,8 @@
                         Darbinieks
                     </h4>
                 @endif
-                <img src="img/pfp.jpg" alt="Profila bilde" />
+                <span style="background-image: url({{ auth()->user()->photo }})"></span>
+                <img src="img/profile_bg.jpg" alt="Profila bilde" />
                 <div class="profile_settings">
                     <p>Mainīt profila bildi(-)</p>
                     <div class="pfp">

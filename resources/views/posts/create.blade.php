@@ -1,29 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="create-post-window">
-        <div class="create-post-panel">
-            {!! Form::open(['action' => 'App\Http\Controllers\PostsController@store', 'method' => 'POST']) !!}
-            <div class="form-group">
+    <div class="note_create_page_window panel-standart">
+        <div class="note_create_panel">
+            <div class="note_create_button_back">
+                <button onclick="history.back()">
+                    <i class="fa-sharp fa-solid fa-arrow-left"></i> Atpakaļ
+                </button>
+            </div>
+            <div class="note_create_title">
+                <h3>Izveidot jaunu piezīmi</h3>
+            </div>
+            <div class="note_create_form">
+                {!! Form::open(['action' => 'App\Http\Controllers\PostsController@store', 'method' => 'POST']) !!}
                 {{ Form::label('title', 'Nosaukums') }}
-                {{ Form::text('title', '', ['class' => 'form-control create-title']) }}
-            </div>
-            <span style="color: red">
-                @error('title')
-                    {{ $message }}
-                @enderror
-            </span>
-            <div class="form-group">
+                {{ Form::text('title', '', ['required']) }}
                 {{ Form::label('body', 'Saturs') }}
-                {{ Form::textarea('body', '', ['class' => 'form-control create-body', 'style' => 'resize: none']) }}
+                {{ Form::textarea('body', '', ['required']) }}
+                {{ Form::submit('Izveidot', ['class' => 'note_create_submit_button']) }}
+                {!! Form::close() !!}
             </div>
-            <span style="color: red">
-                @error('body')
-                    {{ $message }}
-                @enderror
-            </span>
-            {{ Form::submit('Izveidot', ['class' => 'create-btn']) }}
-            {!! Form::close() !!}
         </div>
     </div>
 @endsection

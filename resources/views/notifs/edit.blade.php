@@ -1,19 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="create-post-window">
-        <div class="create-post-panel">
-            {!! Form::open(['action' => ['App\Http\Controllers\NotifsController@update', $notif->id], 'method' => 'PUT']) !!}
-            <div class="form-group">
+    <div class="note_edit_page_window">
+        <div class="note_edit_panel panel-standart">
+            <div class="note_edit_button_back">
+                <button onclick="history.back()">
+                    <i class="fa-sharp fa-solid fa-arrow-left"></i> Atpakaļ
+                </button>
+            </div>
+            <div class="note_edit_title">
+                <h3>Rediģēt piezīmi #{{ $notif->id }}</h3>
+            </div>
+            <div class="note_edit_form">
+                {!! Form::open(['action' => ['App\Http\Controllers\NotifsController@update', $notif->id], 'method' => 'PUT']) !!}
                 {{ Form::label('title', 'Nosaukums') }}
-                {{ Form::text('title', $notif->title, ['required', 'class' => 'form-control create-title']) }}
-            </div>
-            <div class="form-group">
+                {{ Form::text('title', $notif->title, ['required']) }}
                 {{ Form::label('body', 'Saturs') }}
-                {{ Form::textarea('body', $notif->body, ['required', 'class' => 'form-control create-body', 'style' => 'resize: none']) }}
+                {{ Form::textarea('body', $notif->body, ['required']) }}
+                {{ Form::submit('Apstiprināt', ['class' => 'note_edit_submit_button']) }}
+                {!! Form::close() !!}
             </div>
-            {{ Form::submit('Rediģēt', ['class' => 'create-btn']) }}
-            {!! Form::close() !!}
         </div>
     </div>
 @endsection

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <div class="post-show-window">
-        <div class="post-show-panel panel-standart">
-            <div class="title-post-show">
+    <div class="note_show_window">
+        <div class="note_show_panel panel-standart">
+            <div class="title_note_show">
                 <a href="/notifications">
-                    <div class="title-text-post-show-back-icon">
+                    <div class="title_text_note_show_back_icon">
                         <i class="fa-sharp fa-solid fa-arrow-left"></i>
                     </div>
                 </a>
@@ -23,7 +23,7 @@
                                 'method' => 'DELETE',
                                 'class' => 'btn',
                             ]) !!}
-                            {{ Form::button('<i class="fa-solid fa-trash fa-xl"></i>', ['type' => 'submit', 'class' => 'delete-btn']) }}
+                            {{ Form::button('<i class="fa-solid fa-trash fa-xl"></i>', ['type' => 'submit', 'class' => 'note_show_delete']) }}
                             {!! Form::close() !!}
                         </div>
                     @endif

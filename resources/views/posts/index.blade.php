@@ -1,19 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="note-window">
-        <div class="note-panel panel-standart">
-            <div class="title">
-                <h2>Privātās piezīmes</h2>
-            </div>
-            <div class="threads">
+    <div class="note_window">
+        <div class="note_panel panel-standart">
+            <h2>Privātās piezīmes</h2>
+            <div class="thread_panel">
                 <ol>
                     @if (count($posts) > 0)
                         @foreach ($posts as $post)
-                            <li class="row">
-                                <div class="title-text-post">
-                                    <h3><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h3>
-                                    <p class="timestamp">Izveidots: {{ $post->created_at->format('d-m-Y') }}</p>
+                            <li class="note_row">
+                                <div class="note_post"><a href="/posts/{{ $post->id }}">
+                                        <h3>{{ $post->title }}</h3>
+                                        <p class="timestamp">Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
+                                    </a>
                                 </div>
                         @endforeach
                     @else
@@ -22,8 +21,9 @@
                     @endif
                 </ol>
             </div>
-            <a href="/posts/create" id="btn"><input type="button" name="button" value="Izveidot jaunu"
-                    id="btn" /></a>
+            <div class="create_note_btn">
+                <a href="/posts/create"><button>Izveidot jaunu</button></a>
+            </div>
         </div>
     </div>
 @endsection

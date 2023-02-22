@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('objects', function (Blueprint $table) {
-            $table->string('object_img')->nullable();
+            $table->string('object_img')->default('no_photo.png');
         });
     }
 

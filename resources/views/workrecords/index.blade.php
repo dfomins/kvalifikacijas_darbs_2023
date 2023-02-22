@@ -29,8 +29,7 @@
                 @endif
             </table>
             @if (Auth::user()->role == 1)
-                <a href="/work/create" id="btn"><input type="button" name="button" value="Izveidot jaunu"
-                        id="btn" /></a>
+                <a href="/work/create"><input type="button" name="button" value="Izveidot jaunu" id="btn" /></a>
             @endif
         </div>
     </div>

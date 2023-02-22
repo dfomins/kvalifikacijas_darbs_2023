@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <div class="post-show-window">
-        <div class="post-show-panel panel-standart">
-            <div class="title-post-show">
+    <div class="object_show_window">
+        <div class="object_show_panel panel-standart">
+            <div class="title_note_show">
                 <a href="/objects">
-                    <div class="title-text-post-show-back-icon">
+                    <div class="title_text_note_show_back_icon">
                         <i class="fa-sharp fa-solid fa-arrow-left"></i>
                     </div>
                 </a>
@@ -19,13 +19,20 @@
                             'method' => 'DELETE',
                             'class' => 'btn',
                         ]) !!}
-                        {{ Form::button('<i class="fa-solid fa-trash fa-xl"></i>', ['type' => 'submit', 'class' => 'delete-btn']) }}
+                        {{ Form::button('<i class="fa-solid fa-trash fa-xl"></i>', ['type' => 'submit', 'class' => 'note_show_delete']) }}
                         {!! Form::close() !!}
                     </div>
                 </div>
             </div>
             <div class="body-content-post-show">
-                <p>{{ $object->body }}</p>
+                {{-- <span style="width: 300px; background: url({{ asset('uploads/objects/' . $object->object_img) }})"> --}}
+                @if ($object->object_img != null)
+                    <div class="object_show_image">
+                        <img src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
+                    </div>
+                @endif
+                {{-- </span> --}}
+                <p style="text-align: justify;">{{ $object->body }}</p>
             </div>
         </div>
     </div>

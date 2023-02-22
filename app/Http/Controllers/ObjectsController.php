@@ -40,7 +40,6 @@ class ObjectsController extends Controller
     {
 
         $request->validate([
-            'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
 
@@ -53,8 +52,10 @@ class ObjectsController extends Controller
             $file = $request->file('object_img');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('uploads/objects', $filename);
+            $file->move('img/objects', $filename);
             $object->object_img = $filename;
+        } else {
+            $object->object_img = 'no_photo.png';
         }
         $object->save();
 
@@ -112,7 +113,7 @@ class ObjectsController extends Controller
             $file = $request->file;
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('uploads/objects', $filename);
+            $file->move('img/objects', $filename);
 
             $object->update(['file' => $filename]);
         }
