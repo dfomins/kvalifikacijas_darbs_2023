@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\NotifsController;
 use App\Http\Controllers\WorkrecordsController;
@@ -27,17 +27,24 @@ Auth::routes();
 Route::group(['middleware'=>['isAdmin']], function() {
     Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'App\Http\Controllers\Auth\RegisterController@register');
+    Route::get('users', [AllUsersController::class, 'index']);
 });
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::get('logout', [LogoutController::class, 'perform']);
- });
+// Route::group(['middleware' => ['auth']], function() {
+//     Route::get('logout', [LogoutController::class, 'perform']);
+//  });
 
 Route::group(['middleware'=>['auth']], function(){
-    Route::get('/', [PagesController::class, 'profile'])->name('profile');
+    Route::get('/', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('logout', [LogoutController::class, 'perform']);
     Route::resource('posts', PostsController::class);
     Route::get('objects', [ObjectController::class, 'objects']);
-    Route::post('search', 'App\Http\Controllers\PagesController@search');
+});
+
+Route::group(['middleware'=>['auth']], function(){
+    Route::get('profila_iestatijumi', 'App\Http\Controllers\ProfileController@edit_profile')->name('edit_profile');
+    // Route::put('profila_iestatijumi', 'App\Http\Controllers\ProfileController@update_profile')->name('update_profile');
+    Route::post('profila_iestatijumi', [ProfileController::class, 'update_profile'])->name('update_profile');
 });
 
 Route::group(['middleware'=>['auth']], function(){
@@ -69,5 +76,3 @@ Route::group(['middleware'=>['auth']], function(){
     Route::put('work/{id}', 'App\Http\Controllers\WorkrecordsController@update')->middleware('isAdmin');
     Route::delete('work/{id}', 'App\Http\Controllers\WorkrecordsController@destroy')->middleware('isAdmin');
 });
-
-Route::get('/users', [AllUsersController::class, 'index'], ['middleware' => ['isAdmin']]);

@@ -17,10 +17,7 @@
                 <span style="background-image: url({{ auth()->user()->photo }})"></span>
                 <img src="img/profile_bg.jpg" alt="Profila bilde" />
                 <div class="profile_settings">
-                    <p>Mainīt profila bildi(-)</p>
-                    <div class="pfp">
-                        <p>{{ Form::file('cover_image') }}</p>
-                    </div>
+                    <a href="/profila_iestatijumi">Profila iestatījumi</a>
                     <a href="#">
                         <p></p>
                     </a>

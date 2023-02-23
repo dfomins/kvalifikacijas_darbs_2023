@@ -21,8 +21,9 @@ body {
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
-span.error {
-    color: black;
+.error {
+    color: red;
+    font-size: 15px;
 }
 
 /*!NAVBAR*/
@@ -361,6 +362,78 @@ footer {
 
 /* CALENDAR END */
 
+/* PROFILE EDIT PAGE */
+
+.profile_edit_page_window {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.profile_edit_panel {
+    justify-content: center;
+    width: 60%;
+    height: auto;
+    margin: 30px 0;
+    background-color: #b6bfc0;
+}
+
+.profile_edit_panel_title {
+    margin: 20px 0 0 0;
+    color: white;
+    text-align: center;
+}
+
+.profile_edit_panel_settings {
+    display: flex;
+}
+
+.profile_edit_panel_settings_frow,
+.profile_edit_panel_settings_srow {
+    width: 50%;
+    margin: 20px 20px;
+}
+
+.profile_edit_panel_settings_srow form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_edit_panel_settings_srow form label {
+    margin-top: 10px;
+}
+
+.profile_edit_panel_settings_srow form input {
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+    width: 100%;
+    outline: none;
+    border: 1px solid #181818;
+    border-radius: 3px;
+    height: 50px;
+    font-size: 18px;
+}
+
+.profile_edit_panel_settings_srow .setting_srow_button {
+    width: 30%;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+    padding: 7px 5px;
+    border-radius: 3px;
+    border: 1px solid #181818;
+    background-color: #f1f1f1;
+    font-size: 15px;
+    transition: .3s;
+}
+
+.profile_edit_panel_settings_srow .setting_srow_button:hover {
+    background-color: #dddddd;
+}
+
+
+/* PROFILE EDIT PAGE END */
 
 /*!LOGIN, REGISTER, PW RESET / fixed 15.02*/
 
