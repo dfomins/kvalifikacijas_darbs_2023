@@ -9,7 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/ee191d4cc6.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <title>{{ config('app.name', 'IMG') }}</title>
 </head>
 
@@ -42,8 +45,18 @@
         asd
     </footer> --}}
 </body>
-
-</html>
 <script src={{ url('js/calendar.js') }}></script>
 <script src={{ url('js/side-navbar.js') }}></script>
-<script src={{ url('js/pfp.js') }}></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+</html>
+{{-- <script>
+    $(function() {
+        $("#datepicker").datepicker({
+            dateFormat: 'dd/mm/yy'
+        });
+    });
+</script> --}}

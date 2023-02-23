@@ -12,16 +12,18 @@
                         @foreach ($objects as $object)
                             <li class="object_note_row">
                                 <div class="object_index_image">
-                                    <img src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
-                                </div>
-                                <div class="object_note_post"><a href="/objects/{{ $object->id }}">
-                                        <h3>{{ $object->id }} | {{ $object->title }}</h3>
+                                    <a href="/objects/{{ $object->id }}">
+                                        <img src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
                                     </a>
                                 </div>
+                                <div class="object_note_post"><a href="/objects/{{ $object->id }}">
+                                        <h3>{{ $object->title }}</h3>
+                                    </a>
+                                </div>
+                            </li>
                         @endforeach
                     @else
-                        <p style="text-align: center">Informācijas par objektiem nav</p>
-                        </li>
+                        <p style="text-align: center; color: white; grid-column: 2/3;">Informācijas par objektiem nav</p>
                     @endif
                 </ol>
             </div>

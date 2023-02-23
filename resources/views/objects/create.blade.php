@@ -23,7 +23,8 @@
                 {{ Form::label('body', 'Informācija') }}
                 {{ Form::textarea('body', '', ['required', 'class' => 'form-control create-body', 'style' => 'resize: none']) }}
                 <div class="object-img">
-                    <p>{{ Form::file('object_img') }}</p>
+
+                    {{ Form::file('object_img') }}
                 </div>
                 {{ Form::submit('Izveidot', ['class' => 'note_create_submit_button']) }}
                 {!! Form::close() !!}

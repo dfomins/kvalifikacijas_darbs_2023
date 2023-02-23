@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Models\Work;
 use App\Models\User;
@@ -20,20 +21,10 @@ class WorkrecordsController extends Controller
     public function index(Request $request)
     {
 
-        $search = request()->query('search');
-
-        if ($search) {
-            // dd(request()->query('search'));
-            $users = User::with('works')->where('fname', 'LIKE', "%{$search}%")->get();
-        } else {
-            $users = User::with('works')->get();
-        }
-
-        $user_id = Auth::user()->id;
-        $user = User::find($user_id);
         $works = Work::with('user')->get();
-        // $users = User::with('works')->get();
+        $users = User::with('works')->get();
         return view ('workrecords.index', compact('works', 'users'));
+
     }
 
     /**
@@ -61,7 +52,7 @@ class WorkrecordsController extends Controller
         $work = new Work;
         $work->user_id = $request->input('user_id');
         $work->object_id = $request->input('object_id');
-        $work->date = $request->input('date');
+        $work->work_date = $request->input('work_date');
         $work->hours = $request->input('hours');
         $work->save();
 

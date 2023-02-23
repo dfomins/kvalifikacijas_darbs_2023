@@ -1,7 +1,7 @@
 @extends('auth.layouts.app')
 
 @section('content')
-    <div class="login_window">{{ __('Reset Password') }}
+    <div class="login_window">
         <div class="login_panel">
             <form method="POST" action="{{ route('password.update') }}">
                 @csrf

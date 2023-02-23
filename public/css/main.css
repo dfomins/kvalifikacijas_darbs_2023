@@ -32,6 +32,7 @@ nav {
     height: 10vh;
     display: flex;
     padding: 1% 4%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.425);
     justify-content: space-between;
     align-items: center;
     -moz-user-select: none;
@@ -447,13 +448,13 @@ footer {
     flex-direction: column;
     width: 100%;
     min-height: 90vh;
-    padding: 20px;
+    padding: 0 20px;
     border-radius: 3px;
 }
 
 .note_panel h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
     color: white;
 }
 
@@ -554,7 +555,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    padding: 7px 5px;
+    padding: 7px 10px;
     background-color: #FCFCFC;
 }
 
@@ -567,6 +568,25 @@ footer {
     width: 100%;
     height: 100%;
     max-height: 300px;
+}
+
+@media (max-width: 1300px) {
+    .object_thread_panel ol {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .object_thread_panel ol {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .object_thread_panel ol {
+        margin: 0;
+        width: 100%;
+    }
 }
 
 /* OBJECTS INDEX GRID END */
@@ -860,10 +880,6 @@ footer {
 /* OBJECT, POSTS EDIT PAGE END */
 
 
-
-
-
-
 .pfp {
     display: flex;
     justify-content: center;
@@ -889,10 +905,9 @@ footer {
 .work-window {
     display: inline-flex;
     justify-content: space-around;
-    align-items: center;
-    margin: 30px 0px;
+    padding: 20px 0;
     width: 100%;
-    max-height: 150vh;
+    min-height: 90vh;
 }
 
 .work-panel {
@@ -914,7 +929,8 @@ footer {
     margin-bottom: 20px;
 }
 
-.work-panel th, td {
+.work-panel th,
+.work-panel td {
     border: 1px solid black;
     text-align: center;
     color: black;
@@ -933,9 +949,43 @@ footer {
     transition: 0.2s;
 }
 
+/* ALL USERS PAGE */
+
+.users_page_window {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+.users_panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.users_row {
+    display: grid;
+    grid-template-columns: 1fr 3fr 5fr 3fr;
+    margin: 10px;
+}
+
+.users_row div {
+    margin: 0 20px;
+}
+
+.users_panel h2 {
+    text-align: center;
+    margin: 20px 0;
+    color: white;
+}
+
+/* ALL USERS PAGE END */
+
 /* reset */
 
-.reset-panel {
+/* .reset-panel {
     display: inline-flex;
     flex-direction: column;
     justify-content: center;
@@ -971,7 +1021,7 @@ footer {
 .reset-panel input:focus {
     background-color: lightblue;
     outline: none;
-}
+} */
 
 
 /* The container <div> - needed to position the dropdown content */

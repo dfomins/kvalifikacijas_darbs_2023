@@ -28,6 +28,9 @@
                         <a href="/register">
                             <p>Izveidot jaunu lietotāju</p>
                         </a>
+                        <a href="/users">
+                            <p>Visi lietotāji</p>
+                        </a>
                     @endif
                 </div>
             </div>

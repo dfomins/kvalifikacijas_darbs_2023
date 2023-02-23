@@ -54,8 +54,6 @@ class ObjectsController extends Controller
             $filename = time().'.'.$extention;
             $file->move('img/objects', $filename);
             $object->object_img = $filename;
-        } else {
-            $object->object_img = 'no_photo.png';
         }
         $object->save();
 

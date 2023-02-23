@@ -13,19 +13,23 @@
                 {{ Form::text('object_id', '', ['required', 'class' => 'form-control create-title']) }}
             </div>
             <div class="form-group">
-                {{ Form::label('date', 'Datums') }}
-                {{ Form::date('date', null, ['required', 'class' => 'form-control create-title']) }}
+                {{ Form::label('work_date', 'Datums') }}
+                {{ Form::text('work_date', null, ['required', 'id' => 'datepicker', 'autocomplete' => 'off']) }}
             </div>
             <div class="form-group">
-
                 {{ Form::label('hours', 'Stundas') }}
                 {{ Form::select('hours', [0, 1, 2, 3, 4, 5, 6, 7, 8], null, ['required', 'class' => 'form-control create-title']) }}
-
-                {{-- {{ Form::label('hours', 'Stundas') }}
-                {{ Form::textarea('hours', '', ['required', 'class' => 'form-control create-body', 'style' => 'resize: none']) }} --}}
             </div>
             {{ Form::submit('Izveidot', ['class' => 'create-btn']) }}
             {!! Form::close() !!}
         </div>
     </div>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            $("#datepicker").datepicker("setDate", new Date());
+        });
+    </script>
 @endsection

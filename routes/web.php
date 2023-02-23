@@ -9,6 +9,7 @@ use App\Http\Controllers\NotifsController;
 use App\Http\Controllers\WorkrecordsController;
 use App\Http\Controllers\ObjectsController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\AllUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,6 @@ Route::group(['middleware'=>['isAdmin']], function() {
 });
 
 Route::group(['middleware' => ['auth']], function() {
-    /**
-    * Logout Route
-    */
     Route::get('logout', [LogoutController::class, 'perform']);
  });
 
@@ -71,3 +69,5 @@ Route::group(['middleware'=>['auth']], function(){
     Route::put('work/{id}', 'App\Http\Controllers\WorkrecordsController@update')->middleware('isAdmin');
     Route::delete('work/{id}', 'App\Http\Controllers\WorkrecordsController@destroy')->middleware('isAdmin');
 });
+
+Route::get('/users', [AllUsersController::class, 'index'], ['middleware' => ['isAdmin']]);
