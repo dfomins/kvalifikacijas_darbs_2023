@@ -21,6 +21,11 @@ body {
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
+.success {
+    color: green;
+    font-size: 15px;
+}
+
 .error {
     color: red;
     font-size: 15px;
@@ -376,7 +381,7 @@ footer {
     width: 60%;
     height: auto;
     margin: 30px 0;
-    background-color: #b6bfc0;
+    /* background-color: #b6bfc0; */
 }
 
 .profile_edit_panel_title {
@@ -389,10 +394,21 @@ footer {
     display: flex;
 }
 
-.profile_edit_panel_settings_frow,
+.profile_edit_panel_settings_frow {
+    width: 50%;
+    margin: 20px 10px 20px 30px;
+    border-radius: 3px;
+}
 .profile_edit_panel_settings_srow {
     width: 50%;
-    margin: 20px 20px;
+    margin: 20px 30px 20px 10px;
+    padding: 30px;
+    background-color: white;
+}
+
+.profile_edit_panel_settings_srow h3 {
+    color: #181818;
+    text-align: start;
 }
 
 .profile_edit_panel_settings_srow form {
@@ -401,12 +417,11 @@ footer {
 }
 
 .profile_edit_panel_settings_srow form label {
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .profile_edit_panel_settings_srow form input {
     padding: 5px 10px;
-    margin: 0 0 10px 0;
     width: 100%;
     outline: none;
     border: 1px solid #181818;
@@ -419,7 +434,7 @@ footer {
     width: 30%;
     cursor: pointer;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 7px 5px;
     border-radius: 3px;
     border: 1px solid #181818;
@@ -430,6 +445,10 @@ footer {
 
 .profile_edit_panel_settings_srow .setting_srow_button:hover {
     background-color: #dddddd;
+}
+
+#update_password_form {
+    margin-top: 20px;
 }
 
 
