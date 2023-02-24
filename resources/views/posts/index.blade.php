@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="note_window">
-        <div class="note_panel panel-standart">
+    <div class="note_window panel-standart">
+        <div class="note_panel">
             <h2>Privātās piezīmes</h2>
             <div class="thread_panel">
                 <ol>

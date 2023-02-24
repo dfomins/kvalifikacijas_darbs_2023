@@ -17,7 +17,7 @@
 
 <body>
     <nav>
-        <a href="{{ route('profile') }}"><img src="/img/logo-white.png" alt="Logo" class="logo" /></a>
+        <a href="{{ route('profile') }}"><img src="/img/logo/logo.png" alt="Logo" class="logo" /></a>
         <div class="nav-links nav-links-tel" id="navLinks">
             <i class="fa-solid fa-xmark closeMenu"></i>
             <ul>
@@ -40,10 +40,9 @@
     <main>
         @yield('content')
     </main>
-    {{-- <footer>
+    <footer>
         asd
-    </footer> --}}
-    <script src={{ url('js/calendar.js') }}></script>
+    </footer>
     <script src={{ url('js/side-navbar.js') }}></script>
 </body>
 
