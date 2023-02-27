@@ -25,7 +25,4 @@ class Work extends Model
         $this->attributes['work_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
 
-    // public function getWorkDateAttribute($value) {
-    //     $this->attributes['work_date'] = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
-    // }
 }

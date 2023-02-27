@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/ee191d4cc6.js" crossorigin="anonymous"></script>
+{{--    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>--}}
+{{--    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>--}}
+{{--    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>--}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -22,17 +25,13 @@
             <i class="fa-solid fa-xmark closeMenu"></i>
             <ul>
                 <li><a href="{{ route('profile') }}">Profils</a></li>
-                <div class="dropdown">
-                    <li class="dropbtn">Piezīmes</li>
-                    <div class="dropdown-content">
-                        <li><a href="/posts">Privātās</a></li>
-                        <li><a href="/notifications">Paziņojumi</a></li>
-                    </div>
-                </div>
+                <li><a href="/posts">Piezīmes</a></li>
+                <li><a href="/notifications">Paziņojumi</a></li>
                 <li><a href="/work">Atskaites</a></li>
                 <li><a href="/objects">Objekti</a></li>
                 <li><a href="/contacts">Kontakti</a></li>
-                <li><a href="/logout">Iziet</a></li>
+                {{-- <li><a href="/logout">Iziet</a></li> --}}
+                <li><a href="/logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
             </ul>
         </div>
         <i class="fa-solid fa-bars openMenu"></i>

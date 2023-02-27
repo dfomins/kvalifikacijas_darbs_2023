@@ -2,11 +2,9 @@
 @section('content')
     <div class="note_show_panel panel-standart">
         <div class="title_note_show">
-            <a href="/posts">
-                <div class="title_text_note_show_back_icon">
-                    <i class="fa-sharp fa-solid fa-arrow-left"></i>
-                </div>
-            </a>
+            <div onclick="history.back()" class="title_text_note_show_back_icon">
+                <i class="fa-solid fa-arrow-left-long"></i>
+            </div>
             <div class="title-text-post-show">
                 <div class="title-text-post-show-content">
                     <h1>{{ $post->title }}</h1>

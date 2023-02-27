@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\User;
+use App\Models\Notif;
+use App\Models\Post;
+
 use Hash;
 
 class ProfileController extends Controller
 {
     public function profile() {
-        return view('profile.profile');
+        $recentNotifs = Notif::latest()->limit(3)->get();
+        $recentPosts = Post::latest()->limit(3)->get();
+        return view('profile.profile')->with('recentNotifs', $recentNotifs)->with('recentPosts', $recentPosts);
     }
 
     public function edit_profile() {
@@ -69,29 +75,5 @@ class ProfileController extends Controller
             }
         }
     }
-
-    // public function update_password(Request $request) {
-    //     $request->validate('update_password', [
-    //         'old_password' => 'required|string|min:8|max:12',
-    //         'new_password' => 'required|string|min:8|max:12',
-    //         'confirm_password' => 'required|same:new_password',
-    //     ], [
-    //         'old_password.required' => 'Šisobligāts lauks ir ',
-    //         'new_password.required' => 'Šis lauks ir obligāts',
-    //         'new_password.required' => 'Šis lauks ir obligāts',
-    //     ]);
-
-    //     $user = auth()->user();
-
-    //     if(Hash::check($request->old_password, $user->password)) {
-    //         $user->update([
-    //             password => Hash::make($request->new_password)
-    //         ]);
-    //         return redirect()->route('edit_profile')->with('success', 'Parole tika veiksmīgi nomainīta!');
-    //     } else {
-    //         return redirect()->route('edit_profile')->with('error', 'Vecā parole tika nepareizi ievadīta');
-    //     }
-
-    // }
 
 }

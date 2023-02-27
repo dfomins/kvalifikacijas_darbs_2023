@@ -3,11 +3,9 @@
     <div class="note_show_window">
         <div class="note_show_panel panel-standart">
             <div class="title_note_show">
-                <a href="/notifications">
-                    <div class="title_text_note_show_back_icon">
-                        <i class="fa-sharp fa-solid fa-arrow-left"></i>
-                    </div>
-                </a>
+                <div onclick="history.back()" class="title_text_note_show_back_icon">
+                    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                </div>
                 <div class="title-text-post-show">
                     <div class="title-text-post-show-content">
                         <h1>{{ $notif->title }}</h1>
