@@ -1,9 +1,8 @@
 // SIDEBAR
-
-    document.querySelector(".closeMenu").addEventListener("click", () => {
+    document.querySelector(".close-menu").addEventListener("click", () => {
         navLinks.style.right = "-200px";
     })
 
-    document.querySelector(".openMenu").addEventListener("click", () => {
+    document.querySelector(".open-menu").addEventListener("click", () => {
         navLinks.style.right = "0px";
     })

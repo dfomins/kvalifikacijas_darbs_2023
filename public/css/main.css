@@ -90,7 +90,8 @@ nav img {
     display: block;
 }
 
-nav .fa-solid{
+nav .close-menu,
+nav .open-menu {
     display: none;
 }
 
@@ -113,7 +114,8 @@ nav .fa-solid{
         transition: 1s;
     }
 
-    nav .fa-solid {
+    nav .close-menu,
+    nav .open-menu {
         display: block;
         color: #181818;
         margin: 10px;

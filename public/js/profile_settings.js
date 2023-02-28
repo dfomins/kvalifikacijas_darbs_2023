@@ -1,4 +1,7 @@
 window.onload = () => {
+
+    SwitchPage(localStorage.getItem('value'));
+
     const tab_switchers = document.querySelectorAll('[data-switcher]');
 
     for (let i = 0; i < tab_switchers.length; i++) {
@@ -8,11 +11,11 @@ window.onload = () => {
         tab_switcher.addEventListener('click', () => {
             document.querySelector('.profile_settings_select .profile_edit_select.is-active').classList.remove('is-active');
             tab_switcher.parentNode.classList.add('is-active');
-
             SwitchPage(page_id);
+            localStorage.setItem('value', page_id);
+            console.log(localStorage.getItem('value'));
         });
     }
-
 }
 
 function SwitchPage (page_id) {
