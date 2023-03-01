@@ -7,10 +7,13 @@
             <table>
                 <div class="users_row">
                     @foreach ($users as $user)
-                        <div>{{ $user->id }}</div>
-                        <div></div>
-                        <div>{{ $user->fname }}{{ $user->lname }}</div>
-                        <div>{{ $user->roles->name }}</div>
+                        <div class="user_info">
+                            <div class="user_info_id">{{ $user->id }}</div>
+                            <div class="user_info_photo"><img src="{{ asset('img/users/' . $user->profila_bilde) }}"
+                                    alt=""></div>
+                            <div class="user_info_name">{{ $user->fname }} {{ $user->lname }}</div>
+                            <div class="user_info_role">{{ $user->roles->name }}</div>
+                        </div>
                     @endforeach
                 </div>
             </table>

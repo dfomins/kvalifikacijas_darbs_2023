@@ -9,7 +9,11 @@
                 </button>
             </div>
             <div class="object_edit_form">
-                {!! Form::open(['action' => ['App\Http\Controllers\ObjectsController@update', $object->id], 'method' => 'PUT']) !!}
+                {!! Form::open([
+                    'action' => ['App\Http\Controllers\ObjectsController@update', $object->id],
+                    'method' => 'PUT',
+                    'enctype' => 'multipart/form-data',
+                ]) !!}
                 {{ Form::label('title', 'Nosaukums') }}
                 {{ Form::text('title', $object->title, ['required']) }}
                 {{ Form::label('city', 'Pilsēta') }}
@@ -19,6 +23,7 @@
                 {{ Form::label('body', 'Informācija') }}
                 {{ Form::textarea('body', $object->body, ['required']) }}
                 {{ Form::file('object_img') }}
+                <a href="">Dzēst bildi</a>
                 {{ Form::submit('Apstiprināt', ['class' => 'note_edit_submit_button']) }}
                 {!! Form::close() !!}
             </div>

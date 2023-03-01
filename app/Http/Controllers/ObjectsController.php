@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\WorkObject;
 
+use Storage;
+
 class ObjectsController extends Controller
 {
     /**
@@ -40,7 +42,7 @@ class ObjectsController extends Controller
     {
 
         $request->validate([
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $object = new WorkObject;
@@ -48,7 +50,7 @@ class ObjectsController extends Controller
         $object->city = $request->input('city');
         $object->street = $request->input('street');
         $object->body = $request->input('body');
-        if ($request->hasfile('object_img')) {
+        if ($request->hasfile('object_img')) { 
             $file = $request->file('object_img');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
@@ -101,22 +103,18 @@ class ObjectsController extends Controller
         $object->city = $request->input('city');
         $object->street = $request->input('street');
         $object->body = $request->input('body');
-        if ($request->file != '') {
-
-            if ($object->file != '' && $object->file != null) {
-                $file_old = $file.$object->file;
-                unlink($file_old);
+        if ($request->hasfile('object_img')) {
+            $destination = 'img/objects/'.$object->object_img;
+            if(File::exists($destination)) {
+                File::delete($destination);
             }
-
-            $file = $request->file;
+            $file = $request->file('object_img');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
             $file->move('img/objects', $filename);
-
-            $object->update(['file' => $filename]);
+            $object->object_img = $filename;
         }
-        
-        $object->save();
+        $object->update();
 
         return redirect('/objects');
     }
@@ -129,6 +127,7 @@ class ObjectsController extends Controller
      */
     public function destroy($id)
     {
+
         $object = WorkObject::find($id);
         if (auth()->user()->role !==1) {
             return redirect('/objects');

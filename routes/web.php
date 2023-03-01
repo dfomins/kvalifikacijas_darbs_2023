@@ -44,7 +44,6 @@ Route::group(['middleware'=>['auth']], function(){
 Route::group(['middleware'=>['auth']], function(){
     Route::get('profila_iestatijumi', [ProfileController::class, 'edit_profile'])->name('edit_profile');
     Route::post('profila_iestatijumi', [ProfileController::class, 'update_profile'])->name('update_profile');
-    // Route::post('profila_iestatijumi', [ProfileController::class, 'update_password'])->name('update_password');
 });
 
 Route::group(['middleware'=>['auth']], function(){

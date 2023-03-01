@@ -95,6 +95,15 @@ nav .open-menu {
     display: none;
 }
 
+nav .logout {
+    cursor: pointer;
+    transition: .3s;
+}
+
+nav .logout:hover {
+    color: #52ab98;
+}
+
 @media (max-width: 1000px) {
 
     .nav-links ul li {
@@ -197,15 +206,6 @@ section.profile {
     text-decoration: none;
     color: white;
 }
-
-/* .sidebar_content {
-    height: 70%;
-    margin: 30px 0;
-    padding: 50px;
-    border-radius: 3px;
-    background-color: #2b6777;
-}
-*/
 
 /*SIDEBAR END*/
 
@@ -391,7 +391,7 @@ section.profile {
 
 .profile_settings_select_mobile {
     display: none;
-    margin: 10px 20px 0 20px;
+    margin-top: 10px;
     padding: 10px 0;
     background-color: #5D576B;
 }
@@ -434,16 +434,19 @@ section.profile {
     text-align: start;
 }
 
-.profile_edit_panel_settings_row form {
+.profile_edit_panel_settings_row .basic_info form,
+.profile_edit_panel_settings_row .password_change form {
     display: flex;
     flex-direction: column;
 }
 
-.profile_edit_panel_settings_row form label {
+.profile_edit_panel_settings_row .basic_info form label,
+.profile_edit_panel_settings_row .password_change form label {
     margin-top: 15px;
 }
 
-.profile_edit_panel_settings_row form input {
+.profile_edit_panel_settings_row .basic_info form input,
+.profile_edit_panel_settings_row .password_change form input {
     padding: 5px 10px;
     width: 100%;
     outline: none;
@@ -478,6 +481,58 @@ section.profile {
     display: block;
 }
 
+.profile_photo {
+    width: 100%;
+    height: 100%;
+    /* background-color: #165861; */
+}
+
+.profile_photo img {
+    display: block;
+    margin: auto;
+    width: 128px;
+    height: 128px;
+    border-radius: 64px;
+    margin: 40px auto;
+    border: 2px solid #181818;
+}
+
+.profile_image_edit[type=file] {
+    width: auto;
+    max-width: 100%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+
+.profile_image_edit[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: 1px solid #181818;
+    background: #f1f1f1;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+.profile_image_edit[type=file]::file-selector-button:hover {
+    background: #dddddd;
+}
+
+.drop_profile_image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image_edit_submit_button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 @media (max-width: 1350px) {
     .profile_edit_panel {
         width: 90%;
@@ -497,8 +552,16 @@ section.profile {
         display: none;
     }
     .profile_edit_panel_settings_row {
-        margin: 0 20px;
         width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .profile_settings_select_mobile ol li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 }
 
@@ -1098,19 +1161,23 @@ section.profile {
 }
 
 .users_row {
-    display: grid;
-    grid-template-columns: 1fr 3fr 5fr 3fr;
+    width: 70%;
     margin: 10px;
-}
-
-.users_row div {
-    margin: 0 20px;
 }
 
 .users_panel h2 {
     text-align: center;
     margin: 20px 0;
     color: white;
+}
+
+.user_info {
+    display: grid;
+    grid-template-columns: 1fr 3fr 5fr 5fr;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px 10px;
+    margin: 10px 0;
 }
 
 /* ALL USERS PAGE END */

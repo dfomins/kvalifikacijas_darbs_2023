@@ -24,7 +24,8 @@ class User extends Authenticatable
         'lname',
         'email',
         'password',
-        'role'
+        'role',
+        'profila_bilde'
     ];
 
     /**
@@ -56,5 +57,11 @@ class User extends Authenticatable
 
     public function roles() {
         return $this->hasOne(Role::class, 'id', 'role');
+    }
+
+    public function getPictureAttribute($profila_bilde) {
+        if (empty($profila_bilde)) {
+            return asset('img/users/default.jpg');
+        }
     }
 }

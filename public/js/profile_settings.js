@@ -13,7 +13,6 @@ window.onload = () => {
             tab_switcher.parentNode.classList.add('is-active');
             SwitchPage(page_id);
             localStorage.setItem('value', page_id);
-            console.log(localStorage.getItem('value'));
         });
     }
 }

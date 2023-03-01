@@ -15,7 +15,7 @@
                             Darbinieks
                         </h4>
                     @endif
-                    <img src="img/profile_bg.jpg" alt="Profila bilde" />
+                    <img src="{{ asset('img/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                     <div class="profile_sidebar_settings">
                         <a href="/profila_iestatijumi">Profila iestatījumi</a>
                         @if (Auth::user()->role == 1)
@@ -45,19 +45,18 @@
                         Pēdējie paziņojumi
                     </div>
                     <div class="latest_notifs_panel">
-                        @if (count($recentNotifs) > 0)
-                            @foreach ($recentNotifs as $notif)
+                        @if (count($recent_notifs) > 0)
+                            @foreach ($recent_notifs as $notif)
                                 <li class="profile_note_row">
                                     <div class="profile_note_post"><a href="/notifications/{{ $notif->id }}">
                                             <h3>{{ $notif->title }}</h3>
-                                            <p class="timestamp">Izveidots: {{ $notif->created_at->format('d-m-Y') }}
-                                            </p>
+                                            <p class="timestamp">Izveidots: {{ $notif->created_at->format('d-m-Y') }}</p>
                                         </a>
                                     </div>
-                                </li>
                             @endforeach
                         @else
-                            <p style="text-align: center">Paziņojumu nav</p>
+                            <p style="text-align: center; margin-top: 20px;">Paziņojumu nav</p>
+                            </li>
                         @endif
                     </div>
                     <div class="latest_notifs_button">
@@ -70,19 +69,18 @@
                         Pēdējās piezīmes
                     </div>
                     <div class="latest_posts_panel">
-                        @if (count($recentPosts) > 0)
-                            @foreach ($recentPosts as $post)
+                        @if (count($recent_posts) > 0)
+                            @foreach ($recent_posts as $post)
                                 <li class="profile_note_row">
                                     <div class="profile_note_post"><a href="/posts/{{ $post->id }}">
                                             <h3>{{ $post->title }}</h3>
-                                            <p class="timestamp">Izveidots: {{ $post->created_at->format('d-m-Y') }}
-                                            </p>
+                                            <p class="timestamp">Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
                                         </a>
                                     </div>
-                                </li>
                             @endforeach
                         @else
-                            <p style="text-align: center">Piezīmju nav</p>
+                            <p style="text-align: center; margin-top: 20px;">Piezīmju nav</p>
+                            </li>
                         @endif
                     </div>
                     <div class="latest_notifs_button">

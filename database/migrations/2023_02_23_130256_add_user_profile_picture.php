@@ -13,7 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-
         Schema::table('users', function (Blueprint $table) {
             $table->string('profila_bilde')->default('default.jpg');
         });

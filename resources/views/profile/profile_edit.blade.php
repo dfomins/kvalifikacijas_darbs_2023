@@ -101,7 +101,27 @@
                                 <button type="submit" name="update_password" class="setting_row_button">Atjaunot</button>
                             </form>
                         </div>
-                        <div class="profile_photo profile_edit_page" data-page="3"></div>
+                        <div class="profile_photo profile_edit_page" data-page="3">
+                            <h3>Profila bilde</h3>
+                            {!! Form::open([
+                                'action' => 'App\Http\Controllers\ProfileController@update_profile',
+                                'method' => 'POST',
+                                'enctype' => 'multipart/form-data',
+                            ]) !!}
+                            <img src="{{ asset('img/users/' . $user->profila_bilde) }}" alt="Profila bilde" />
+                            <div class="drop_profile_image">
+                                {{ Form::file('profila_bilde', ['class' => 'profile_image_edit', 'accept' => 'image/*']) }}
+                                <span class="error">
+                                    @error('profila_bilde', 'update_image')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
+                            </div>
+                            <div class="image_edit_submit_button">
+                                {{ Form::submit('Atjaunot', ['name' => 'update_image', 'class' => 'setting_row_button']) }}
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                 </div>
             </div>

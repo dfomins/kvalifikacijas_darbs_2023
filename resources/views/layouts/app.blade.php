@@ -31,7 +31,7 @@
                 <li><a href="/objects">Objekti</a></li>
                 <li><a href="/contacts">Kontakti</a></li>
                 {{-- <li><a href="/logout">Iziet</a></li> --}}
-                <li><i class="logout fa-solid fa-arrow-right-from-bracket"></i></li>
+                <li><a href="/logout"><i class="logout fa-solid fa-arrow-right-from-bracket"></i></li></a>
             </ul>
         </div>
         <i class="fa-solid fa-bars open-menu"></i>

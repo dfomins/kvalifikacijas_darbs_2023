@@ -9,14 +9,15 @@ use App\Models\User;
 use App\Models\Notif;
 use App\Models\Post;
 
+use File;
 use Hash;
 
 class ProfileController extends Controller
 {
     public function profile() {
-        $recentNotifs = Notif::latest()->limit(3)->get();
-        $recentPosts = Post::latest()->limit(3)->get();
-        return view('profile.profile')->with('recentNotifs', $recentNotifs)->with('recentPosts', $recentPosts);
+        $recent_notifs = Notif::latest()->limit(3)->get();
+        $recent_posts = Post::where(['user_id' => auth()->user()->id])->latest()->limit(3)->get();
+        return view('profile.profile')->with('recent_posts', $recent_posts)->with('recent_notifs', $recent_notifs);
     }
 
     public function edit_profile() {
@@ -38,9 +39,12 @@ class ProfileController extends Controller
                 'lname.max' => 'Uzvārds nevar būt garāks par :max rakstzīmēm',
                 'email.required' => 'Šis lauks ir obligāts',
                 'email.max' => 'E-pasts nevar būt garāks par :max rakstzīmēm',
+                'email.unique' => 'Šāds e-pasts jau tiek izmantots',
             ]);
+
+            $user = auth()->user();
     
-            auth()->user()->update([
+            $user->update([
                 'fname' => $request->fname,
                 'lname' => $request->lname,
                 'email' => $request->email,
@@ -74,6 +78,31 @@ class ProfileController extends Controller
                 return redirect()->route('edit_profile')->with('error', 'Vecā parole tika nepareizi ievadīta');
             }
         }
-    }
 
+        if ($request->has('update_image')) {
+            $request->validateWithBag('update_image', [
+                'profila_bilde' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            ], [
+                'profila_bilde.required' => 'Nepieciešams ielādēt bildi!',
+            ]);
+
+            $user = auth()->user();
+
+            if ($request->hasfile('profila_bilde')) {
+                $destination = 'img/users/'.$user->profila_bilde;
+                if(File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $file = $request->file('profila_bilde');
+                $extention = $file->getClientOriginalExtension();
+                $filename = time().'.'.$extention;
+                $file->move('img/users', $filename);
+                $user->profila_bilde = $filename;
+            }
+
+            $user->update();
+
+            return redirect()->route('edit_profile');
+        }
+    }
 }
