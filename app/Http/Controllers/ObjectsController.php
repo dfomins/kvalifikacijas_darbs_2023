@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\WorkObject;
 
-use Storage;
+use File;
 
 class ObjectsController extends Controller
 {

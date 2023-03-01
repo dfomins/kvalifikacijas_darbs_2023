@@ -44,6 +44,7 @@ Route::group(['middleware'=>['auth']], function(){
 Route::group(['middleware'=>['auth']], function(){
     Route::get('profila_iestatijumi', [ProfileController::class, 'edit_profile'])->name('edit_profile');
     Route::post('profila_iestatijumi', [ProfileController::class, 'update_profile'])->name('update_profile');
+    Route::delete('profila_iestatijumi', [ProfileController::class, 'delete_image'])->name('delete_image');
 });
 
 Route::group(['middleware'=>['auth']], function(){
@@ -70,7 +71,7 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('work', 'App\Http\Controllers\WorkrecordsController@index');
     Route::get('work/create', 'App\Http\Controllers\WorkrecordsController@create')->middleware('isAdmin');
     Route::post('work', 'App\Http\Controllers\WorkrecordsController@store')->middleware('isAdmin');
-    Route::get('work/{id}', 'App\Http\Controllers\WorkrecordsController@show');
+    Route::get('work/{id}', 'App\Http\Controllers\WorkrecordsController@show')->middleware('isAdmin');
     Route::get('work/{id}/edit', 'App\Http\Controllers\WorkrecordsController@edit')->middleware('isAdmin');
     Route::put('work/{id}', 'App\Http\Controllers\WorkrecordsController@update')->middleware('isAdmin');
     Route::delete('work/{id}', 'App\Http\Controllers\WorkrecordsController@destroy')->middleware('isAdmin');

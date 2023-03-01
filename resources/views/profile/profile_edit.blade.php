@@ -118,7 +118,7 @@
                                 </span>
                             </div>
                             <div class="image_edit_submit_button">
-                                {{ Form::submit('Atjaunot', ['name' => 'update_image', 'class' => 'setting_row_button']) }}
+                                {{ Form::submit('Mainīt', ['name' => 'update_image', 'class' => 'setting_row_button']) }}
                             </div>
                             {!! Form::close() !!}
                         </div>

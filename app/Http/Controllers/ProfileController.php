@@ -89,9 +89,11 @@ class ProfileController extends Controller
             $user = auth()->user();
 
             if ($request->hasfile('profila_bilde')) {
-                $destination = 'img/users/'.$user->profila_bilde;
-                if(File::exists($destination)) {
-                    File::delete($destination);
+                if ($user->profila_bilde != 'default.jpg') {
+                    $destination = 'img/users/'.$user->profila_bilde;
+                    if(File::exists($destination)) {
+                        File::delete($destination);
+                    }
                 }
                 $file = $request->file('profila_bilde');
                 $extention = $file->getClientOriginalExtension();
@@ -103,6 +105,16 @@ class ProfileController extends Controller
             $user->update();
 
             return redirect()->route('edit_profile');
+        }
+    }
+
+    protected function delete_image() {
+        if ($user->profila_bilde != 'default.jpg') {
+            $destination = 'img/users/'.$user->profila_bilde;
+            if(File::exists($destination)) {
+                File::delete($destination);
+            }
+            $user->profila_bilde = 'default.jpg';
         }
     }
 }
