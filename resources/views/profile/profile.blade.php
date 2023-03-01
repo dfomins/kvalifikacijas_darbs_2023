@@ -6,15 +6,7 @@
             <div class="profile_sidebar">
                 <div class="profile_sidebar_content">
                     <h2>{{ auth()->user()->fname }} {{ auth()->user()->lname }}</h2>
-                    @if (Auth::user()->role == 1)
-                        <h4>
-                            Vadītājs
-                        </h4>
-                    @elseif (Auth::user()->role == 2)
-                        <h4>
-                            Darbinieks
-                        </h4>
-                    @endif
+                    <h3 class="profile_role_title">{{ $user->roles->name }}</h3>
                     <img src="{{ asset('img/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                     <div class="profile_sidebar_settings">
                         <a href="/profila_iestatijumi">Profila iestatījumi</a>
