@@ -50,7 +50,7 @@ nav {
 nav img {
     display: block;
     width: auto;
-    max-height: 100px;
+    max-height: 85px;
 }
 
 .nav-links {
@@ -1284,7 +1284,7 @@ section.profile {
     visibility: hidden;
     opacity: 0;
     position: absolute;
-padding-left: 0;
+    padding-left: 0;
     left: 0;
     display: none;
     background: white;
