@@ -104,9 +104,11 @@ class ObjectsController extends Controller
         $object->street = $request->input('street');
         $object->body = $request->input('body');
         if ($request->hasfile('object_img')) {
-            $destination = 'img/objects/'.$object->object_img;
-            if(File::exists($destination)) {
-                File::delete($destination);
+            if ($object->object_img != 'no_photo.png') {
+                $destination = 'img/objects/'.$object->object_img;
+                if(File::exists($destination)) {
+                    File::delete($destination);
+                }
             }
             $file = $request->file('object_img');
             $extention = $file->getClientOriginalExtension();

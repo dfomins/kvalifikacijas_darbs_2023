@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Golos Text', sans-serif;
     letter-spacing: .9px;
     box-sizing: border-box;
 }
@@ -247,6 +247,15 @@ section.profile {
     background-color: #2b6777;
     text-transform: uppercase;
     font-weight: 700;
+}
+
+.work_status_panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 230px;
+    font-size: clamp(15px, 5vw, 25px);
 }
 
 .latest_notifs_panel,
@@ -761,6 +770,7 @@ section.profile {
 
 .object_thread_panel ol {
     display: grid;
+    width:1300px;
     min-height: 70vh;
     grid-template-columns: 1fr 1fr 1fr;
     margin: auto;
@@ -805,7 +815,9 @@ section.profile {
 }
 
 @media (max-width: 1300px) {
+
     .object_thread_panel ol {
+        width: 90%;
         grid-template-columns: 1fr 1fr;
     }
 }

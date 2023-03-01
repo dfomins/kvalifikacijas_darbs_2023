@@ -28,8 +28,8 @@
                         <p class="date"></p>
                     </div>
                     <div class="work_status_panel">
-                        Statuss:
-                        Nostrādātās stundas:
+                        <p>Statuss:</p>
+                        </p>Nostrādātās stundas:</p>
                     </div>
                 </div>
                 <div class="latest_notifs">

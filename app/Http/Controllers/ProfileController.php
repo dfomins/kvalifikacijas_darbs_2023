@@ -109,14 +109,4 @@ class ProfileController extends Controller
             return redirect()->route('edit_profile');
         }
     }
-
-    protected function delete_image() {
-        if ($user->profila_bilde != 'default.jpg') {
-            $destination = 'img/users/'.$user->profila_bilde;
-            if(File::exists($destination)) {
-                File::delete($destination);
-            }
-            $user->profila_bilde = 'default.jpg';
-        }
-    }
 }
