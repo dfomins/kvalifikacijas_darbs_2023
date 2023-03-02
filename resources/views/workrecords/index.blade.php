@@ -3,13 +3,8 @@
 @section('content')
     <div class="work-window panel-standart">
         <div class="work-panel">
-
-            <form action="" method="GET">
-                <input type="search" name="search" placeholder="Meklēšana pēc vārda">
-            </form>
             {{ Form::label('date', 'Datums') }}
             <input type="text" id="datepicker" autocomplete="off">
-            {{-- {{ Form::date('date', now()->format('d-m-Y'), ['required', 'class' => 'datepicker']) }} --}}
             <table>
                 @if (count($works) > 0)
                     <tr>

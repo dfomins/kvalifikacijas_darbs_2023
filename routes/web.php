@@ -24,7 +24,7 @@ use App\Http\Controllers\AllUsersController;
 
 Auth::routes();
 
-Route::group(['middleware'=>['isAdmin']], function() {
+Route::group(['middleware'=>['guest']], function() {
     Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'App\Http\Controllers\Auth\RegisterController@register');
     Route::get('users', [AllUsersController::class, 'index']);
