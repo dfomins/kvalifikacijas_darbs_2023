@@ -22,7 +22,7 @@ use App\Http\Controllers\AllUsersController;
 |
 */
 
-Auth::routes(['login' => false, 'register' => false]);
+Auth::routes(['login' => false, 'register' => false, 'logout' => false]);
 
 Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm');
 Route::post('/', 'App\Http\Controllers\Auth\LoginController@login')->name('login');

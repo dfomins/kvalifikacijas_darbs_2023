@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->mediumText('body');
+            $table->integer('user_id');
             $table->timestamps();
-            $table->string('user_fname');
-            $table->string('user_lname');
         });
     }
 

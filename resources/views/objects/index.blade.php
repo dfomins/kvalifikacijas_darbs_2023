@@ -12,7 +12,7 @@
                         @foreach ($objects as $object)
                             <li class="object_note_row">
                                 <div class="object_index_image">
-                                    <a href="/objects/{{ $object->id }}">
+                                    <a href="{{ route('objects') }}/{{ $object->id }}">
                                         <img src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
                                     </a>
                                 </div>

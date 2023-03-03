@@ -3,17 +3,15 @@
     <div class="object_show_window">
         <div class="object_show_panel panel-standart">
             <div class="title_note_show">
-                <a href="/objects">
-                    <div class="title_text_note_show_back_icon">
-                        <i class="fa-sharp fa-solid fa-arrow-left"></i>
-                    </div>
-                </a>
+                <div onclick="history.back()" class="title_text_note_show_back_icon">
+                    <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                </div>
                 <div class="title-text-post-show">
                     <div class="title-text-post-show-content">
-                        <h1>{{ $object->id }} | {{ $object->title }}</h1>
+                        <h1>{{ $object->title }}</h1>
                     </div>
                     <div class="title-icon-post">
-                        <a href="{{ route('objects') }}/{{ $object->id }}/edit"><i
+                        <a href="{{ route('objects') }}/{{ $object->id }}/rediget"><i
                                 class="fa-solid fa-pen-to-square fa-lg"></i></a>
                         {!! Form::open([
                             'action' => ['App\Http\Controllers\ObjectsController@destroy', $object->id],
@@ -26,13 +24,11 @@
                 </div>
             </div>
             <div class="body-content-post-show">
-                {{-- <span style="width: 300px; background: url({{ asset('uploads/objects/' . $object->object_img) }})"> --}}
                 @if ($object->object_img != null)
                     <div class="object_show_image">
                         <img src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
                     </div>
                 @endif
-                {{-- </span> --}}
                 <p style="text-align: justify;">{{ $object->body }}</p>
             </div>
         </div>

@@ -42,8 +42,7 @@ class NotifsController extends Controller
         $notif = new Notif;
         $notif->title = $request->input('title');
         $notif->body = $request->input('body');
-        $notif->user_fname = auth()->user()->fname;
-        $notif->user_lname = auth()->user()->lname;
+        $notif->user_id = auth()->user()->id;
         $notif->save();
 
         return redirect()->route('notifications');

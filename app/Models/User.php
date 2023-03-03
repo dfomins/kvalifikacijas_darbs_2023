@@ -24,7 +24,7 @@ class User extends Authenticatable
         'lname',
         'email',
         'password',
-        'role',
+        'role_id',
         'profila_bilde'
     ];
 

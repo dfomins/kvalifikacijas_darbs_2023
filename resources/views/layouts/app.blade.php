@@ -23,12 +23,8 @@
             <i class="fa-solid fa-xmark close-menu"></i>
             <ul>
                 <li><a href="{{ route('profile') }}">Profils</a></li>
-                <li><a href="">Piezīmes <i class="fa-solid fa-angle-down"></i></a>
-                    <ul class="dropdown">
-                        <li><a href="{{ route('posts') }}">Piezīmes</a></li>
-                        <li><a href="{{ route('notifications') }}">Paziņojumi</a></li>
-                    </ul>
-                </li>
+                <li><a href="{{ route('posts') }}">Piezīmes</a></li>
+                <li><a href="{{ route('notifications') }}">Paziņojumi</a></li>
                 <li><a href="{{ route('work') }}">Atskaites</a></li>
                 <li><a href="{{ route('objects') }}">Objekti</a></li>
                 <li><a href="">Kontakti</a></li>

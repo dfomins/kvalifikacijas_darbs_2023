@@ -61,7 +61,7 @@ nav img {
 .nav-links ul li {
     list-style: none;
     display: inline-block;
-    padding: 8px 12px;
+    padding: 30px 12px;
     position: relative;
 }
 
@@ -72,13 +72,13 @@ nav img {
     transition: .3s;
 }
 
-.dropbtn {
+/* .dropbtn {
     letter-spacing: .1rem;
     text-decoration: none;
     color: #181818;
     transition: .3s;
     cursor: pointer;
-}
+} */
 
 .nav-links ul li a:hover {
     color: #52ab98;
@@ -86,6 +86,10 @@ nav img {
 
 .nav-links {
     display: block;
+}
+
+.nav_subitem {
+    padding: 10px 12px 0 12px!important;
 }
 
 nav .close-menu,
@@ -106,6 +110,11 @@ nav .logout:hover {
 
     .nav-links ul li {
         display: block;
+        padding: 16px 12px 0 12px;
+    }
+
+    .nav-links ul li ul {
+        position: relative!important;
     }
 
     .nav-links {
@@ -129,8 +138,8 @@ nav .logout:hover {
         cursor: pointer;
     }
 
-    .nav-links ul {
-        padding: 30px;
+    .nav-links {
+        padding: 20px;
     }
 
 }
@@ -194,6 +203,14 @@ section.profile {
     color: white;
 }
 
+.profile_sidebar h2 {
+    font-size: clamp(18px, 5vw, 25px);
+}
+
+.profile_role_title {
+    font-size: clamp(18px, 5vw, 20px);
+}
+
 .profile_sidebar_settings {
     text-align: center;
     font-size: 18px;
@@ -209,7 +226,7 @@ section.profile {
 @media (max-width: 360px) {
     .profile_sidebar img {
         width: 80vw;
-        height: auto;
+        height: 80vw;
     }
 }
 
@@ -644,7 +661,8 @@ section.profile {
     margin: 0;
 }
 
-.login_panel form input {
+.login_panel form input,
+.login_panel form select {
     padding: 10px;
     margin: 10px 0;
     width: 100%;
@@ -653,6 +671,16 @@ section.profile {
     border-radius: 3px;
     height: 50px;
     font-size: 18px;
+}
+
+.login_panel form select {
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    background-image: url('https://www.svgrepo.com/show/80156/down-arrow.svg');
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: calc(100% - 16px);
 }
 
 .login_panel form button {
@@ -1223,11 +1251,12 @@ section.profile {
     text-align: center;
     margin: 40px 0;
     color: white;
+    font-size: clamp(15px, 5vw, 25px);
 }
 
 .user_info {
     display: grid;
-    grid-template-columns: 1fr 2fr 5fr 5fr 3fr 2fr;
+    grid-template-columns: 1fr 2fr 3fr 5fr 3fr 2fr;
     width: 100%;
     background-color: #ffffff;
     padding: 20px 10px;
@@ -1236,13 +1265,42 @@ section.profile {
 
 .user_info div {
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    margin: 0 10px;
+    font-size: clamp(5px, 3vw, 18px);
+    overflow-x: hidden;
+}
+
+.user_info div i {
+    cursor: pointer;
+}
+
+.user_info a {
+    color: #181818;
 }
 
 .user_info_photo img {
     max-width: 100px;
     max-height: 100px;
+}
+
+.user_info_edit {
+    justify-content: space-around;
+}
+
+@media (max-width: 1200px) {
+    .user_info {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
+    }
+
+    .user_info div {
+        justify-content: center;
+    }
+
+    .user_info div i {
+        margin: 0 5px;
+    }
 }
 
 /* ALL USERS PAGE END */
@@ -1286,32 +1344,3 @@ section.profile {
     background-color: lightblue;
     outline: none;
 } */
-
-.nav-links ul li ul {
-    visibility: hidden;
-    opacity: 0;
-    position: absolute;
-    padding-left: 0;
-    left: 0;
-    display: none;
-    background: white;
-  }
-
-  ul li:hover > ul,
-  ul li ul:hover {
-    visibility: visible;
-    opacity: 1;
-    display: block;
-    min-width: 250px;
-    text-align: left;
-    padding-top: 20px;
-    box-shadow: 0px 3px 5px -1px #ccc;
-  }
-
-  .nav-links ul li ul li {
-    clear: both;
-    width: 100%;
-    text-align: left;
-    margin-bottom: 20px;
-    border-style: none;
-  }

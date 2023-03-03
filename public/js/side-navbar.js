@@ -1,4 +1,5 @@
 // SIDEBAR
+
     document.querySelector(".close-menu").addEventListener("click", () => {
         navLinks.style.right = "-200px";
     })

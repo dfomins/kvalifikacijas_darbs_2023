@@ -29,6 +29,13 @@
                     @enderror
                 </span>
 
+                <select name="role_id">
+                    <option value="none" selected disabled hidden>Izvēlieties lomu</option>
+                    <option value="1">Vadītājs</option>
+                    <option value="2">Brigadieris</option>
+                    <option value="3">Darbinieks</option>
+                </select>
+
                 <input id="password" type="password" name="password" placeholder="Parole" required
                     autocomplete="new-password" />
                 <span style="color: red">
