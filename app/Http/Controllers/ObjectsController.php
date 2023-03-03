@@ -59,7 +59,7 @@ class ObjectsController extends Controller
         }
         $object->save();
 
-        return redirect('/objects');
+        return redirect()->route('objects');
     }
 
     /**
@@ -83,8 +83,8 @@ class ObjectsController extends Controller
     public function edit($id)
     {
         $object = WorkObject::find($id);
-        if (auth()->user()->role !==1) {
-            return redirect('/objects');
+        if (auth()->user()->role_id !==1) {
+            return redirect()->route('objects');
         }
         return view('objects.edit')->with('object', $object);
     }
@@ -118,7 +118,7 @@ class ObjectsController extends Controller
         }
         $object->update();
 
-        return redirect('/objects');
+        return redirect()->route('objects');
     }
 
     /**
@@ -131,10 +131,10 @@ class ObjectsController extends Controller
     {
 
         $object = WorkObject::find($id);
-        if (auth()->user()->role !==1) {
-            return redirect('/objects');
+        if (auth()->user()->role_id !==1) {
+            return redirect()->route('objects');
         }
         $object->delete();
-        return redirect('/objects');
+        return redirect()->route('objects');
     }
 }

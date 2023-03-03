@@ -10,10 +10,7 @@ class Notif extends Model
     protected $table = 'notifs';
     public $primaryKey = 'id';
     public $timestamps = true;
-
-    public function user() {
-        return $this->belongsTo('App\Models\User');
-    }
+    
 }
 
 

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->string('email')->unique();
-            $table->tinyInteger('role')->default(3);
+            $table->tinyinteger('role_id')->default(3);
+            $table->string('profila_bilde')->default('default.jpg');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

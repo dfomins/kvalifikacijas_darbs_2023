@@ -11,7 +11,8 @@
                     <p>{{ $post->created_at->format('d-m-Y | H:i') }}</p>
                 </div>
                 <div class="title-icon-post">
-                    <a href="/posts/{{ $post->id }}/edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                    <a href="{{ route('posts') }}/{{ $post->id }}/rediget"><i
+                            class="fa-solid fa-pen-to-square fa-lg"></i></a>
                     {!! Form::open([
                         'action' => ['App\Http\Controllers\PostsController@destroy', $post->id],
                         'method' => 'DELETE',

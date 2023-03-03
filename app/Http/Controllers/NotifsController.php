@@ -42,10 +42,11 @@ class NotifsController extends Controller
         $notif = new Notif;
         $notif->title = $request->input('title');
         $notif->body = $request->input('body');
-        $notif->user_id = auth()->user()->id;
+        $notif->user_fname = auth()->user()->fname;
+        $notif->user_lname = auth()->user()->lname;
         $notif->save();
 
-        return redirect('/notifications');
+        return redirect()->route('notifications');
     }
 
     /**
@@ -69,8 +70,8 @@ class NotifsController extends Controller
     public function edit($id)
     {
         $notif = Notif::find($id);
-        if (auth()->user()->role !==1) {
-            return redirect('/notifications');
+        if (auth()->user()->role_id !==1) {
+            return redirect()->route('notifications');
         }
         return view('notifs.edit')->with('notif', $notif);
     }
@@ -89,7 +90,7 @@ class NotifsController extends Controller
         $notif->body = $request->input('body');
         $notif->save();
 
-        return redirect('/notifications');
+        return redirect()->route('notifications');
     }
 
     /**
@@ -101,10 +102,10 @@ class NotifsController extends Controller
     public function destroy($id)
     {
         $notif = Notif::find($id);
-        if (auth()->user()->role !==1) {
-            return redirect('/notifications');
+        if (auth()->user()->role_id !==1) {
+            return redirect()->route('notifications');
         }
         $notif->delete();
-        return redirect('/notifications');
+        return redirect()->route('notifications');
     }
 }

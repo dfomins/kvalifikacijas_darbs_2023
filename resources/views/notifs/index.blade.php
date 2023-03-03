@@ -11,7 +11,7 @@
                     @if (count($notifs) > 0)
                         @foreach ($notifs as $notif)
                             <li class="note_row">
-                                <div class="note_post"><a href="/notifications/{{ $notif->id }}">
+                                <div class="note_post"><a href="{{ route('notifications') }}/{{ $notif->id }}">
                                         <h3>{{ $notif->title }}</h3>
                                         <p class="timestamp">Izveidots: {{ $notif->created_at->format('d-m-Y') }}</p>
                                     </a>
@@ -23,9 +23,9 @@
                     @endif
                 </ol>
             </div>
-            @if (Auth::user()->role == 1)
+            @if (Auth::user()->role_id == 1)
                 <div class="create_note_btn">
-                    <a href="/notifications/create"><button>Izveidot jaunu</button></a>
+                    <a href="{{ route('notifications') }}/jauns"><button>Izveidot jaunu</button></a>
                 </div>
             @endif
         </div>

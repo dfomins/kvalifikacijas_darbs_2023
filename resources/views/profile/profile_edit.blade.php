@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="profile_edit_page_window panel-standart">
         <div class="profile_edit_panel">
@@ -64,6 +63,9 @@
                                         {{ $message }}
                                     @enderror
                                 </span>
+                                @if (session('success'))
+                                    <span class="success">{{ session('success') }}</span>
+                                @endif
                                 <button type="submit" name="update_profile" class="setting_row_button">Saglabāt</button>
                             </form>
                         </div>

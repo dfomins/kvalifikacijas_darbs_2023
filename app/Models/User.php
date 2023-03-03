@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
 
     public function roles() {
-        return $this->hasOne(Role::class, 'id', 'role');
+        return $this->hasOne(Role::class, 'id', 'role_id');
     }
 
     public function getPictureAttribute($profila_bilde) {

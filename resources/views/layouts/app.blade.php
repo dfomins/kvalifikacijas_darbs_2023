@@ -25,14 +25,15 @@
                 <li><a href="{{ route('profile') }}">Profils</a></li>
                 <li><a href="">Piezīmes <i class="fa-solid fa-angle-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="/posts">Piezīmes</a></li>
-                        <li><a href="/notifications">Paziņojumi</a></li>
+                        <li><a href="{{ route('posts') }}">Piezīmes</a></li>
+                        <li><a href="{{ route('notifications') }}">Paziņojumi</a></li>
                     </ul>
                 </li>
-                <li><a href="/work">Atskaites</a></li>
-                <li><a href="/objects">Objekti</a></li>
-                <li><a href="/contacts">Kontakti</a></li>
-                <li><a href="/logout"><i class="logout fa-solid fa-arrow-right-from-bracket"></i></li></a>
+                <li><a href="{{ route('work') }}">Atskaites</a></li>
+                <li><a href="{{ route('objects') }}">Objekti</a></li>
+                <li><a href="">Kontakti</a></li>
+                <li><a href="{{ route('logout') }}"><i class="logout fa-solid fa-arrow-right-from-bracket"></i></li>
+                </a>
             </ul>
         </div>
         <i class="fa-solid fa-bars open-menu"></i>

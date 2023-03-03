@@ -31,7 +31,7 @@
                     </li>
                 @endif
             </table>
-            @if (Auth::user()->role == 1)
+            @if (Auth::user()->role_id == 1)
                 <div class="create_note_btn">
                     <a href="/work/create"><button>Izveidot jaunu</button></a>
                 </div>

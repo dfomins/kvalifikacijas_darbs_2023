@@ -9,12 +9,12 @@
                     <h3 class="profile_role_title">{{ $user->roles->name }}</h3>
                     <img src="{{ asset('img/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                     <div class="profile_sidebar_settings">
-                        <a href="/profila_iestatijumi">Profila iestatījumi</a>
-                        @if (Auth::user()->role == 1)
-                            <a href="/register">
+                        <a href="{{ route('edit_profile') }}">Profila iestatījumi</a>
+                        @if (Auth::user()->role_id == 1)
+                            <a href="registracija">
                                 <p>Izveidot jaunu lietotāju</p>
                             </a>
-                            <a href="/users">
+                            <a href="{{ route('allusers') }}">
                                 <p>Visi lietotāji</p>
                             </a>
                         @endif
@@ -40,7 +40,8 @@
                         @if (count($recent_notifs) > 0)
                             @foreach ($recent_notifs as $notif)
                                 <li class="profile_note_row">
-                                    <div class="profile_note_post"><a href="/notifications/{{ $notif->id }}">
+                                    <div class="profile_note_post"><a
+                                            href="{{ route('notifications') }}/{{ $notif->id }}">
                                             <h3>{{ $notif->title }}</h3>
                                             <p class="timestamp">Izveidots: {{ $notif->created_at->format('d-m-Y') }}</p>
                                         </a>
@@ -53,7 +54,7 @@
                     </div>
                     <div class="latest_notifs_button">
                         <button type="button">
-                            <a href="/notifications">Visi paziņojumi</a></button>
+                            <a href="{{ route('notifications') }}">Visi paziņojumi</a></button>
                     </div>
                 </div>
                 <div class="latest_posts">
@@ -64,7 +65,7 @@
                         @if (count($recent_posts) > 0)
                             @foreach ($recent_posts as $post)
                                 <li class="profile_note_row">
-                                    <div class="profile_note_post"><a href="/posts/{{ $post->id }}">
+                                    <div class="profile_note_post"><a href="{{ route('posts') }}/{{ $post->id }}">
                                             <h3>{{ $post->title }}</h3>
                                             <p class="timestamp">Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
                                         </a>
@@ -77,7 +78,7 @@
                     </div>
                     <div class="latest_notifs_button">
                         <button type="button">
-                            <a href="/posts">Visas piezīmes</a>
+                            <a href="{{ route('posts') }}">Visas piezīmes</a>
                         </button>
                     </div>
                 </div>

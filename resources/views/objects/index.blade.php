@@ -16,7 +16,7 @@
                                         <img src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
                                     </a>
                                 </div>
-                                <div class="object_note_post"><a href="/objects/{{ $object->id }}">
+                                <div class="object_note_post"><a href="{{ route('objects') }}/{{ $object->id }}">
                                         <h3>{{ $object->title }}</h3>
                                     </a>
                                 </div>
@@ -27,9 +27,9 @@
                     @endif
                 </ol>
             </div>
-            @if (Auth::user()->role == 1)
+            @if (Auth::user()->role_id == 1)
                 <div class="create_note_btn">
-                    <a href="/objects/create"><button>Izveidot jaunu</button></a>
+                    <a href="{{ route('objects') }}/jauns"><button>Izveidot jaunu</button></a>
                 </div>
             @endif
         </div>

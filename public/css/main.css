@@ -206,6 +206,13 @@ section.profile {
     color: white;
 }
 
+@media (max-width: 360px) {
+    .profile_sidebar img {
+        width: 80vw;
+        height: auto;
+    }
+}
+
 /*SIDEBAR END*/
 
 
@@ -1220,7 +1227,7 @@ section.profile {
 
 .user_info {
     display: grid;
-    grid-template-columns: 1fr 3fr 5fr 5fr 2fr;
+    grid-template-columns: 1fr 2fr 5fr 5fr 3fr 2fr;
     width: 100%;
     background-color: #ffffff;
     padding: 20px 10px;

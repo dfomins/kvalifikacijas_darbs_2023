@@ -58,7 +58,7 @@ class PostsController extends Controller
         $post->user_id = auth()->user()->id;
         $post->save();
 
-        return redirect('/posts');
+        return redirect()->route('posts');
     }
 
     /**
@@ -71,7 +71,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         if (auth()->user()->id !==$post->user_id) {
-            return redirect('/posts');
+            return redirect()->route('posts');
         }
         return view('posts.show')->with('post', $post);
     }
@@ -86,7 +86,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         if (auth()->user()->id !==$post->user_id) {
-            return redirect('/posts');
+            return redirect()->route('posts');
         }
         return view('posts.edit')->with('post', $post);
     }
@@ -105,7 +105,7 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->save();
 
-        return redirect('/posts');
+        return redirect()->route('posts');
     }
 
     /**
@@ -118,9 +118,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         if (auth()->user()->id !==$post->user_id) {
-            return redirect('/posts');
+            return redirect()->route('posts');
         }
         $post->delete();
-        return redirect('/posts');
+        return redirect()->route('posts');
     }
 }

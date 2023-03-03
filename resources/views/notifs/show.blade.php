@@ -9,12 +9,12 @@
                 <div class="title-text-post-show">
                     <div class="title-text-post-show-content">
                         <h1>{{ $notif->title }}</h1>
-                        <p>{{ $notif->created_at->format('d-m-Y | H:i') }} || {{ $notif->user->fname }}
-                            {{ $notif->user->lname }}</p>
+                        <p>{{ $notif->created_at->format('d-m-Y | H:i') }} || {{ $notif->user_fname }}
+                            {{ $notif->user_lname }}</p>
                     </div>
-                    @if (Auth::user()->role == 1)
+                    @if (Auth::user()->role_id == 1)
                         <div class="title-icon-post">
-                            <a href="/notifications/{{ $notif->id }}/edit"><i
+                            <a href="{{ route('notifications') }}/{{ $notif->id }}/rediget"><i
                                     class="fa-solid fa-pen-to-square fa-lg"></i></a>
                             {!! Form::open([
                                 'action' => ['App\Http\Controllers\NotifsController@destroy', $notif->id],

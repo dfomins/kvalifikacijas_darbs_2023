@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="object_edit_page_window">
-        <div class="object_edit_panel panel-standart">
+    <div class="object_edit_page_window panel-standart">
+        <div class="object_edit_panel">
             <div class="object_edit_button_back">
                 <button onclick="history.back()">
                     <i class="fa-sharp fa-solid fa-arrow-left"></i> Atpakaļ

@@ -18,7 +18,6 @@ class ProfileController extends Controller
         $user = auth()->user();
         $recent_notifs = Notif::latest()->limit(3)->get();
         $recent_posts = Post::where(['user_id' => auth()->user()->id])->latest()->limit(3)->get();
-        // return view('profile.profile')->with('recent_posts', $recent_posts)->with('recent_notifs', $recent_notifs);
         return view('profile.profile')->with(['user' => $user, 'recent_posts' => $recent_posts, 'recent_notifs' => $recent_notifs]);
     }
 
@@ -52,7 +51,7 @@ class ProfileController extends Controller
                 'email' => $request->email,
             ]);
     
-            return redirect()->route('edit_profile');
+            return redirect()->route('edit_profile')->with('success', 'Informācija tika atjaunota!');
         }
 
         if ($request->has('update_password')) {

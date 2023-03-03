@@ -1,7 +1,8 @@
 @extends('layouts.app')
-
+@livewireStyles
 @section('content')
-    <div class="users_page_window panel-standart">
+    @livewire('all-users')
+    {{-- <div class="users_page_window panel-standart">
         <div class="users_panel">
             <h2>Visi lietotāji</h2>
             <table>
@@ -19,9 +20,9 @@
                             </div>
                         </div>
                     @endforeach
-                    <div></div>
                 </div>
             </table>
         </div>
-    </div>
+    </div> --}}
+    @livewireScripts
 @endsection

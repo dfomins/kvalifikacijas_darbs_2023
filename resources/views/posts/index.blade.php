@@ -9,7 +9,7 @@
                     @if (count($posts) > 0)
                         @foreach ($posts as $post)
                             <li class="note_row">
-                                <div class="note_post"><a href="/posts/{{ $post->id }}">
+                                <div class="note_post"><a href="{{ route('posts') }}/{{ $post->id }}">
                                         <h3>{{ $post->title }}</h3>
                                         <p class="timestamp">Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
                                     </a>
@@ -22,7 +22,7 @@
                 </ol>
             </div>
             <div class="create_note_btn">
-                <a href="/posts/create"><button>Izveidot jaunu</button></a>
+                <a href="{{ route('posts') }}/jauns"><button>Izveidot jaunu</button></a>
             </div>
         </div>
     </div>

@@ -13,7 +13,8 @@
                         <h1>{{ $object->id }} | {{ $object->title }}</h1>
                     </div>
                     <div class="title-icon-post">
-                        <a href="/objects/{{ $object->id }}/edit"><i class="fa-solid fa-pen-to-square fa-lg"></i></a>
+                        <a href="{{ route('objects') }}/{{ $object->id }}/edit"><i
+                                class="fa-solid fa-pen-to-square fa-lg"></i></a>
                         {!! Form::open([
                             'action' => ['App\Http\Controllers\ObjectsController@destroy', $object->id],
                             'method' => 'DELETE',
