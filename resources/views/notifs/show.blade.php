@@ -3,14 +3,16 @@
     <div class="note_show_window">
         <div class="note_show_panel panel-standart">
             <div class="title_note_show">
-                <div onclick="history.back()" class="title_text_note_show_back_icon">
-                    <i class="fa-sharp fa-solid fa-arrow-left"></i>
-                </div>
+                <a href="{{ route('notifications') }}">
+                    <div class="title_text_note_show_back_icon">
+                        <i class="fa-sharp fa-solid fa-arrow-left"></i>
+                    </div>
+                </a>
                 <div class="title-text-post-show">
                     <div class="title-text-post-show-content">
                         <h1>{{ $notif->title }}</h1>
-                        <p>{{ $notif->created_at->format('d-m-Y | H:i') }} || {{ $notif->user_fname }}
-                            {{ $notif->user_lname }}</p>
+                        <p>{{ $notif->created_at->format('d-m-Y | H:i') }} || {{ $notif->user->fname }}
+                            {{ $notif->user->lname }}</p>
                     </div>
                     @if (Auth::user()->role_id == 1)
                         <div class="title-icon-post">

@@ -39,6 +39,17 @@ class NotifsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'title' => 'required|max:100',
+            'body' => 'required|max:300',
+        ],[
+            'title.required' => "Šis lauks ir obligāts",
+            'body.required' => "Šis lauks ir obligāts",
+            'title.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm",
+            'body.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm"
+        ]);
+
         $notif = new Notif;
         $notif->title = $request->input('title');
         $notif->body = $request->input('body');
@@ -84,6 +95,17 @@ class NotifsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'title' => 'required|max:100',
+            'body' => 'required|max:300',
+        ],[
+            'title.required' => "Šis lauks ir obligāts",
+            'body.required' => "Šis lauks ir obligāts",
+            'title.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm",
+            'body.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm"
+        ]);
+
         $notif = Notif::find($id);
         $notif->title = $request->input('title');
         $notif->body = $request->input('body');

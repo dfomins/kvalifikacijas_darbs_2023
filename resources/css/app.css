@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        font-family: "Poppins", sans-serif;
+    }
+
+    .section-min-height {
+        min-height: calc(100vh - 5rem);
+    }
+
+    .success {
+        color: green;
+        font-size: 15px;
+    }
+
+    .error {
+        color: black;
+        font-size: 15px;
+    }
+}

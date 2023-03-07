@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Golos Text', sans-serif;
+    /* font-family: 'Golos Text', sans-serif; */
     letter-spacing: .9px;
     box-sizing: border-box;
 }
@@ -25,7 +25,7 @@ body {
 }
 
 .error {
-    color: red;
+    color: black;
     font-size: 15px;
 }
 
@@ -648,6 +648,15 @@ section.profile {
     width: 400px;
 }
 
+.login_form_label {
+    width: 100%;
+}
+
+.login_panel a {
+    text-decoration: none;
+    color: black;
+}
+
 .login_panel h1 {
     margin: 0 0 20px 0;
     color: #181818;
@@ -674,6 +683,7 @@ section.profile {
 }
 
 .login_panel form select {
+    cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
     -moz-appearance: none;
@@ -1235,60 +1245,88 @@ section.profile {
     justify-content: center;
 }
 
-.users_panel {
+/* .users_panel {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 }
 
-.users_row {
-    width: 70%;
-    margin-bottom: 50px;
+.users_panel table {
+    width: 900px;
 }
 
+.users_panel table th {
+    font-size: 20px;
+    color: #ffffff;
+} */
+
+/* .users_row {
+    width: 70%;
+    margin-bottom: 50px;
+} */
+/* 
 .users_panel h2 {
     text-align: center;
     margin: 40px 0;
     color: white;
     font-size: clamp(15px, 5vw, 25px);
-}
+} */
 
-.user_info {
+/* .user_info {
     display: grid;
     grid-template-columns: 1fr 2fr 3fr 5fr 3fr 2fr;
     width: 100%;
     background-color: #ffffff;
     padding: 20px 10px;
     margin-bottom: 10px;
-}
+} */
 
-.user_info div {
+/* .user_info div {
     display: flex;
     align-items: center;
     margin: 0 10px;
     font-size: clamp(5px, 3vw, 18px);
     overflow-x: hidden;
-}
+} */
 
-.user_info div i {
+/* .user_info div i {
     cursor: pointer;
-}
+} */
 
-.user_info a {
+/* .user_info a {
     color: #181818;
-}
+} */
 
-.user_info_photo img {
+/* .user_info_photo img {
     max-width: 100px;
     max-height: 100px;
-}
+} */
 
-.user_info_edit {
+/* .user_info_role select {
+    padding: 10px;
+    margin: 10px 0;
+    width: 70%;
+    outline: none;
+    border: 1px solid #181818;
+    border-radius: 3px;
+    height: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    background-image: url('https://www.svgrepo.com/show/80156/down-arrow.svg');
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: calc(100% - 10px);
+} */
+
+/* .user_info_edit {
     justify-content: space-around;
-}
+} */
 
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
     .user_info {
         grid-template-columns: none;
         grid-template-rows: 1fr 2fr 1fr 1fr 1fr 1fr;
@@ -1301,7 +1339,7 @@ section.profile {
     .user_info div i {
         margin: 0 5px;
     }
-}
+} */
 
 /* ALL USERS PAGE END */
 
