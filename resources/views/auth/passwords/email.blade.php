@@ -31,7 +31,7 @@
                     {{ __('Sūtīt') }}
                 </button>
 
-                <a href="/login">
+                <a href="{{ route('logout') }}">
                     Pieslēgties</a>
             </form>
         </div>

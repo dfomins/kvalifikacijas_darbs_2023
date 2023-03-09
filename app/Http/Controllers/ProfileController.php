@@ -33,14 +33,6 @@ class ProfileController extends Controller
                 'fname' => 'required|string|max:50',
                 'lname' => 'required|string|max:50',
                 'email' => 'required|string|email|max:100|unique:users,email,'.auth()->user()->id,
-            ], [
-                'fname.required' => 'Šis lauks ir obligāts',
-                'fname.max' => 'Vārds nevar būt garāks par :max rakstzīmēm',
-                'lname.required' => 'Šis lauks ir obligāts',
-                'lname.max' => 'Uzvārds nevar būt garāks par :max rakstzīmēm',
-                'email.required' => 'Šis lauks ir obligāts',
-                'email.max' => 'E-pasts nevar būt garāks par :max rakstzīmēm',
-                'email.unique' => 'Šāds e-pasts jau tiek izmantots',
             ]);
 
             $user = auth()->user();
@@ -59,13 +51,6 @@ class ProfileController extends Controller
                 'old_password' => 'required|string',
                 'new_password' => 'required|string|min:8|max:12',
                 'confirm_password' => 'required|same:new_password',
-            ], [
-                'old_password.required' => 'Šis lauks ir obligāts',
-                'new_password.required' => 'Šis lauks ir obligāts',
-                'new_password.min' => 'Parole nevar būt īsāka par :min rakstzīmēm',
-                'new_password.max' => 'Parole nevar būt garāka par :max rakstzīmēm',
-                'confirm_password.required' => 'Šis lauks ir obligāts',
-                'confirm_password.same' => 'Paroles nesakrīt',
             ]);
     
             $user = auth()->user();
@@ -83,8 +68,6 @@ class ProfileController extends Controller
         if ($request->has('update_image')) {
             $request->validateWithBag('update_image', [
                 'profila_bilde' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-            ], [
-                'profila_bilde.required' => 'Nepieciešams ielādēt bildi!',
             ]);
 
             $user = auth()->user();

@@ -1,37 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="note_edit_page_window panel-standart">
-        <div class="note_edit_panel">
-            <div class="note_edit_button_back">
+    <div class="section-min-height flex w-full justify-center bg-[#f2f2f2] pt-[50px]">
+        <div class="max-h-[70%] w-[100%] rounded-[3px] py-[20px] px-[20px] sm:px-[40px] md:w-[80%] lg:w-[60%]">
+            <div class="pb-[20px]">
                 <a href="{{ route('notifications') }}">
-                    <button>
+                    <button
+                        class="cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[20px] text-white duration-300 hover:bg-[#52ab98]">
                         <i class="fa-sharp fa-solid fa-arrow-left"></i> Atpakaļ
                     </button>
                 </a>
             </div>
-            <div class="note_edit_title">
-                <h3>Rediģēt paziņojumu #{{ $notif->id }}</h3>
+            <div class="mb-[10px] flex justify-center text-white">
+                <h3 class="text-xl font-semibold text-black">Rediģēt paziņojumu #{{ $notif->id }}</h3>
             </div>
-            <div class="note_edit_form">
-                {!! Form::open(['action' => ['App\Http\Controllers\NotifsController@update', $notif->id], 'method' => 'PUT']) !!}
-                {{ Form::label('title', 'Nosaukums') }}
-                {{ Form::text('title', $notif->title) }}
-                <span class="error">
-                    @error('title')
-                        {{ $message }}
-                    @enderror
-                </span>
-                {{ Form::label('body', 'Saturs') }}
-                {{ Form::textarea('body', $notif->body) }}
-                <span class="error">
-                    @error('body')
-                        {{ $message }}
-                    @enderror
-                </span>
-                {{ Form::submit('Apstiprināt', ['class' => 'note_edit_submit_button']) }}
-                {!! Form::close() !!}
+            {{-- <div> --}}
+            {!! Form::open([
+                'action' => ['App\Http\Controllers\NotifsController@update', $notif->id],
+                'method' => 'PUT',
+                'class' => 'flex flex-col text-white',
+            ]) !!}
+            {{ Form::label('title', 'Nosaukums', ['class' => 'pt-[15px] text-black']) }}
+            {{ Form::text('title', $notif->title, ['class' => 'text-black p-[10px] rounded-[3px] border border-solid border-black outline-0 my-[5px] text-16px']) }}
+            <span class="error">
+                @error('title')
+                    {{ $message }}
+                @enderror
+            </span>
+            {{ Form::label('body', 'Saturs', ['class' => 'pt-[15px] text-black']) }}
+            {{ Form::textarea('body', $notif->body, ['class' => 'text-black p-[10px] rounded-[3px] border border-solid border-black outline-0 my-[5px] text-16px resize-none']) }}
+            <span class="error">
+                @error('body')
+                    {{ $message }}
+                @enderror
+            </span>
+            <div>
+                {{ Form::submit('Apstiprināt', ['class' => 'cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[15px] mt-[20px] duration-300 hover:bg-[#52ab98]']) }}
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection

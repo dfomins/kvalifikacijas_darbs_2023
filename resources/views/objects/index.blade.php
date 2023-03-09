@@ -1,37 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="note_window">
-        <div class="note_panel panel-standart">
-            <div class="title">
-                <h2>Informācija par objektiem</h2>
-            </div>
-            <div class="object_thread_panel">
-                <ol>
-                    @if (count($objects) > 0)
-                        @foreach ($objects as $object)
-                            <li class="object_note_row">
-                                <div class="object_index_image">
-                                    <a href="{{ route('objects') }}/{{ $object->id }}">
-                                        <img src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
-                                    </a>
-                                </div>
-                                <div class="object_note_post"><a href="{{ route('objects') }}/{{ $object->id }}">
-                                        <h3>{{ $object->title }}</h3>
-                                    </a>
-                                </div>
-                            </li>
-                        @endforeach
-                    @else
-                        <p style="text-align: center; color: white; grid-column: 2/3;">Informācijas par objektiem nav</p>
-                    @endif
-                </ol>
-            </div>
-            @if (Auth::user()->role_id == 1)
-                <div class="create_note_btn">
-                    <a href="{{ route('objects') }}/jauns"><button>Izveidot jaunu</button></a>
-                </div>
+    <div class="section-min-height color-2 flex w-full flex-col items-center px-[20px] pb-[30px]">
+        <h2 class="my-[40px] text-[25px] font-semibold tracking-wide">Informācija par objektiem</h2>
+        {{-- <div> --}}
+        <ol
+            class="mb-[20px] grid w-full grid-cols-1 justify-items-center gap-y-8 md:w-[768px] md:grid-cols-2 xl:w-[1280px] xl:grid-cols-3">
+            @if (count($objects) > 0)
+                @foreach ($objects as $object)
+                    <li>
+                        <div class="border border-black">
+                            <a href="{{ route('objects') }}/{{ $object->id }}">
+                                <img class="hover: h-[300px] w-[300px] object-cover"
+                                    src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
+                            </a>
+                            <div
+                                class="color-1 hover:color-4 flex w-[300px] flex-col justify-center py-[7px] px-[10px] duration-300">
+                                <a href="{{ route('objects') }}/{{ $object->id }}">
+                                    <h3 class="truncate text-white">{{ $object->title }}</h3>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+            @else
+                <p class="text-center text-black">Informācijas par objektiem nav</p>
             @endif
-        </div>
+        </ol>
+        {{-- </div> --}}
+        @if (Auth::user()->role_id == 1)
+            {{-- <div> --}}
+            <a href="{{ route('objects') }}/jauns"><button
+                    class="color-1 hover:color-3 cursor-pointer rounded-[3px] py-[10px] px-[15px] text-center text-white duration-300">Izveidot
+                    jaunu</button></a>
+            {{-- </div> --}}
+        @endif
     </div>
 @endsection

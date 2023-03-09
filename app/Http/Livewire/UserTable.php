@@ -22,7 +22,7 @@ final class UserTable extends PowerGridComponent
     */
     public function setUp(): array
     {
-        $this->showCheckBox();
+        // $this->showCheckBox();
 
         return [
             Exportable::make('export')
@@ -50,7 +50,7 @@ final class UserTable extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return User::query();
+        return User::query()->join('roles', 'users.role_id', '=', 'roles.id')->select('users.*', 'roles.name as role');
     }
 
     /*
@@ -121,38 +121,41 @@ final class UserTable extends PowerGridComponent
             Column::make('ID', 'id')
                 ->makeInputRange(),
 
-            Column::make('FNAME', 'fname')
+            Column::make('Vārds', 'fname')
                 ->sortable()
                 ->searchable()
-                ->makeInputText(),
+                ->makeInputText()
+                ->editOnClick(),
 
-            Column::make('LNAME', 'lname')
+            Column::make('Uzvārds', 'lname')
                 ->sortable()
                 ->searchable()
-                ->makeInputText(),
+                ->makeInputText()
+                ->editOnClick(),
 
-            Column::make('EMAIL', 'email')
+            Column::make('E-pasts', 'email')
                 ->sortable()
                 ->searchable()
-                ->makeInputText(),
+                ->makeInputText()
+                ->editOnClick(),
 
-            Column::make('ROLE ID', 'role_id')
-                ->toggleable(),
+            Column::make('Loma', 'role'),
+                // ->toggleable(),
 
-            Column::make('PROFILA BILDE', 'profila_bilde')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
+            // Column::make('Profila bilde', 'profila_bilde')
+            //     ->sortable()
+            //     ->searchable()
+            //     ->makeInputText(),
 
-            Column::make('CREATED AT', 'created_at_formatted', 'created_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
+            // Column::make('Izveidots', 'created_at_formatted', 'created_at')
+            //     ->searchable()
+            //     ->sortable()
+            //     ->makeInputDatePicker(),
 
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
+            // Column::make('Atjaunots', 'updated_at_formatted', 'updated_at')
+            //     ->searchable()
+            //     ->sortable()
+            //     ->makeInputDatePicker(),
 
         ]
 ;
@@ -172,21 +175,20 @@ final class UserTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
-    public function actions(): array
-    {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('user.edit', ['user' => 'id']),
+    // public function actions(): array
+    // {
+    //    return [
+    //     //    Button::make('edit', 'Edit')
+    //     //         ->target('')
+    //     //         ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+    //     //         ->route('user.edit', ['user' => 'id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('user.destroy', ['user' => 'id'])
-               ->method('delete')
-        ];
-    }
-    */
+    //     //    Button::make('destroy', 'Delete')
+    //     //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+    //     //        ->route('user.destroy', ['user' => 'id'])
+    //     //        ->method('delete')
+    //     ];
+    // }
 
     /*
     |--------------------------------------------------------------------------

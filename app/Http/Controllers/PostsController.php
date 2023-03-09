@@ -48,13 +48,8 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:100',
-            'body' => 'required|max:300',
-        ],[
-            'title.required' => "Šis lauks ir obligāts",
-            'body.required' => "Šis lauks ir obligāts",
-            'title.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm",
-            'body.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm"
+            'title' => 'required|max:80',
+            'body' => 'required|max:1000',
         ]);
 
         $post = new Post;
@@ -105,6 +100,12 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'title' => 'required|max:80',
+            'body' => 'required|max:1000',
+        ]);
+
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');

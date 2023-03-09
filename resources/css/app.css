@@ -5,19 +5,43 @@
 @layer base {
     body {
         font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
     }
 
     .section-min-height {
         min-height: calc(100vh - 5rem);
+        overflow-x: hidden;
     }
 
     .success {
         color: green;
         font-size: 15px;
+        font-weight: 600;
     }
 
     .error {
-        color: black;
+        color: red;
         font-size: 15px;
+    }
+
+    .color-1 {
+        background-color: #2b6777;
+    }
+
+    .color-2 {
+        background-color: #f2f2f2;
+    }
+
+    .color-3 {
+        background-color: #52ab98;
+    }
+
+    .color-4 {
+        background-color: #2b6777ef;
+    }
+
+    .custom-shadow {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+            rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
 }

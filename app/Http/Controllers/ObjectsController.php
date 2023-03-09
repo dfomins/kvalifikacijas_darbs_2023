@@ -42,6 +42,10 @@ class ObjectsController extends Controller
     {
 
         $request->validate([
+            'title' => 'required|max: 80',
+            'city' => 'required|max: 50',
+            'street' => 'required|max: 50',
+            'body' => 'max:1000',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
@@ -98,6 +102,15 @@ class ObjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'title' => 'required|max: 80',
+            'city' => 'required|max: 50',
+            'street' => 'required|max: 50',
+            'body' => 'max:1000',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
         $object = WorkObject::find($id);
         $object->title = $request->input('title');
         $object->city = $request->input('city');
