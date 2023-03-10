@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('content')
-    <div class="section-min-height color-2 mb-[50px] flex w-full flex-col items-center px-[20px]">
+    {{-- <div class="section-min-height color-2 mb-[50px] flex w-full flex-col items-center px-[20px]">
         <h2 class="my-[40px] text-[25px] font-semibold tracking-wide">Profila iestaījumi</h2>
         <div class="flex w-[1200px] rounded-[3px] bg-[#2b6777] p-[30px] shadow-md">
             <div class="flex w-1/2 flex-col">
-                <h3 class="pb-[30px] text-xl font-semibold text-white">Pamata informācija</h3>
-                <form method="POST" action="{{ route('update_profile') }}" id="update_profile_form">
+                <h3 class="text-xl font-semibold text-white">Pamata informācija</h3> --}}
+    @livewire('profile-settings')
+    {{-- <form method="POST" action="{{ route('update_profile') }}" id="update_profile_form">
                     @csrf
                     <div class="mb-[10px] flex flex-col">
                         <label class="text-white" for="fname">Vārds</label>
@@ -49,9 +50,8 @@
                             type="submit" name="update_profile" class="">Saglabāt
                         </button>
                     </div>
-                </form>
-            </div>
-            <div class="ml-[50px] flex flex-col">
+                </form> --}}
+    {{-- <div class="ml-[50px] flex flex-col">
                 <h3 class="pb-[30px] text-xl font-semibold text-white">Profila bilde</h3>
                 {!! Form::open([
                     'action' => 'App\Http\Controllers\ProfileController@update_profile',
@@ -73,11 +73,10 @@
                     </div>
                 </div>
                 {!! Form::close() !!}
-            </div>
-        </div>
+            </div> --}}
 
 
-        <div class="mt-[50px] w-[1200px] rounded-[3px] bg-[#2b6777] p-[30px] shadow-md">
+    {{-- <div class="mt-[50px] w-[1200px] rounded-[3px] bg-[#2b6777] p-[30px] shadow-md">
             <h3 class="pb-[30px] text-xl font-semibold text-white">Paroles maiņa</h3>
             <form class="flex w-2/3 flex-col" method="POST" action="{{ route('update_profile') }}"
                 id="update_password_form">
@@ -128,9 +127,9 @@
                     </button>
                 </div>
             </form>
-        </div>
+        </div> --}}
 
-        {{-- <div class="password_change profile_edit_page" data-page="2">
+    {{-- <div class="password_change profile_edit_page" data-page="2">
                         <form method="POST" action="{{ route('update_profile') }}" id="update_password_form">
                             <h3>Paroles maiņa</h3>
                             @csrf
@@ -189,5 +188,5 @@
             </div>
         </div>
     </div> --}}
-        {{-- <script src="{{ url('js/profile_settings.js') }}"></script> --}}
-    @endsection
+    {{-- <script src="{{ url('js/profile_settings.js') }}"></script> --}}
+@endsection
