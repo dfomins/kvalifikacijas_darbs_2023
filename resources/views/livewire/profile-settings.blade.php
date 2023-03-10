@@ -1,9 +1,9 @@
-<div class="section-min-height color-2 mb-[50px] flex w-full flex-col items-center px-[20px]">
+<div class="section-min-height color-2 flex w-full flex-col items-center px-[20px] pb-[50px]">
     <h2 class="my-[40px] text-[25px] font-semibold tracking-wide">Profila iestaījumi</h2>
     {{-- 1 DALA, BAZES INFORMACIJA, PROFILA BILDE --}}
     <div
         class="flex w-[95%] flex-col justify-between rounded-[3px] bg-[#2b6777] p-[30px] shadow-md md:flex-row xl:w-[1250px]">
-        <div class="flex w-full flex-col md:w-2/5">
+        <div class="flex w-full flex-col md:mr-[15px] md:w-1/2">
             <h3 class="text-xl font-semibold text-white">Pamata informācija</h3>
             <form wire:submit.prevent="update_profile_base">
                 @csrf
@@ -57,16 +57,32 @@
                 </div>
             </form>
         </div>
-        <div class="flex w-2/5 flex-col">
-
+        <div class="flex w-full flex-col md:ml-[15px] md:w-1/2">
+            <h3 class="mt-[20px] text-xl font-semibold text-white md:mt-0">Profila bilde</h3>
+            @if ($image)
+                <img class="my-[10px] mx-auto h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
+                    src="{{ $image }}" alt="Profila bilde" />
+            @else
+                <img class="my-[10px] mx-auto h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
+                    src="{{ asset('img/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
+            @endif
+            <form class="flex flex-col" wire:submit.prevent="update_profile_photo">
+                <input class="m-auto text-white file:cursor-pointer" id="image" type="file"
+                    wire:change="$emit('fileChoosen')">
+                <div>
+                    <button
+                        class="mt-[20px] cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4]"
+                        type="submit">Saglabāt
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
     {{-- 2 DALA, PAROLES MAINA --}}
     <div class="mt-[50px] flex w-[95%] justify-between rounded-[3px] bg-[#2b6777] p-[30px] shadow-md xl:w-[1250px]">
-        <div class="flex w-full flex-col md:w-1/2">
+        <div class="flex w-full flex-col lg:w-1/2">
             <h3 class="text-xl font-semibold text-white">Paroles maiņa</h3>
             <form wire:submit.prevent="update_profile_password">
-                {{-- id="update_password_form" --}}
                 @csrf
                 <div class="mb-[10px] flex flex-col">
                     @if (session('password_success'))
@@ -126,3 +142,16 @@
         </div>
     </div>
 </div>
+<script>
+    window.livewire.on('fileChoosen', () => {
+
+        let file = document.getElementById('image').files[0];
+        let reader = new FileReader();
+        reader.onloadend = () => {
+            window.livewire.emit('fileUpload', reader.result);
+        }
+
+        reader.readAsDataURL(file);
+
+    });
+</script>

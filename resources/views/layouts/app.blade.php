@@ -16,6 +16,7 @@
     @vite('resources/css/app.css')
     <title>{{ config('app.name', 'IMG') }}</title>
     @livewireStyles
+    @livewireScripts
     @powerGridStyles
 </head>
 
@@ -60,7 +61,6 @@
         asd
     </footer>
     <script src={{ url('js/side-navbar.js') }}></script>
-    @livewireScripts
     @powerGridScripts
 </body>
 

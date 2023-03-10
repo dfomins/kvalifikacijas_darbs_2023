@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 use Request;
 use Hash;
@@ -13,9 +14,14 @@ use App\Models\Notif;
 class ProfileSettings extends Component
 {
 
+    use WithFileUploads;
+
+    public $image;
     public $old_password;
     public $new_password;
     public $confirm_password;
+
+    protected $listeners = ['fileUpload' => 'handleFileUpload'];
 
     public function render()
     {
@@ -65,6 +71,22 @@ class ProfileSettings extends Component
         }
 
         $this->reset(['old_password', 'new_password', 'confirm_password']);
+    }
+
+    public function update_profile_photo()
+    {
+
+        $this->validate([
+            'image' => 'required|image|max:2048',
+        ]);
+ 
+        $this->image->store('img/users/');
+
+    }
+
+    public function handleFileUpload($imageData)
+    {
+        $this->image = $imageData;
     }
 
 }
