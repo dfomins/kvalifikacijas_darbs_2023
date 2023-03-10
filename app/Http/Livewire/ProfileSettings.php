@@ -5,8 +5,11 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
+use Intervention\Image\ImageManagerStatic;
+
 use Request;
 use Hash;
+use Storage;
 
 use App\Models\Post;
 use App\Models\Notif;
@@ -73,20 +76,76 @@ class ProfileSettings extends Component
         $this->reset(['old_password', 'new_password', 'confirm_password']);
     }
 
-    public function update_profile_photo()
-    {
-
-        $this->validate([
-            'image' => 'required|image|max:2048',
-        ]);
- 
-        $this->image->store('img/users/');
-
-    }
-
     public function handleFileUpload($imageData)
     {
         $this->image = $imageData;
+    }
+
+    public function update_profile_photo()
+    {
+
+        $user = auth()->user();
+
+        if(!$this->image) {
+            return null;
+        } else {
+
+            $this->validate([
+                'image' =>  'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+            ]);
+
+            if ($user->profila_bilde != 'default.jpg') {
+                $destination = 'public/images/users/'.$user->profila_bilde;
+                if(Storage::exists($destination)) {
+                    Storage::delete($destination);
+                }
+            }
+
+            $img = ImageManagerStatic::make($this->image)->encode('jpg');
+            $filename = time() . '.jpg';
+            Storage::put('public/images/users/'.$filename, $img);
+
+            $user->update([
+                'profila_bilde' => $filename,
+            ]);
+
+            session()->flash('photo_success');
+
+        }
+
+        // $this->validate([
+        //     'image' => 'required|image|max:2048',
+        // ]);
+
+        // $img = ImageManagerStatic::make($this->image)->encode('jpg');
+        // $filename = time() . '.jpg';
+        // Storage::put('public/images/users/'.$filename, $img);
+
+        // $user->update([
+        //     'profila_bilde' => $filename,
+        // ]);
+        // return $filename;
+
+    }
+
+    public function delete_profile_photo()
+    {
+
+        $user = auth()->user();
+
+        if ($user->profila_bilde != 'default.jpg') {
+            $destination = 'public/images/users/'.$user->profila_bilde;
+            if(Storage::exists($destination)) {
+                Storage::delete($destination);
+            }
+
+            $user->update([
+                'profila_bilde' => 'default.jpg',
+            ]);
+
+        } else {
+            return null;
+        }
     }
 
 }

@@ -59,20 +59,34 @@
         </div>
         <div class="flex w-full flex-col md:ml-[15px] md:w-1/2">
             <h3 class="mt-[20px] text-xl font-semibold text-white md:mt-0">Profila bilde</h3>
+            @if (session('photo_success'))
+                <div class="mt-[15px] rounded-[3px] bg-green-600 p-[10px] text-white" data-closable>
+                    <i class="fa-solid fa-check"></i> Profila bilde veiksmīgi atjaunota! <button
+                        onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
+                </div>
+            @endif
             @if ($image)
-                <img class="my-[10px] mx-auto h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
+                <img class="mx-auto mt-[15px] h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
                     src="{{ $image }}" alt="Profila bilde" />
             @else
-                <img class="my-[10px] mx-auto h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
-                    src="{{ asset('img/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
+                <img class="mx-auto mt-[15px] h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
+                    src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
             @endif
-            <form class="flex flex-col" wire:submit.prevent="update_profile_photo">
-                <input class="m-auto text-white file:cursor-pointer" id="image" type="file"
-                    wire:change="$emit('fileChoosen')">
-                <div>
+            @error('image')
+                {{ $message }}
+            @enderror
+            <form class="flex flex-col" enctype="multipart/form-data" wire:submit.prevent="update_profile_photo">
+                <input class="mx-auto my-[10px] text-white file:cursor-pointer" id="image" name="image"
+                    type="file" wire:change="$emit('fileChoosen')">
+                <div class="mt-[10px]">
                     <button
-                        class="mt-[20px] cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4]"
+                        class="cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4]"
                         type="submit">Saglabāt
+                    </button>
+                    <button wire:click="delete_profile_photo"
+                        class="ml-[10px] cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4]"
+                        type="button">Dzēst
+                        profila bildi
                     </button>
                 </div>
             </form>
