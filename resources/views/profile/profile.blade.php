@@ -9,7 +9,7 @@
                 </h2>
                 <h3 class="my-[15px] text-center text-[20px] font-medium text-black">{{ $user->role->name }}</h3>
                 <img class="my-[10px] mx-auto h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
-                    src="{{ asset('img/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
+                    src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                 <div class="text-center text-[18px] leading-[3] text-black">
                     <a href="{{ route('edit_profile') }}">Profila iestatījumi</a>
                     @if (Auth::user()->role_id == 1)

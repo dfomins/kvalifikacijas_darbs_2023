@@ -91,7 +91,7 @@ class ProfileSettings extends Component
         } else {
 
             $this->validate([
-                'image' =>  'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+                'image.*' =>  'required|image|mimes:jpg,jpeg,png,gif|max:2048',
             ]);
 
             if ($user->profila_bilde != 'default.jpg') {
