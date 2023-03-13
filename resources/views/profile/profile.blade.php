@@ -3,23 +3,28 @@
 @section('content')
     <section class="section-min-height flex justify-center bg-[#f2f2f2]">
         <div class="grid w-[1200px] grid-cols-1 lg:grid-cols-3">
-            <div class="col-span-1 m-0 p-[30px] lg:my-[30px] lg:mx-[20px]">
-                <h2 class="my-[15px] text-center text-[25px] font-bold text-black">{{ auth()->user()->fname }}
-                    {{ auth()->user()->lname }}
-                </h2>
-                <h3 class="my-[15px] text-center text-[20px] font-medium text-black">{{ $user->role->name }}</h3>
-                <img class="my-[10px] mx-auto h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
-                    src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
-                <div class="text-center text-[18px] leading-[3] text-black">
-                    <a href="{{ route('edit_profile') }}">Profila iestatījumi</a>
-                    @if (Auth::user()->role_id == 1)
-                        <a href="registracija">
-                            <p>Izveidot jaunu lietotāju</p>
-                        </a>
-                        <a href="{{ route('allusers') }}">
-                            <p>Visi lietotāji</p>
-                        </a>
-                    @endif
+            <div class="col-span-1 m-0 lg:my-[50px] lg:mx-[20px]">
+                <div class="color-3 rounded-[3px] px-[30px] py-[50px] text-white">
+                    <h2 class="mb-[15px] text-center text-[25px] font-bold">{{ auth()->user()->fname }}
+                        {{ auth()->user()->lname }}
+                    </h2>
+                    <h3 class="my-[15px] text-center text-[20px] font-medium">{{ $user->role->name }}</h3>
+                    <div
+                        class="mx-auto my-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-black">
+                        <img class="h-full w-full rounded-full object-cover"
+                            src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
+                    </div>
+                    <div class="text-center text-[18px] leading-[3]">
+                        <a href="{{ route('edit_profile') }}">Profila iestatījumi</a>
+                        @if (Auth::user()->role_id == 1)
+                            <a href="registracija">
+                                <p>Izveidot jaunu lietotāju</p>
+                            </a>
+                            <a href="{{ route('allusers') }}">
+                                <p>Visi lietotāji</p>
+                            </a>
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="col-span-2 my-[50px] mx-[20px]">

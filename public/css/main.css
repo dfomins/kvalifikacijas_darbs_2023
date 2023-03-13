@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     /* font-family: 'Golos Text', sans-serif; */
-    letter-spacing: .9px;
+    letter-spacing: 0.9px;
     box-sizing: border-box;
 }
 
@@ -16,7 +16,7 @@ body {
 }
 
 .panel-standart {
-    background-color: #52ab98!important;
+    background-color: #52ab98 !important;
 }
 
 .success {
@@ -44,7 +44,7 @@ nav {
     user-select: none;
     text-transform: uppercase;
     font-weight: 700;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
 nav img {
@@ -66,10 +66,10 @@ nav img {
 }
 
 .nav-links ul li a {
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     text-decoration: none;
     color: #181818;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 /* .dropbtn {
@@ -89,7 +89,7 @@ nav img {
 }
 
 .nav_subitem {
-    padding: 10px 12px 0 12px!important;
+    padding: 10px 12px 0 12px !important;
 }
 
 nav .close-menu,
@@ -99,7 +99,7 @@ nav .open-menu {
 
 nav .logout {
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 nav .logout:hover {
@@ -107,14 +107,9 @@ nav .logout:hover {
 }
 
 @media (max-width: 1000px) {
-
     .nav-links ul li {
         display: block;
         padding: 16px 12px 0 12px;
-    }
-
-    .nav-links ul li ul {
-        position: relative!important;
     }
 
     .nav-links {
@@ -141,7 +136,6 @@ nav .logout:hover {
     .nav-links {
         padding: 20px;
     }
-
 }
 
 /* NAVBAR END */
@@ -155,7 +149,6 @@ footer {
 }
 
 /* FOOTER END */
-
 
 /*HOME fixed 16.02*/
 
@@ -231,7 +224,6 @@ section.profile {
 }
 
 /*SIDEBAR END*/
-
 
 /*PROFILE CENTER fixed 16.02*/
 
@@ -316,7 +308,7 @@ section.profile {
     border-radius: 3px;
     background-color: #f1f1f1;
     font-size: 15px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .latest_notifs_button button:hover {
@@ -340,7 +332,6 @@ section.profile {
 }
 
 /* CENTERBAR END */
-
 
 /* CALENDAR */
 
@@ -377,7 +368,7 @@ section.profile {
 
 .prev-date,
 .next-date {
-    opacity: .5;
+    opacity: 0.5;
 }
 
 .grid-item {
@@ -392,9 +383,9 @@ section.profile {
 }
 
 .grid-item:hover:not(.today) {
-    -webkit-box-shadow:inset 0px 0px 0px 1px #5D576B;
-    -moz-box-shadow:inset 0px 0px 0px 1px #5D576B;
-    box-shadow:inset 0px 0px 0px 1px #5D576B;
+    -webkit-box-shadow: inset 0px 0px 0px 1px #5d576b;
+    -moz-box-shadow: inset 0px 0px 0px 1px #5d576b;
+    box-shadow: inset 0px 0px 0px 1px #5d576b;
 }
 
 .today {
@@ -436,7 +427,7 @@ section.profile {
     display: none;
     margin-top: 10px;
     padding: 10px 0;
-    background-color: #5D576B;
+    background-color: #5d576b;
 }
 
 .profile_settings_select_mobile ol {
@@ -510,7 +501,7 @@ section.profile {
     border: 1px solid #181818;
     background-color: #f1f1f1;
     font-size: 15px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .profile_edit_panel_settings_row .setting_row_button:hover {
@@ -541,7 +532,7 @@ section.profile {
     border: 1px solid #181818;
 }
 
-.profile_image_edit[type=file] {
+.profile_image_edit[type="file"] {
     width: auto;
     max-width: 100%;
     color: #444;
@@ -551,17 +542,17 @@ section.profile {
     border: 1px solid #555;
 }
 
-.profile_image_edit[type=file]::file-selector-button {
+.profile_image_edit[type="file"]::file-selector-button {
     margin-right: 20px;
     border: 1px solid #181818;
     background: #f1f1f1;
     padding: 10px 20px;
     border-radius: 10px;
     cursor: pointer;
-    transition: background .2s ease-in-out;
+    transition: background 0.2s ease-in-out;
 }
 
-.profile_image_edit[type=file]::file-selector-button:hover {
+.profile_image_edit[type="file"]::file-selector-button:hover {
     background: #dddddd;
 }
 
@@ -584,7 +575,6 @@ section.profile {
 }
 
 @media (max-width: 950px) {
-
     .main_setting_section {
         margin: 0;
     }
@@ -687,7 +677,7 @@ section.profile {
     -webkit-appearance: none;
     appearance: none;
     -moz-appearance: none;
-    background-image: url('https://www.svgrepo.com/show/80156/down-arrow.svg');
+    background-image: url("https://www.svgrepo.com/show/80156/down-arrow.svg");
     background-repeat: no-repeat;
     background-size: 14px 14px;
     background-position: calc(100% - 16px);
@@ -703,7 +693,7 @@ section.profile {
     border: 1px solid #181818;
     border-radius: 3px;
     text-align: center;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .login_panel form button:hover {
@@ -773,7 +763,7 @@ section.profile {
     list-style: none;
     padding: 10px;
     margin: 0 0 10px 0;
-    background-color: #FCFCFC;
+    background-color: #fcfcfc;
 }
 
 .note_post {
@@ -790,7 +780,7 @@ section.profile {
     border-radius: 3px;
     border: none;
     background-color: #ffffff;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .create_post_btn button:hover {
@@ -815,7 +805,7 @@ section.profile {
 
 .object_thread_panel ol {
     display: grid;
-    width:1300px;
+    width: 1300px;
     min-height: 70vh;
     grid-template-columns: 1fr 1fr 1fr;
     margin: auto;
@@ -845,7 +835,7 @@ section.profile {
     justify-content: center;
     width: 100%;
     padding: 7px 10px;
-    background-color: #FCFCFC;
+    background-color: #fcfcfc;
 }
 
 .object_index_image {
@@ -860,7 +850,6 @@ section.profile {
 }
 
 @media (max-width: 1300px) {
-
     .object_thread_panel ol {
         width: 90%;
         grid-template-columns: 1fr 1fr;
@@ -882,14 +871,13 @@ section.profile {
 
 /* OBJECTS INDEX GRID END */
 
-
 /* NOTE / NOTIFS / OBJECT SHOW */
 
 .note_show_panel,
 .object_show_panel {
     width: 100%;
     height: 90vh;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 .title_note_show {
@@ -909,7 +897,7 @@ section.profile {
 
 .title_text_note_show_back_icon {
     display: inline-flex;
-    background-color: #1B9AAA;
+    background-color: #1b9aaa;
     align-items: center;
     justify-content: center;
     width: 30px;
@@ -970,7 +958,7 @@ section.profile {
 }
 
 .object_show_image img {
-    float:left;
+    float: left;
     margin: 0 30px 15px 0;
     width: auto;
     max-height: 300px;
@@ -981,27 +969,27 @@ section.profile {
     width: 10px;
     border-radius: 5px;
 }
-  
-  /* Track */
+
+/* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: #f1f1f1;
 }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #5D576B; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5d576b;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 .title-post-show a {
     color: white;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
     .title-text-post-show-content {
         width: 100%;
     }
@@ -1024,7 +1012,6 @@ section.profile {
 }
 
 @media (max-width: 800px) {
-
     .object_show_image {
         text-align: center;
         width: 100%;
@@ -1083,7 +1070,7 @@ section.profile {
     color: white;
     border: none;
     border-radius: 3px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .note_create_button_back button:hover,
@@ -1135,21 +1122,20 @@ section.profile {
     resize: none;
 }
 
-
 .note_edit_submit_button {
     width: 150px;
     cursor: pointer;
     background-color: #f1f1f1;
-    margin-top: 20px!important;
-    transition: .3s;
+    margin-top: 20px !important;
+    transition: 0.3s;
 }
 
 .note_create_submit_button {
     width: 100px;
     cursor: pointer;
     background-color: #f1f1f1;
-    margin-top: 20px!important;
-    transition: .3s;
+    margin-top: 20px !important;
+    transition: 0.3s;
 }
 
 .note_create_submit_button:hover,
@@ -1169,7 +1155,6 @@ section.profile {
 }
 
 /* OBJECT, POSTS EDIT PAGE END */
-
 
 .pfp {
     display: flex;

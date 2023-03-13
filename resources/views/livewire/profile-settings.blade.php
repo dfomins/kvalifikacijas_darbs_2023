@@ -1,9 +1,8 @@
 <div class="section-min-height color-2 flex w-full flex-col items-center px-[20px] pb-[50px]">
     <h2 class="my-[40px] text-[25px] font-semibold tracking-wide">Profila iestaījumi</h2>
     {{-- 1 DALA, BAZES INFORMACIJA, PROFILA BILDE --}}
-    <div
-        class="flex w-[95%] flex-col justify-between rounded-[3px] bg-[#2b6777] p-[30px] shadow-md md:flex-row xl:w-[1250px]">
-        <div class="flex w-full flex-col md:mr-[15px] md:w-1/2">
+    <div class="flex w-[95%] flex-col justify-between md:flex-row xl:w-[1250px]">
+        <div class="color-1 flex w-full flex-col rounded-[3px] p-[30px] shadow-md md:mr-[15px] md:w-1/2">
             <h3 class="text-xl font-semibold text-white">Pamata informācija</h3>
             <form wire:submit.prevent="update_profile_base">
                 @csrf
@@ -57,7 +56,8 @@
                 </div>
             </form>
         </div>
-        <div class="flex w-full flex-col md:ml-[15px] md:w-1/2">
+        <div
+            class="color-1 mt-[50px] flex w-full flex-col rounded-[3px] p-[30px] shadow-md md:m-0 md:ml-[15px] md:w-1/2">
             <h3 class="mt-[20px] text-xl font-semibold text-white md:mt-0">Profila bilde</h3>
             @if (session('photo_success'))
                 <div class="mt-[15px] rounded-[3px] bg-green-600 p-[10px] text-white" data-closable>
@@ -66,25 +66,33 @@
                 </div>
             @endif
             @if ($image)
-                <img class="mx-auto mt-[15px] h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
-                    src="{{ $image }}" alt="Profila bilde" />
+                <div
+                    class="mx-auto mt-[15px] mb-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-black">
+                    <img class="h-full w-full rounded-full object-cover" src="{{ $image }}"
+                        alt="Profila bilde" />
+                </div>
             @else
-                <img class="mx-auto mt-[15px] h-48 w-48 rounded-full border border-solid border-black sm:h-64 sm:w-64"
-                    src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
+                <div
+                    class="mx-auto mt-[15px] mb-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-black">
+                    <img class="h-full w-full rounded-full object-cover"
+                        src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}"
+                        alt="Profila bilde" />
+                </div>
             @endif
             @error('image')
                 {{ $message }}
             @enderror
             <form class="flex flex-col" enctype="multipart/form-data" wire:submit.prevent="update_profile_photo">
-                <input class="mx-auto my-[10px] text-white file:cursor-pointer" id="image" name="image"
-                    type="file" wire:change="$emit('fileChoosen')">
-                <div class="mt-[10px]">
+                <input
+                    class="mx-auto my-[10px] w-full cursor-pointer rounded-[3px] border-2 border-dashed p-[10px] text-white file:cursor-pointer file:outline-0"
+                    id="image" name="image" type="file" wire:change="$emit('fileChoosen')">
+                <div class="mx-auto mt-[10px] flex flex-col min-[420px]:block">
                     <button
                         class="cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4]"
                         type="submit">Saglabāt
                     </button>
                     <button wire:click="delete_profile_photo"
-                        class="ml-[10px] cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4]"
+                        class="mt-[10px] cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4] min-[420px]:ml-[10px] min-[420px]:mt-0"
                         type="button">Dzēst
                         profila bildi
                     </button>
@@ -92,6 +100,9 @@
             </form>
         </div>
     </div>
+
+
+
     {{-- 2 DALA, PAROLES MAINA --}}
     <div class="mt-[50px] flex w-[95%] justify-between rounded-[3px] bg-[#2b6777] p-[30px] shadow-md xl:w-[1250px]">
         <div class="flex w-full flex-col lg:w-1/2">

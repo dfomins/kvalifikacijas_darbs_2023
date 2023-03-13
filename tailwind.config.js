@@ -6,7 +6,11 @@ module.exports = {
         "./resources/**/*.vue",
     ],
     theme: {
-        extend: {},
+        extend: {
+            backgroundImage: {
+                login: "url(/img/backgrounds/login_bg_2.jpg)",
+            },
+        },
     },
     plugins: [require("tailwind-scrollbar")],
 };
