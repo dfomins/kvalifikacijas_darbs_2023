@@ -58,7 +58,7 @@ class ObjectsController extends Controller
             $file = $request->file('object_img');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('img/objects', $filename);
+            $file->move('public/images/objects/', $filename);
             $object->object_img = $filename;
         }
         $object->save();
@@ -118,7 +118,7 @@ class ObjectsController extends Controller
         $object->body = $request->input('body');
         if ($request->hasfile('object_img')) {
             if ($object->object_img != 'no_photo.png') {
-                $destination = 'img/objects/'.$object->object_img;
+                $destination = 'public/images/objects/'.$object->object_img;
                 if(File::exists($destination)) {
                     File::delete($destination);
                 }
@@ -126,7 +126,7 @@ class ObjectsController extends Controller
             $file = $request->file('object_img');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('img/objects', $filename);
+            $file->move('public/images/objects/', $filename);
             $object->object_img = $filename;
         }
         $object->update();

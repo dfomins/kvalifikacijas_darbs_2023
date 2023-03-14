@@ -25,7 +25,6 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="body-content-post-show"> --}}
         @if ($object->object_img != null)
             <div>
                 <div class="flex w-full flex-col lg:flex-row">
@@ -48,7 +47,5 @@
                 </p>
             </div>
         @endif
-        {{-- <p style="text-align: justify;">{{ $object->body }}</p> --}}
-        {{-- </div> --}}
     </div>
 @endsection

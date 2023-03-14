@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="section-min-height">
-        <div
-            class="mx-auto my-[50px] w-[100%] rounded-[3px] border border-[.color-1] px-[20px] py-[50px] shadow-md sm:px-[40px] md:w-[80%] lg:w-[60%]">
+    <div class="section-min-height color-2">
+        <div class="mx-auto my-[100px] w-[100%] rounded-[3px] sm:px-[40px] md:w-[80%] lg:w-[60%]">
             <div class="pb-[20px]">
                 <a href="{{ route('notifications') }}">
                     <button

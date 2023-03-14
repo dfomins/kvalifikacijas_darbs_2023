@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="section-min-height flex w-full justify-center bg-[#f2f2f2] pt-[50px]">
-        <div class="max-h-[70%] w-[100%] rounded-[3px] py-[20px] px-[20px] sm:px-[40px] md:w-[80%] lg:w-[60%]">
+    <div class="section-min-height flex w-full justify-center bg-[#f2f2f2]">
+        <div class="max-h-[70%] w-[100%] rounded-[3px] py-[70px] px-[20px] sm:px-[40px] md:w-[80%] lg:w-[60%]">
             <div class="pb-[20px]">
-                <a href="{{ route('posts') }}">
+                <a href="{{ route('posts') }}/{{ $post->id }}">
                     <button
                         class="cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[20px] text-white duration-300 hover:bg-[#52ab98]">
                         <i class="fa-sharp fa-solid fa-arrow-left"></i> Atpakaļ

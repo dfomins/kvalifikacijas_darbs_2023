@@ -57,7 +57,7 @@
                                     </div>
                             @endforeach
                         @else
-                            <p style="text-align: center; margin-top: 20px;">Paziņojumu nav</p>
+                            <p class="mt-[20px] text-center text-white">Paziņojumu nav</p>
                             </li>
                         @endif
                     </div>
@@ -87,7 +87,7 @@
                                     </div>
                             @endforeach
                         @else
-                            <p style="text-align: center; margin-top: 20px;">Piezīmju nav</p>
+                            <p class="mt-[20px] text-center text-white">Piezīmju nav</p>
                             </li>
                         @endif
                     </div>

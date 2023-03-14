@@ -65,6 +65,12 @@
                         onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
                 </div>
             @endif
+            @if (session('delete_photo_success'))
+                <div class="mt-[15px] rounded-[3px] bg-green-600 p-[10px] text-white" data-closable>
+                    <i class="fa-solid fa-check"></i> Profila bilde tika dzēsta! <button
+                        onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
+                </div>
+            @endif
             @if ($image)
                 <div
                     class="mx-auto mt-[15px] mb-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-black">

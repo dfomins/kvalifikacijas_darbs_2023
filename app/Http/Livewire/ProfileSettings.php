@@ -113,19 +113,6 @@ class ProfileSettings extends Component
 
         }
 
-        // $this->validate([
-        //     'image' => 'required|image|max:2048',
-        // ]);
-
-        // $img = ImageManagerStatic::make($this->image)->encode('jpg');
-        // $filename = time() . '.jpg';
-        // Storage::put('public/images/users/'.$filename, $img);
-
-        // $user->update([
-        //     'profila_bilde' => $filename,
-        // ]);
-        // return $filename;
-
     }
 
     public function delete_profile_photo()
@@ -142,6 +129,8 @@ class ProfileSettings extends Component
             $user->update([
                 'profila_bilde' => 'default.jpg',
             ]);
+
+            session()->flash('delete_photo_success');
 
         } else {
             return null;

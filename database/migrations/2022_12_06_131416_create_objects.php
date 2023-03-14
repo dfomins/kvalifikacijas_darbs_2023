@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('objects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->mediumText('body');
             $table->mediumText('city');
             $table->mediumText('street');
+            $table->mediumText('body')->nullable();
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ final class UserTable extends PowerGridComponent
     | Setup Table's general features
     |
     */
+
     public function setUp(): array
     {
         // $this->showCheckBox();
