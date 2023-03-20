@@ -20,20 +20,18 @@
                     'method' => 'PUT',
                     'class' => 'flex flex-col text-white',
                 ]) !!}
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
+                            <i class="fa-solid fa-triangle-exclamation"></i> {{ $error }} <button
+                                onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
+                        </div>
+                    @endforeach
+                @endif
                 {{ Form::label('title', 'Nosaukums', ['class' => 'pt-[15px] text-black']) }}
                 {{ Form::text('title', $post->title, ['class' => 'text-black p-[10px] rounded-[3px] border border-solid border-black outline-0 my-[5px] text-[16px]']) }}
-                <span class="error">
-                    @error('title')
-                        {{ $message }}
-                    @enderror
-                </span>
                 {{ Form::label('body', 'Saturs', ['class' => 'pt-[15px] text-black']) }}
                 {{ Form::textarea('body', $post->body, ['class' => 'text-black p-[10px] rounded-[3px] border border-solid border-black outline-0 my-[5px] text-16px resize-none']) }}
-                <span class="error">
-                    @error('body')
-                        {{ $message }}
-                    @enderror
-                </span>
                 <div>
                     {{ Form::submit('Apstiprināt', ['class' => 'cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[15px] mt-[20px] duration-300 hover:bg-[#52ab98]']) }}
                 </div>

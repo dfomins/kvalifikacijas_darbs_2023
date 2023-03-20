@@ -12,7 +12,12 @@
                 </a>
             </div>
             <div>
-
+                {!! Form::open([
+                    'action' => 'App\Http\Controllers\ObjectsController@store',
+                    'method' => 'POST',
+                    'enctype' => 'multipart/form-data',
+                    'class' => 'flex flex-col text-white',
+                ]) !!}
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
@@ -21,49 +26,6 @@
                         </div>
                     @endforeach
                 @endif
-
-                {{-- @error('title')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('body')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('city')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('street')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('body')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('object_img')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror --}}
-                {!! Form::open([
-                    'action' => 'App\Http\Controllers\ObjectsController@store',
-                    'method' => 'POST',
-                    'enctype' => 'multipart/form-data',
-                    'class' => 'flex flex-col text-white',
-                ]) !!}
                 {{ Form::label('title', 'Nosaukums', ['class' => 'pt-[15px] text-black']) }}
                 {{ Form::text('title', '', ['class' => 'text-black p-[10px] rounded-[3px] border border-solid border-black outline-0 my-[5px] text-16px']) }}
                 {{ Form::label('city', 'Pilsēta', ['class' => 'pt-[15px] text-black']) }}

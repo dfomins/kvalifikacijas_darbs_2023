@@ -184,6 +184,7 @@ return [
         'old_password' => 'Vecā parole',
         'new_password' => 'Jaunā parole',
         'confirm_password' => 'Paroles apstiprināšana',
+        'role_id' => 'Lomas nosaukums',
         'title' => 'Nosaukums',
         'body' => 'Saturs',
         'city' => 'Pilsēta',
