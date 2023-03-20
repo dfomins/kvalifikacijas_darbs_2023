@@ -16,9 +16,7 @@ class NotifsController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $notifs = Notif::orderBy('created_at', 'desc')->get();
-        return view('notifs.index')->with('notifs', $notifs);
+        return view('notifs.index');
     }
 
     /**
