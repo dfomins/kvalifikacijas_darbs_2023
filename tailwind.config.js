@@ -5,6 +5,9 @@ module.exports = {
         "./resources/**/*.js",
         "./resources/**/*.vue",
     ],
+
+    darkMode: "class",
+
     theme: {
         extend: {
             backgroundImage: {

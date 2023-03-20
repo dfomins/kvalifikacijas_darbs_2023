@@ -36,9 +36,9 @@
                     class="my-[10px] h-[50px] w-full cursor-pointer appearance-none rounded-[3px] border border-black bg-[url('https://www.svgrepo.com/show/80156/down-arrow.svg')] bg-[length:14px_14px] bg-[calc(100%-16px)] bg-no-repeat p-[10px] text-[18px] outline-0"
                     name="role_id">
                     <option value="none" selected disabled hidden>Izvēlieties lomu</option>
-                    <option value="1">Vadītājs</option>
-                    <option value="2">Brigadieris</option>
-                    <option value="3">Darbinieks</option>
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    @endforeach
                 </select>
                 <span class="error">
                     @error('role_id')

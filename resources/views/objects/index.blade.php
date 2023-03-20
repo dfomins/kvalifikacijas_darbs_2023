@@ -24,7 +24,7 @@
                 @endforeach
             </ol>
         @else
-            <div class="h-[65vh]">
+            <div class="mb-[20px] h-[65vh]">
                 <p class="col-start-2 text-center text-black">Informācijas par objektiem nav</p>
             </div>
         @endif

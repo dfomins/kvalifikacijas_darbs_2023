@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Role;
+
 class RegisterController extends Controller
 {
 
@@ -22,6 +24,11 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
+
+    public function showRegistrationForm() {
+        $roles = Role::all();
+        return view('auth.register')->with('roles', $roles);
+    }
 
     use RegistersUsers;
 
@@ -52,20 +59,6 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'role_id' => ['required'],
             'password' => ['required', 'string', 'min:8', 'max:12', 'confirmed']
-        ], [
-            'fname.required' => "Šis lauks ir obligāts",
-            'fname.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm",
-            'lname.required' => "Šis lauks ir obligāts",
-            'lname.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm",
-            'email.required' => "Šis lauks ir obligāts",
-            'email.email' => "E-pastam ir jābūt derīgai e-pasta adresei",
-            'email.max' => "Šis lauks nevar būt garāks par :max rakstzīmēm",
-            'email.unique' => "E-pasts jau ir aizņemts",
-            'role_id.required' => "Šis lauks ir obligāts",
-            'password.required' => "Šis lauks ir obligāts",
-            'password.max' => "Parole nevar būt garāka par :max rakstzīmēm",
-            'password.min' => "Parole nevar būt īsāka par :min rakstzīmēm",
-            'password.confirmed' => "Paroles nesakrīt"
         ]);
     }
 
