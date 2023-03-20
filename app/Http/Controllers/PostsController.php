@@ -22,10 +22,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('posts.index')->with('posts', $user->posts);
+        return view('posts.index');
     }
 
     /**
