@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="work-window panel-standart">
+    <div class="section-min-height panel-standart">
         <div class="work-panel">
             {{ Form::label('date', 'Datums') }}
             <input type="text" id="datepicker" autocomplete="off">

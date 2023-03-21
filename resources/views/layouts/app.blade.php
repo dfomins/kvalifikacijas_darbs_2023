@@ -59,8 +59,34 @@
     <main>
         @yield('content')
     </main>
-    <footer>
-        asd
+    <footer class="color-1 flex min-h-[400px] justify-center shadow-md">
+        <div
+            class="my-[30px] grid w-[70%] grid-cols-4 gap-x-10 text-white max-lg:grid-cols-1 max-sm:w-[90%] max-sm:gap-0">
+            <div class="col-span-2 max-sm:mb-[20px] max-[420px]:col-span-1">
+                <h3 class="text-[20px] font-semibold">Par mums</h3>
+                <p class="mt-[10px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa autem quia odio
+                    veritatis cum illum
+                    explicabo animi modi? Inventore officia perferendis nam magnam! Esse minus vero accusantium error
+                    dolorem labore?</p>
+            </div>
+            <div class="max-[420px]:mb-[20px]">
+                <h3 class="text-[20px] font-semibold">Saites</h3>
+                <ol class="mt-[10px]">
+                    <li>Links #1</li>
+                    <li>Links #2</li>
+                    <li>Links #3</li>
+                    <li>Links #4</li>
+                </ol>
+            </div>
+            <div>
+                <h3 class="text-[20px] font-semibold">Sociālie tīkli</h3>
+                <div class="mt-[10px]">
+                    <i class="fa-brands fa-instagram text-[40px]"></i>
+                    <i class="fa-brands fa-facebook ml-[10px] text-[40px]"></i>
+                    <i class="fa-brands fa-tiktok ml-[10px] text-[40px]"></i>
+                </div>
+            </div>
+        </div>
     </footer>
     <script>
         document.querySelector(".close-menu").addEventListener("click", () => {

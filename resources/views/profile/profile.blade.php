@@ -2,8 +2,8 @@
 
 @section('content')
     <section class="section-min-height flex justify-center bg-[#f2f2f2]">
-        <div class="grid w-[1200px] grid-cols-1 lg:grid-cols-3">
-            <div class="col-span-1 m-0 lg:my-[50px] lg:mx-[20px]">
+        <div class="mt-[50px] mb-[100px] grid w-[70%] grid-cols-1 max-sm:w-[90%] lg:grid-cols-3">
+            <div class="col-span-1 m-0">
                 <div class="color-3 rounded-[3px] px-[30px] py-[50px] text-white">
                     <h2 class="mb-[15px] text-center text-[25px] font-bold">{{ auth()->user()->fname }}
                         {{ auth()->user()->lname }}
@@ -27,8 +27,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-2 my-[50px] mx-[20px]">
-                <div class="shadow-[rgba(0, 0, 0, 0.1) 0px 4px 12px] m-0 h-[300px] rounded-[2px] bg-[#52ab98] sm:mx-[50px]">
+            <div class="col-span-2 max-lg:mt-[50px]">
+                <div
+                    class="shadow-[rgba(0, 0, 0, 0.1) 0px 4px 12px] ml-[100px] h-[300px] rounded-[2px] bg-[#52ab98] max-lg:m-0">
                     <div
                         class="flex h-[70px] flex-col items-center justify-center bg-[#2b6777] font-bold uppercase text-white">
                         <p class="day"></p>
@@ -40,7 +41,7 @@
                     </div>
                 </div>
                 <div
-                    class="shadow-[rgba(0, 0, 0, 0.1) 0px 4px 12px] m-0 mt-[30px] min-h-[345px] rounded-[3px] bg-[#52ab98] text-[20px] sm:mx-[50px]">
+                    class="shadow-[rgba(0, 0, 0, 0.1) 0px 4px 12px] ml-[100px] mt-[30px] min-h-[345px] rounded-[3px] bg-[#52ab98] text-[20px] max-lg:mx-0">
                     <div
                         class="flex h-[70px] flex-col items-center justify-center bg-[#2b6777] font-bold uppercase text-white">
                         Pēdējie paziņojumi
@@ -70,7 +71,7 @@
                     </div>
                 </div>
                 <div
-                    class="shadow-[rgba(0, 0, 0, 0.1) 0px 4px 12px] m-0 mt-[30px] min-h-[345px] rounded-[3px] bg-[#52ab98] text-[20px] sm:mx-[50px]">
+                    class="shadow-[rgba(0, 0, 0, 0.1) 0px 4px 12px] mt-[30px] ml-[100px] min-h-[345px] rounded-[3px] bg-[#52ab98] text-[20px] max-lg:mx-0">
                     <div
                         class="flex h-[70px] flex-col items-center justify-center bg-[#2b6777] font-bold uppercase text-white">
                         Pēdējās piezīmes

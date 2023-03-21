@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="section-min-height color-2 flex w-full flex-col items-center px-[20px] pb-[30px]">
-        <h2 class="my-[40px] text-[25px] font-semibold tracking-wide">Informācija par objektiem</h2>
+    <div class="section-min-height color-2 flex w-full flex-col items-center px-[20px] pt-[50px] pb-[100px]">
+        <h2 class="mb-[40px] text-[25px] font-semibold tracking-wide">Informācija par objektiem</h2>
         @if (count($objects) > 0)
             <ol
-                class="mb-[20px] grid h-[65vh] w-full grid-cols-1 justify-items-center gap-y-8 md:w-[768px] md:grid-cols-2 xl:w-[1280px] xl:grid-cols-3">
+                class="mb-[20px] grid min-h-[65vh] w-full grid-cols-1 justify-items-center gap-y-8 md:w-[768px] md:grid-cols-2 xl:w-[1280px] xl:grid-cols-3">
                 @foreach ($objects as $object)
                     <li>
                         <div class="border border-black">
