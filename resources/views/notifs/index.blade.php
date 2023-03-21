@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="section-min-height flex w-full flex-col items-center bg-[#f2f2f2] pt-[50px] pb-[100px] max-lg:px-[20px]">
-        <h2 class="mb-[50px] text-[25px] font-semibold tracking-wide">Paziņojumi</h2>
-        @livewire('show-notifs')
-        @if (Auth::user()->role_id == 1)
-            <a href="{{ route('notifications') }}/jauns"><button
-                    class="cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[15px] text-center text-white duration-300 hover:bg-[#52ab98]">Izveidot
-                    jaunu</button>
-            </a>
-        @endif
-    </div>
+    <section class="section-min-height flex w-full flex-col items-center bg-[#f2f2f2]">
+        <div class="mt-[50px] mb-[100px] w-[1200px] max-xl:w-[900px] max-lg:w-[700px] max-md:w-[580px] max-sm:w-[90%]">
+            <h2 class="mb-[50px] text-center text-[25px] font-semibold tracking-wide">Paziņojumi</h2>
+            @livewire('show-notifs')
+            @if (Auth::user()->role_id == 1)
+                <div class="text-center">
+                    <a href="{{ route('notifications') }}/jauns"><button
+                            class="cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[15px] text-white duration-300 hover:bg-[#52ab98]">Izveidot
+                            jaunu</button>
+                    </a>
+                </div>
+            @endif
+        </div>
+    </section>
 @endsection

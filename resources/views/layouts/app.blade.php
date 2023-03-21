@@ -10,9 +10,6 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/ee191d4cc6.js" crossorigin="anonymous"></script>
-    {{-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --}}
     @vite('resources/css/app.css')
     <title>{{ config('app.name', 'IMG') }}</title>
     @livewireStyles
@@ -59,9 +56,9 @@
     <main>
         @yield('content')
     </main>
-    <footer class="color-1 flex min-h-[400px] justify-center shadow-md">
+    <footer class="color-3 flex min-h-[300px] justify-center shadow-md">
         <div
-            class="max-lg my-[40px] grid w-[1200px] grid-cols-4 gap-x-10 text-white max-xl:w-[1000px] max-lg:w-[750px] max-lg:grid-cols-1 max-md:w-[600px] max-sm:w-[90%] max-sm:gap-0">
+            class="max-lg my-[40px] grid w-[1200px] grid-cols-4 gap-x-10 text-white max-xl:w-[900px] max-lg:w-[700px] max-lg:grid-cols-1 max-md:w-[580px] max-sm:w-[90%] max-sm:gap-0">
             <div class="col-span-2 max-sm:mb-[20px] max-[420px]:col-span-1">
                 <h3 class="text-[20px] font-semibold">Par mums</h3>
                 <p class="mt-[10px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa autem quia odio

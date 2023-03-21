@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Models\WorkObject;
 
-use File;
+use Intervention\Image\ImageManagerStatic;
+
+use Storage;
 
 class ObjectsController extends Controller
 {
@@ -54,13 +56,17 @@ class ObjectsController extends Controller
         $object->city = $request->input('city');
         $object->street = $request->input('street');
         $object->body = $request->input('body');
-        if ($request->hasfile('object_img')) { 
+
+
+        if ($request->hasfile('object_img')) {
             $file = $request->file('object_img');
-            $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            $file->move('public/images/objects/', $filename);
+            $img = ImageManagerStatic::make($file)->encode('jpg');
+            $filename = time() . '.jpg';
+            Storage::put('public/images/objects/'.$filename, $img);
             $object->object_img = $filename;
         }
+
+
         $object->save();
 
         return redirect()->route('objects');
@@ -119,14 +125,14 @@ class ObjectsController extends Controller
         if ($request->hasfile('object_img')) {
             if ($object->object_img != 'no_photo.png') {
                 $destination = 'public/images/objects/'.$object->object_img;
-                if(File::exists($destination)) {
-                    File::delete($destination);
+                if(Storage::exists($destination)) {
+                    Storage::delete($destination);
                 }
             }
             $file = $request->file('object_img');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('public/images/objects/', $filename);
+            Storage::put('public/images/objects/'.$filename, $file);
             $object->object_img = $filename;
         }
         $object->update();
