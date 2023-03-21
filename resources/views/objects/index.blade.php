@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ 'Objekti' }}
+@endsection
+
 @section('content')
     <section class="section-min-height color-2 flex w-full flex-col items-center px-[20px]">
         <div class="mt-[50px] mb-[100px]">

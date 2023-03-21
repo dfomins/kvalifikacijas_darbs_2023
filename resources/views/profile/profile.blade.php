@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ 'Profils' }}
+@endsection
+
 @section('content')
     <section class="section-min-height flex justify-center bg-[#f2f2f2]">
         <div

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ 'Izveidot piezīmi' }}
+@endsection
+
 @section('content')
     <div class="section-min-height color-2">
         <div class="mx-auto my-[100px] w-[100%] rounded-[3px] sm:px-[40px] md:w-[80%] lg:w-[60%]">

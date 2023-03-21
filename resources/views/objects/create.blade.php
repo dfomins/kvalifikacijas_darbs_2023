@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ 'Izveidot objektu' }}
+@endsection
+
 @section('content')
     <section class="section-min-height color-2">
         <div class="my-[100px] mx-auto w-[100%] rounded-[3px] sm:px-[40px] md:w-[80%] lg:w-[60%]">

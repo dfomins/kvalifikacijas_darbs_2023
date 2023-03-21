@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('title')
+    {{ 'Apskatīt objektu' }}
+@endsection
+
 @section('content')
     <div class="section-min-height color-2 w-full overflow-y-auto">
         <div class="flex min-h-[100px] items-center justify-center bg-[#2b6777] py-[20px] text-white">

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ 'Rediģēt objektu' }}
+@endsection
+
 @section('content')
     <div class="section-min-height flex w-full justify-center bg-[#f2f2f2]">
         <div class="w-[100%] rounded-[3px] py-[70px] px-[20px] sm:px-[40px] md:w-[80%] lg:w-[60%]">

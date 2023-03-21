@@ -1,5 +1,9 @@
 @extends('auth.layouts.app')
 
+@section('title')
+    {{ 'Paroles atkopšana' }}
+@endsection
+
 @section('content')
     <div style="background-image: url(/img/backgrounds/login_bg_2.jpg);" class="flex h-[100vh] bg-cover bg-center">
         <div class="m-auto w-[400px] flex-col items-center max-[470px]:w-[90%]">
