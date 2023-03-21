@@ -1,7 +1,8 @@
-<div class="section-min-height color-2 flex w-full flex-col items-center px-[20px] pb-[50px]">
-    <h2 class="my-[40px] text-[25px] font-semibold tracking-wide">Profila iestaījumi</h2>
+<div class="section-min-height color-2 flex w-full flex-col items-center pt-[50px] pb-[100px]">
+    <h2 class="mb-[50px] text-[25px] font-semibold tracking-wide">Profila iestaījumi</h2>
     {{-- 1 DALA, BAZES INFORMACIJA, PROFILA BILDE --}}
-    <div class="flex w-[95%] flex-col justify-between md:flex-row xl:w-[1250px]">
+    <div
+        class="flex w-[1200px] flex-col justify-between max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%] md:flex-row">
         <div class="color-1 flex w-full flex-col rounded-[3px] p-[30px] shadow-md md:mr-[15px] md:w-1/2">
             <h3 class="text-xl font-semibold text-white">Pamata informācija</h3>
             <form wire:submit.prevent="update_profile_base">
@@ -110,7 +111,8 @@
 
 
     {{-- 2 DALA, PAROLES MAINA --}}
-    <div class="mt-[50px] flex w-[95%] justify-between rounded-[3px] bg-[#2b6777] p-[30px] shadow-md xl:w-[1250px]">
+    <div
+        class="mt-[50px] flex w-[1200px] justify-between rounded-[3px] bg-[#2b6777] p-[30px] shadow-md max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%]">
         <div class="flex w-full flex-col lg:w-1/2">
             <h3 class="text-xl font-semibold text-white">Paroles maiņa</h3>
             <form wire:submit.prevent="update_profile_password">

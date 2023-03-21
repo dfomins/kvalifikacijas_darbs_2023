@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="section-min-height flex w-full flex-col items-center bg-[#f2f2f2] pt-[50px] pb-[100px] max-lg:px-[20px]">
-        <h2 class="mb-[40px] text-[25px] font-semibold tracking-wide">Paziņojumi</h2>
+        <h2 class="mb-[50px] text-[25px] font-semibold tracking-wide">Paziņojumi</h2>
         @livewire('show-notifs')
         @if (Auth::user()->role_id == 1)
             <a href="{{ route('notifications') }}/jauns"><button

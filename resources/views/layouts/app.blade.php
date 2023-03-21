@@ -61,7 +61,7 @@
     </main>
     <footer class="color-1 flex min-h-[400px] justify-center shadow-md">
         <div
-            class="my-[30px] grid w-[70%] grid-cols-4 gap-x-10 text-white max-lg:grid-cols-1 max-sm:w-[90%] max-sm:gap-0">
+            class="max-lg my-[40px] grid w-[1200px] grid-cols-4 gap-x-10 text-white max-xl:w-[1000px] max-lg:w-[750px] max-lg:grid-cols-1 max-md:w-[600px] max-sm:w-[90%] max-sm:gap-0">
             <div class="col-span-2 max-sm:mb-[20px] max-[420px]:col-span-1">
                 <h3 class="text-[20px] font-semibold">Par mums</h3>
                 <p class="mt-[10px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa autem quia odio

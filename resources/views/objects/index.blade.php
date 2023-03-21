@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="section-min-height color-2 flex w-full flex-col items-center px-[20px] pt-[50px] pb-[100px]">
-        <h2 class="mb-[40px] text-[25px] font-semibold tracking-wide">Informācija par objektiem</h2>
+        <h2 class="mb-[50px] text-[25px] font-semibold tracking-wide">Informācija par objektiem</h2>
         @if (count($objects) > 0)
             <ol
-                class="mb-[20px] grid min-h-[65vh] w-full grid-cols-1 justify-items-center gap-y-8 md:w-[768px] md:grid-cols-2 xl:w-[1280px] xl:grid-cols-3">
+                class="mb-[20px] grid min-h-[65vh] w-[1200px] grid-cols-1 justify-items-center gap-x-10 gap-y-8 max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%] md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($objects as $object)
                     <li>
                         <div class="border border-black">
                             <a href="{{ route('objects') }}/{{ $object->id }}">
-                                <img class="hover: h-[300px] w-[300px] object-cover"
+                                <img class="hover: h-[300px] w-full object-cover"
                                     src="{{ asset('img/objects/' . $object->object_img) }}" alt="Objekta bilde">
                             </a>
                             <div
-                                class="color-1 hover:color-4 flex w-[300px] flex-col justify-center py-[7px] px-[10px] duration-300">
+                                class="color-1 hover:color-4 flex w-full flex-col justify-center py-[7px] px-[10px] duration-300">
                                 <a href="{{ route('objects') }}/{{ $object->id }}">
                                     <h3 class="truncate text-white">{{ $object->title }}</h3>
                                 </a>

@@ -1,4 +1,4 @@
-<div class="mb-[20px] w-full lg:w-[80%] xl:w-[70%]">
+<div class="mb-[20px] w-[1200px] max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%]">
     <div class="flex justify-end max-md:flex-col max-md:items-end max-[420px]:w-full">
         <div class="mb-[10px] flex items-center">
             <p class="mr-[10px]">Kārtot pēc:</p>

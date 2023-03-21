@@ -2,7 +2,8 @@
 
 @section('content')
     <section class="section-min-height flex justify-center bg-[#f2f2f2]">
-        <div class="mt-[50px] mb-[100px] grid w-[70%] grid-cols-1 max-sm:w-[90%] lg:grid-cols-3">
+        <div
+            class="mt-[50px] mb-[100px] grid w-[1200px] grid-cols-1 max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%] lg:grid-cols-3">
             <div class="col-span-1 m-0">
                 <div class="color-3 rounded-[3px] px-[30px] py-[50px] text-white">
                     <h2 class="mb-[15px] text-center text-[25px] font-bold">{{ auth()->user()->fname }}
