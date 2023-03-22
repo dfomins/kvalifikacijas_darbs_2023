@@ -14,7 +14,7 @@ class AllUsers extends Component
 
     public $editIndex = null;
 
-    public $fname;
+    public $fname, $lname;
 
     public function changeRole(User $user, $role_id)
     {
@@ -35,6 +35,8 @@ class AllUsers extends Component
     public function edit(User $user)
     {
         $this->fname = $user->fname;
+        $this->lname = $user->lname;
+        $this->email = $user->email;
         $this->editIndex = $user->id;
     }
 
@@ -43,11 +45,16 @@ class AllUsers extends Component
 
         $this->validate([
             'fname' => ['required', 'string', 'max:50'],
-            // 'lname' => ['required', 'string', 'max:50'],
-            // 'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'lname' => ['required', 'string', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users,email,'.$user->id],
         ]);
 
-        $user->update(['fname' => $this->fname]);
+        $user->update([
+            'fname' => $this->fname,
+            'lname' => $this->lname,
+            'email' => $this->email,
+        ]);
+
         $this->editIndex = null;
     }
 

@@ -3,7 +3,7 @@
         <div class="mb-[10px] flex items-center justify-end max-[420px]:w-full">
             <p class="mr-[10px] max-[420px]:hidden">Kārtot pēc:</p>
             <select
-                class="h-[40px] w-[200px] cursor-pointer appearance-none rounded-[3px] border border-black bg-[url('https://www.svgrepo.com/show/80156/down-arrow.svg')] bg-[length:12px_12px] bg-[calc(100%-10px)] bg-no-repeat !text-[15px] outline-0 max-[420px]:w-full md:mr-[10px]"
+                class="h-[40px] w-[200px] cursor-pointer appearance-none rounded-[3px] border border-black bg-[url('https://www.svgrepo.com/show/80156/down-arrow.svg')] bg-[length:12px_12px] bg-[calc(100%-10px)] bg-no-repeat px-[5px] !text-[15px] outline-0 max-[420px]:w-full md:mr-[10px]"
                 wire:model="sort">
                 <option value="desc">Jaunākie</option>
                 <option value="asc">Vecākie</option>
