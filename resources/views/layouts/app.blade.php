@@ -15,7 +15,6 @@
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
     @livewireStyles
     @livewireScripts
-    @powerGridStyles
 </head>
 
 <body class="font-poppins">
@@ -95,7 +94,6 @@
             document.querySelector(".navLinks").style.right = "0px";
         })
     </script>
-    @powerGridScripts
 </body>
 
 </html>
