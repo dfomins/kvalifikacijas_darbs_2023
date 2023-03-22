@@ -70,18 +70,18 @@
             <div class="max-[420px]:mb-[20px]">
                 <h3 class="text-[20px] font-semibold">Saites</h3>
                 <ol class="mt-[10px]">
-                    <li>Links #1</li>
-                    <li>Links #2</li>
-                    <li>Links #3</li>
-                    <li>Links #4</li>
+                    <li><a href="">Links #1</a></li>
+                    <li><a href="">Links #2</a></li>
+                    <li><a href="">Links #3</a></li>
+                    <li><a href="">Links #4</a></li>
                 </ol>
             </div>
             <div>
                 <h3 class="text-[20px] font-semibold">Sociālie tīkli</h3>
                 <div class="mt-[10px]">
-                    <i class="fa-brands fa-instagram text-[40px]"></i>
-                    <i class="fa-brands fa-facebook ml-[10px] text-[40px]"></i>
-                    <i class="fa-brands fa-tiktok ml-[10px] text-[40px]"></i>
+                    <a href=""><i class="fa-brands fa-instagram text-[40px]"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook ml-[10px] text-[40px]"></i></a>
+                    <a href=""><i class="fa-brands fa-tiktok ml-[10px] text-[40px]"></i></a>
                 </div>
             </div>
         </div>

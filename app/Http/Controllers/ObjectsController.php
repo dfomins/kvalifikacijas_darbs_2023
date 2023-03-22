@@ -57,7 +57,6 @@ class ObjectsController extends Controller
         $object->street = $request->input('street');
         $object->body = $request->input('body');
 
-
         if ($request->hasfile('object_img')) {
             $file = $request->file('object_img');
             $img = ImageManagerStatic::make($file)->encode('jpg');
@@ -65,7 +64,6 @@ class ObjectsController extends Controller
             Storage::put('public/images/objects/'.$filename, $img);
             $object->object_img = $filename;
         }
-
 
         $object->save();
 
@@ -122,6 +120,7 @@ class ObjectsController extends Controller
         $object->city = $request->input('city');
         $object->street = $request->input('street');
         $object->body = $request->input('body');
+
         if ($request->hasfile('object_img')) {
             if ($object->object_img != 'no_photo.png') {
                 $destination = 'public/images/objects/'.$object->object_img;
@@ -130,11 +129,12 @@ class ObjectsController extends Controller
                 }
             }
             $file = $request->file('object_img');
-            $extention = $file->getClientOriginalExtension();
-            $filename = time().'.'.$extention;
-            Storage::put('public/images/objects/'.$filename, $file);
+            $img = ImageManagerStatic::make($file)->encode('jpg');
+            $filename = time() . '.jpg';
+            Storage::put('public/images/objects/'.$filename, $img);
             $object->object_img = $filename;
         }
+
         $object->update();
 
         return redirect()->route('objects');

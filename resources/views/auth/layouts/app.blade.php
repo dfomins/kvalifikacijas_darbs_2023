@@ -18,9 +18,6 @@
     <main>
         @yield('content')
     </main>
-    {{-- <footer>
-        asd
-    </footer> --}}
 </body>
 
 </html>
