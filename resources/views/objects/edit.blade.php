@@ -13,6 +13,7 @@
                         class="cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[20px] text-white duration-300 hover:bg-[#52ab98]">
                         <i class="fa-sharp fa-solid fa-arrow-left"></i> Atpakaļ
                     </button>
+                </a>
             </div>
             <div class="mb-[10px] flex justify-center text-white">
                 <h3 class="text-xl font-semibold text-black">Rediģēt objektu #{{ $object->id }}</h3>

@@ -49,9 +49,14 @@
                     </div>
                     <div class="my-[20px] mr-[20px] md:mt-0">
                         <h4 class="mb-[10px] text-[20px] font-bold">Informācija:</h4>
-                        <p class="break-words text-justify">{{ $object->body }}
+                        <p class="break-words text-justify">
+                            @if (!is_null($object->body))
+                                {{ $object->body }}
+                            @else
+                                Nav
+                            @endif
+                        </p>
                     </div>
-                    </p>
                 </div>
             </div>
         @endif
