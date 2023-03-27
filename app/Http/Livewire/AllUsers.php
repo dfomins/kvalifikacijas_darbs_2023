@@ -14,18 +14,6 @@ class AllUsers extends Component
 
     public $editIndex = null;
 
-    public $fname, $lname;
-
-    public function changeRole(User $user, $role_id)
-    {
-
-        Validator::make(['role_id' => $role_id], [
-            'role_id' => 'required|in:1,2,3',
-        ])->validate();
-
-        $user->update(['role_id' => $role_id]);
-    }
-
     public function remove($user_id)
     {
         $user = User::find($user_id);
@@ -37,7 +25,13 @@ class AllUsers extends Component
         $this->fname = $user->fname;
         $this->lname = $user->lname;
         $this->email = $user->email;
+        $this->role_id = $user->role_id;
         $this->editIndex = $user->id;
+    }
+
+    public function cancel()
+    {
+        $this->editIndex = null;
     }
 
     public function save(User $user)
@@ -47,19 +41,16 @@ class AllUsers extends Component
             'fname' => ['required', 'string', 'max:50'],
             'lname' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users,email,'.$user->id],
+            'role_id' => ['required', 'in:1,2,3'],
         ]);
 
         $user->update([
             'fname' => $this->fname,
             'lname' => $this->lname,
             'email' => $this->email,
+            'role_id' => $this->role_id,
         ]);
 
-        $this->editIndex = null;
-    }
-
-    public function cancel()
-    {
         $this->editIndex = null;
     }
 

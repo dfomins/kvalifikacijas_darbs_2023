@@ -181,6 +181,7 @@ return [
     'attributes' => [
         'email' => 'E-pasts',
         'password' => 'Parole',
+        'date_of_birth' => 'Dzimšanas diena',
         'old_password' => 'Vecā parole',
         'new_password' => 'Jaunā parole',
         'confirm_password' => 'Paroles apstiprināšana',

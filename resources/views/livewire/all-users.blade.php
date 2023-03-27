@@ -1,4 +1,4 @@
-<div>
+<div class="w-[1200px] overflow-y-auto max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90vw]">
     <div>
 
         @if ($errors->any())
@@ -10,8 +10,7 @@
             @endforeach
         @endif
 
-        <table
-            class="w-[1200px] table-fixed text-white max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%]">
+        <table class="w-[1200px] table-fixed text-white">
             <thead>
                 <tr class="color-3 h-[50px]">
                     <th class="w-[5%] border-r">ID</th>
@@ -24,9 +23,8 @@
             </thead>
         </table>
     </div>
-    <div class="max-h-[60vh] overflow-x-auto scrollbar-thin scrollbar-thumb-[#3c3e3a]">
-        <table
-            class="w-[1200px] table-fixed text-white max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%]">
+    <div class="min-lg:overflow-y-auto min-lg:scrollbar-thin min-lg:scrollbar-thumb-[#3c3e3a] max-h-[60vh]">
+        <table class="w-[1200px] table-fixed text-white">
             <tbody>
                 @foreach ($users as $user)
                     <tr class="color-1 h-[50px]">
@@ -34,7 +32,7 @@
                         <td class="w-[20%] border-t px-[10px]">
 
                             @if ($user->id == $editIndex)
-                                <input class="w-full px-[5px] text-black outline-0" type="text"
+                                <input class="w-full rounded-[2px] p-[5px] text-black outline-0" type="text"
                                     wire:model.defer="fname">
                             @else
                                 {{ $user->fname }}
@@ -44,7 +42,7 @@
                         <td class="w-[20%] border-t px-[10px]">
 
                             @if ($user->id == $editIndex)
-                                <input class="w-full px-[5px] text-black outline-0" type="text"
+                                <input class="w-full rounded-[2px] p-[5px] text-black outline-0" type="text"
                                     wire:model.defer="lname">
                             @else
                                 {{ $user->lname }}
@@ -54,7 +52,7 @@
                         <td class="w-[35%] border-t px-[10px]">
 
                             @if ($user->id == $editIndex)
-                                <input class="w-full px-[5px] text-black outline-0" type="text"
+                                <input class="w-full rounded-[2px] p-[5px] text-black outline-0" type="text"
                                     wire:model.defer="email">
                             @else
                                 {{ $user->email }}
@@ -64,8 +62,10 @@
                         <td class="border-t text-center text-black">
                             @if ($user->id == $editIndex)
                                 @if ($user->id != Auth::user()->id)
-                                    <select class="cursor-pointer outline-0"
-                                        wire:change="changeRole({{ $user->id }}, $event.target.value)">
+                                    {{-- <select class="cursor-pointer outline-0"
+                                        wire:change="changeRole({{ $user->id }}, $event.target.value)"> --}}
+                                    <select class="cursor-pointer rounded-[2px] p-[5px] outline-0"
+                                        wire:model.defer="role_id">
                                         <option value="1" {{ $user->role_id == '1' ? 'selected' : '' }}>Vadītājs
                                         </option>
                                         <option value="2" {{ $user->role_id == '2' ? 'selected' : '' }}>Brigadieris

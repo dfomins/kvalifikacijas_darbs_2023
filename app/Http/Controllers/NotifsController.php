@@ -38,10 +38,7 @@ class NotifsController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'title' => 'required|max:80',
-            'body' => 'required|max:1000',
-        ]);
+        $request->validate(Notif::$rules);
 
         $notif = new Notif;
         $notif->title = $request->input('title');
@@ -89,10 +86,7 @@ class NotifsController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validate([
-            'title' => 'required|max:80',
-            'body' => 'required|max:1000',
-        ]);
+        $request->validate(Notif::$rules);
 
         $notif = Notif::find($id);
         $notif->title = $request->input('title');

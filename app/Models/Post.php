@@ -13,7 +13,12 @@ class Post extends Model
 
     protected $fillable = [
         'title',
-        'body'
+        'body',
+    ];
+
+    public static $rules = [
+        'title' => 'required|max:80',
+        'body' => 'required|max:1000',
     ];
 
     public function user() {

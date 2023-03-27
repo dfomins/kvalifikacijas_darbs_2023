@@ -43,13 +43,7 @@ class ObjectsController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'title' => 'required|max: 80',
-            'city' => 'required|max: 50',
-            'street' => 'required|max: 50',
-            'body' => 'max:1000',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
+        $request->validate(WorkObject::$rules);
 
         $object = new WorkObject;
         $object->title = $request->input('title');
@@ -107,13 +101,7 @@ class ObjectsController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validate([
-            'title' => 'required|max: 80',
-            'city' => 'required|max: 50',
-            'street' => 'required|max: 50',
-            'body' => 'max:1000',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
+        $request->validate(WorkObject::$rules);
 
         $object = WorkObject::find($id);
         $object->title = $request->input('title');

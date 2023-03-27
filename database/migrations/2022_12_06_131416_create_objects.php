@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('objects', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->mediumText('city');
-            $table->mediumText('street');
-            $table->mediumText('body')->nullable();
+            $table->string('title', 80);
+            $table->mediumText('city', 50);
+            $table->mediumText('street', 50);
+            $table->mediumText('body', 1000)->nullable();
             $table->timestamps();
         });
     }

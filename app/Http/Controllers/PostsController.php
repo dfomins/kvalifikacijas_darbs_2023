@@ -44,10 +44,7 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required|max:80',
-            'body' => 'required|max:1000',
-        ]);
+        $request->validate(Post::$rules);
 
         $post = new Post;
         $post->title = $request->input('title');
@@ -98,10 +95,7 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
 
-        $request->validate([
-            'title' => 'required|max:80',
-            'body' => 'required|max:1000',
-        ]);
+        $request->validate(Post::$rules);
 
         $post = Post::find($id);
         $post->title = $request->input('title');

@@ -54,7 +54,7 @@
                     <div class="min-h-[220px] overflow-y-auto">
                         @if (count($recent_notifs) > 0)
                             @foreach ($recent_notifs as $notif)
-                                <li class="m-[10px] list-none rounded-[3px] bg-white p-[5px] text-[15px]">
+                                <li class="m-[10px] list-none rounded-[2px] bg-white p-[5px] text-[15px]">
                                     <div class="whitespace-nowrap">
                                         <a href="{{ route('notifications') }}/{{ $notif->id }}">
                                             <h3 class="truncate">{{ $notif->title }}</h3>
@@ -84,7 +84,7 @@
                     <div class="min-h-[220px] overflow-y-auto">
                         @if (count($recent_posts) > 0)
                             @foreach ($recent_posts as $post)
-                                <li class="m-[10px] list-none rounded-[3px] bg-white p-[5px] text-[15px]">
+                                <li class="m-[10px] list-none rounded-[2px] bg-white p-[5px] text-[15px]">
                                     <div class="whitespace-nowrap">
                                         <a href="{{ route('posts') }}/{{ $post->id }}">
                                             <h3 class="truncate">{{ $post->title }}</h3>
