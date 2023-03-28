@@ -10,16 +10,28 @@
             @endforeach
         @endif
 
-        <table class="w-[1200px] table-fixed text-white">
+        <table class="color-3 w-[1200px] table-fixed text-white">
             <thead>
-                <tr class="color-3 h-[50px]">
-                    <th class="w-[5%] border-r">ID</th>
-                    <th class="w-[20%] border-r">Vārds</th>
-                    <th class="w-[20%] border-r">Uzvārds</th>
+                <tr class="h-[50px]">
+                    <th rowspan="2" class="w-[5%] border-r">ID</th>
+                    <th class="w-[20%] border-r border-b">Vārds</th>
+                    <th class="w-[20%] border-r border-b">Uzvārds</th>
                     <th class="w-[25%] border-r">E-pasts</th>
-                    <th class="w-[10%] border-r">Objekti</th>
+                    <th rowspan="2" class="w-[10%] border-r">Objekti</th>
                     <th class="border-r">Loma</th>
-                    <th>Iestatījumi</th>
+                    <th rowspan="2">Iestatījumi</th>
+                </tr>
+                <tr class="h-[40px]">
+                    <th class="w-[20%] border-r"><input wire:model.debounce.400ms="fname_search"
+                            class="h-[30px] w-[230px] rounded-[3px] p-[5px] font-normal text-black outline-0"
+                            type="text" placeholder="Meklēt pēc vārda..."></th>
+                    <th class="w-[20%] border-r"><input wire:model.debounce.400ms="lname_search"
+                            class="h-[30px] w-[230px] rounded-[3px] p-[5px] font-normal text-black outline-0"
+                            type="text" placeholder="Meklēt pēc uzvārda..."></th>
+                    <th class="w-[20%] border-r"><input wire:model.debounce.400ms="lname_search"
+                            class="h-[30px] w-[290px] rounded-[3px] p-[5px] font-normal text-black outline-0"
+                            type="text" placeholder="Meklēt pēc e-pasta..."></th>
+                    <th><select name="" id=""></select></th>
                 </tr>
             </thead>
         </table>
@@ -144,12 +156,3 @@
         </table>
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $("#test").CreateMultiCheckBox({
-            width: '230px',
-            defaultText: 'Select Below',
-            height: '250px'
-        });
-    });
-</script>

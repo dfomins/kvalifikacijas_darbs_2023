@@ -74,11 +74,11 @@ Route::group(['middleware'=>['auth']], function(){
 });
 
 Route::group(['middleware'=>['isAdmin']], function(){
-    Route::get('darbs', 'App\Http\Controllers\WorkrecordsController@index')->name('work');
-    Route::get('darbs/jauns', 'App\Http\Controllers\WorkrecordsController@create');
-    Route::post('darbs', 'App\Http\Controllers\WorkrecordsController@store');
-    Route::get('darbs/{id}', 'App\Http\Controllers\WorkrecordsController@show');
-    Route::get('darbs/{id}/rediget', 'App\Http\Controllers\WorkrecordsController@edit');
-    Route::put('darbs/{id}', 'App\Http\Controllers\WorkrecordsController@update');
-    Route::delete('darbs/{id}', 'App\Http\Controllers\WorkrecordsController@destroy');
+    Route::get('darbs', 'App\Http\Controllers\WorkRecordsController@index')->name('work');
+    Route::get('darbs/jauns', 'App\Http\Controllers\WorkRecordsController@create');
+    Route::post('darbs', 'App\Http\Controllers\WorkRecordsController@store');
+    Route::get('darbs/{id}', 'App\Http\Controllers\WorkRecordsController@show');
+    Route::get('darbs/{id}/rediget', 'App\Http\Controllers\WorkRecordsController@edit');
+    Route::put('darbs/{id}', 'App\Http\Controllers\WorkRecordsController@update');
+    Route::delete('darbs/{id}', 'App\Http\Controllers\WorkRecordsController@destroy');
 });
