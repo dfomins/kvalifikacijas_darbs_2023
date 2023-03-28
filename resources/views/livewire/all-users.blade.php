@@ -16,7 +16,8 @@
                     <th class="w-[5%] border-r">ID</th>
                     <th class="w-[20%] border-r">Vārds</th>
                     <th class="w-[20%] border-r">Uzvārds</th>
-                    <th class="w-[35%] border-r">E-pasts</th>
+                    <th class="w-[25%] border-r">E-pasts</th>
+                    <th class="w-[10%] border-r">Objekti</th>
                     <th class="border-r">Loma</th>
                     <th>Iestatījumi</th>
                 </tr>
@@ -49,7 +50,7 @@
                             @endif
 
                         </td>
-                        <td class="w-[35%] border-t px-[10px]">
+                        <td class="w-[25%] border-t px-[10px]">
 
                             @if ($user->id == $editIndex)
                                 <input class="w-full rounded-[2px] p-[5px] text-black outline-0" type="text"
@@ -59,16 +60,41 @@
                             @endif
 
                         </td>
+
+                        <td class="w-[10%] border-t px-[10px]">
+                            @if ($user->id == $editIndex)
+                                @foreach ($user->objects as $list)
+                                    {{ $list->id }}{{ $loop->last ? '' : ',' }}
+                                @endforeach
+                                <div class="absolute bottom-5 right-4 rounded-[2px] border border-black p-[10px]">
+                                    <h3 class="mb-[5px] text-black">Izvēlieties objektus darbiniekam {{ $user->fname }}
+                                        {{ $user->lname }}</h3>
+                                    <div class="flex flex-col text-black">
+                                        @foreach ($objects as $object)
+                                            <div>
+                                                <input type="checkbox" name="objects" value="{{ $object->id }}"
+                                                    {{ in_array($object->id, $user->objects->pluck('id')->toArray()) ? 'checked' : '' }}>
+                                                <label>{{ $object->title }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                @foreach ($user->objects as $list)
+                                    {{ $list->id }}{{ $loop->last ? '' : ',' }}
+                                @endforeach
+                            @endif
+                        </td>
+
                         <td class="border-t text-center text-black">
                             @if ($user->id == $editIndex)
                                 @if ($user->id != Auth::user()->id)
-                                    {{-- <select class="cursor-pointer outline-0"
-                                        wire:change="changeRole({{ $user->id }}, $event.target.value)"> --}}
                                     <select class="cursor-pointer rounded-[2px] p-[5px] outline-0"
                                         wire:model.defer="role_id">
                                         <option value="1" {{ $user->role_id == '1' ? 'selected' : '' }}>Vadītājs
                                         </option>
-                                        <option value="2" {{ $user->role_id == '2' ? 'selected' : '' }}>Brigadieris
+                                        <option value="2" {{ $user->role_id == '2' ? 'selected' : '' }}>
+                                            Brigadieris
                                         </option>
                                         <option value="3" {{ $user->role_id == '3' ? 'selected' : '' }}>Darbinieks
                                         </option>
@@ -110,3 +136,12 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#test").CreateMultiCheckBox({
+            width: '230px',
+            defaultText: 'Select Below',
+            height: '250px'
+        });
+    });
+</script>
