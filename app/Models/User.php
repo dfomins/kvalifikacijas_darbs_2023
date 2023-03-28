@@ -56,10 +56,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Post');
     }
 
-    public function works() {
-        return $this->hasMany(Work::class, 'user_id', 'user_id');
-    }
-
     public function role() {
         return $this->hasOne(Role::class, 'id', 'role_id');
     }

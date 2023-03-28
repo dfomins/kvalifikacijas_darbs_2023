@@ -7,13 +7,16 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\WorkObject;
+use App\Models\ObjectToUser;
 
 use Validator;
 
 class AllUsers extends Component
 {
 
-    public $editIndex = null;
+    public $editIndex;
+    public $object_to_user = [0];
+    public $object;
 
     public function remove($user_id)
     {
@@ -27,6 +30,7 @@ class AllUsers extends Component
         $this->lname = $user->lname;
         $this->email = $user->email;
         $this->role_id = $user->role_id;
+        $this->object_to_user = $user->objects->pluck('id')->toArray();
         $this->editIndex = $user->id;
     }
 
@@ -51,6 +55,8 @@ class AllUsers extends Component
             'email' => $this->email,
             'role_id' => $this->role_id,
         ]);
+
+        $user->objects()->sync($this->object_to_user);
 
         $this->editIndex = null;
     }

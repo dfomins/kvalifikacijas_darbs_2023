@@ -63,26 +63,34 @@
 
                         <td class="w-[10%] border-t px-[10px]">
                             @if ($user->id == $editIndex)
-                                @foreach ($user->objects as $list)
-                                    {{ $list->id }}{{ $loop->last ? '' : ',' }}
-                                @endforeach
+                                @if (count($user->objects) == 0)
+                                    Nav
+                                @else
+                                    @foreach ($user->objects as $list)
+                                        {{ $list->id }}{{ $loop->last ? '' : ',' }}
+                                    @endforeach
+                                @endif
                                 <div class="absolute bottom-5 right-4 rounded-[2px] border border-black p-[10px]">
                                     <h3 class="mb-[5px] text-black">Izvēlieties objektus darbiniekam {{ $user->fname }}
                                         {{ $user->lname }}</h3>
                                     <div class="flex flex-col text-black">
                                         @foreach ($objects as $object)
                                             <div>
-                                                <input type="checkbox" name="objects" value="{{ $object->id }}"
-                                                    {{ in_array($object->id, $user->objects->pluck('id')->toArray()) ? 'checked' : '' }}>
-                                                <label>{{ $object->title }}</label>
+                                                <input class="cursor-pointer" wire:model.defer="object_to_user"
+                                                    type="checkbox" name="objects" value="{{ $object->id }}">
+                                                <label>{{ $object->id }}. {{ $object->title }}</label>
                                             </div>
                                         @endforeach
                                     </div>
                                 </div>
                             @else
-                                @foreach ($user->objects as $list)
-                                    {{ $list->id }}{{ $loop->last ? '' : ',' }}
-                                @endforeach
+                                @if (count($user->objects) == 0)
+                                    Nav
+                                @else
+                                    @foreach ($user->objects as $list)
+                                        {{ $list->id }}{{ $loop->last ? '' : ',' }}
+                                    @endforeach
+                                @endif
                             @endif
                         </td>
 
