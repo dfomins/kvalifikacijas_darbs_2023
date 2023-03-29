@@ -1,37 +1,40 @@
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <div class="mb-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
+            <i class="fa-solid fa-triangle-exclamation"></i> {{ $error }} <button
+                onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
+        </div>
+    @endforeach
+@endif
+
+{{-- <div class="flex justify-end max-md:flex-col max-md:items-end">
+    <input
+        class="mb-[10px] h-[40px] w-[300px] rounded-[3px] border border-black p-[5px] text-black outline-0 max-[420px]:w-full"
+        type="search" placeholder="Meklēt...">
+</div> --}}
+
 <div class="w-[1200px] overflow-y-auto max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90vw]">
     <div>
-
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div class="mb-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                    <i class="fa-solid fa-triangle-exclamation"></i> {{ $error }} <button
-                        onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                </div>
-            @endforeach
-        @endif
-
         <table class="color-3 w-[1200px] table-fixed text-white">
             <thead>
-                <tr class="h-[50px]">
+                <tr class="h-[40px]">
                     <th rowspan="2" class="w-[5%] border-r">ID</th>
-                    <th class="w-[20%] border-r border-b">Vārds</th>
-                    <th class="w-[20%] border-r border-b">Uzvārds</th>
-                    <th class="w-[25%] border-r">E-pasts</th>
+                    <th rowspan="2" class="w-[20%] border-r border-b">Vārds</th>
+                    <th rowspan="2" class="w-[20%] border-r border-b">Uzvārds</th>
+                    <th rowspan="2" class="w-[25%] border-r border-b">E-pasts</th>
                     <th rowspan="2" class="w-[10%] border-r">Objekti</th>
-                    <th class="border-r">Loma</th>
+                    <th class="border-r border-b">Loma</th>
                     <th rowspan="2">Iestatījumi</th>
                 </tr>
                 <tr class="h-[40px]">
-                    <th class="w-[20%] border-r"><input wire:model.debounce.400ms="fname_search"
-                            class="h-[30px] w-[230px] rounded-[3px] p-[5px] font-normal text-black outline-0"
-                            type="text" placeholder="Meklēt pēc vārda..."></th>
-                    <th class="w-[20%] border-r"><input wire:model.debounce.400ms="lname_search"
-                            class="h-[30px] w-[230px] rounded-[3px] p-[5px] font-normal text-black outline-0"
-                            type="text" placeholder="Meklēt pēc uzvārda..."></th>
-                    <th class="w-[20%] border-r"><input wire:model.debounce.400ms="lname_search"
-                            class="h-[30px] w-[290px] rounded-[3px] p-[5px] font-normal text-black outline-0"
-                            type="text" placeholder="Meklēt pēc e-pasta..."></th>
-                    <th><select name="" id=""></select></th>
+                    <th class="border-r">
+                        <select class="cursor-pointer rounded-[3px] p-[2px] font-normal text-black outline-0">
+                            <option value="0" selected>Bez filtra</option>
+                            <option value="1">Vadītājs</option>
+                            <option value="2">Brigadieris</option>
+                            <option value="3">Darbinieks</option>
+                        </select>
+                    </th>
                 </tr>
             </thead>
         </table>
