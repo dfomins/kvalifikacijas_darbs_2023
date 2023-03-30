@@ -10,46 +10,25 @@
                             onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
                     </div>
                 @endif
-                @error('personal_code')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('date_of_birth')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('city')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('street')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
-                @error('house_number')
-                    <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-triangle-exclamation"></i> {{ $message }} <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @enderror
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
+                            <i class="fa-solid fa-triangle-exclamation"></i> {{ $error }} <button
+                                onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
+                        </div>
+                    @endforeach
+                @endif
                 <label class="pt-[15px] text-white" for="personal_code">Personas kods</label>
                 <input
                     class="my-[5px] rounded-[3px] border border-solid border-black p-[10px] text-[18px] text-black outline-0"
                     wire:model.defer="personal_code" type="text" name="personal_code">
             </div>
-            <div class="flex flex-col">
+            <div class="">
                 <label class="pt-[15px] text-white" for="date_of_birth">Dzimšanas datums</label>
-                <input
-                    class="my-[5px] rounded-[3px] border border-solid border-black p-[10px] text-[18px] text-black outline-0"
-                    wire:model.defer="date_of_birth" type="date" name="date_of_birth">
+                {{-- <input
+                    class="my-[5px] cursor-pointer rounded-[3px] border border-solid border-black p-[10px] text-[18px] text-black outline-0"
+                    wire:model.defer="date_of_birth" type="date" name="date_of_birth"> --}}
+                {{-- <input datepicker wire:model.defer="date_of_birth" type="text"> --}}
             </div>
             <div class="flex flex-col">
                 <label class="pt-[15px] text-white" for="city">Pilsēta</label>

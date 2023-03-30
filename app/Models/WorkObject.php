@@ -26,4 +26,11 @@ class WorkObject extends Model
         'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ];
 
+
+    // !!!
+
+    // public function objecttouser() {
+    //     return $this->hasMany(ObjectToUser::class, 'id', 'object_id');
+    // }
+
 }

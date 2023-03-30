@@ -11,8 +11,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/ee191d4cc6.js" crossorigin="anonymous"></script>
-    {{-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> --}}
-    @vite('resources/css/app.css')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/datepicker.min.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
     @livewireStyles
     @livewireScripts
@@ -20,7 +20,7 @@
 
 <body class="font-poppins">
     <nav
-        class="relative flex h-20 select-none items-center justify-between bg-white py-[1%] px-[4%] font-bold uppercase shadow-[0_2px_4px_0_rgba(0,0,0,.1)]">
+        class="flex h-20 select-none items-center justify-between bg-white py-[1%] px-[4%] font-bold uppercase shadow-[0_2px_4px_0_rgba(0,0,0,.1)]">
         <a href="{{ route('profile') }}"><img src="/img/logo/logo.png" alt="Logo"
                 class="block max-h-[75px] w-auto" /></a>
         <div

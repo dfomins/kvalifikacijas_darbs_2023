@@ -16,6 +16,16 @@ class Post extends Model
         'body',
     ];
 
+    protected $hidden = [
+        'title',
+        'body'
+    ];
+
+    protected $casts = [
+        'title' => 'encrypted',
+        'body' => 'encrypted',
+    ];
+
     public static $rules = [
         'title' => 'required|max:80',
         'body' => 'required|max:1000',

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('notifs', function (Blueprint $table) {
             $table->id();
-            $table->string('title', 80);
-            $table->mediumText('body', 1000);
+            $table->text('title');
+            $table->text('body');
             $table->integer('user_id');
             $table->timestamps();
         });

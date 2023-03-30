@@ -8,6 +8,8 @@ use App\Models\WorkObject;
 
 use Intervention\Image\ImageManagerStatic;
 
+use App\Models\User;
+
 use Storage;
 
 class ObjectsController extends Controller
@@ -19,7 +21,6 @@ class ObjectsController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
         $objects = WorkObject::orderBy('created_at', 'asc')->get();
         return view('objects.index')->with('objects', $objects);
     }
@@ -72,8 +73,9 @@ class ObjectsController extends Controller
      */
     public function show($id)
     {
+        $users = User::all();
         $object = WorkObject::find($id);
-        return view('objects.show')->with('object', $object);
+        return view('objects.show')->with(['object' => $object, 'users' => $users]);
     }
 
     /**

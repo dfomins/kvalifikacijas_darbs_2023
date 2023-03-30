@@ -17,8 +17,13 @@
                 <div class="inline-block w-full overflow-hidden">
                     <h1 class="break-all text-[20px]"">{{ $notif->title }}</h1>
                     <p class="truncate text-[15px]">{{ $notif->created_at->format('d-m-Y | H:i') }} ||
-                        {{ $notif->user->fname }}
-                        {{ $notif->user->lname }}</p>
+                        @if ($notif->user != null)
+                            {{ $notif->user->fname }}
+                            {{ $notif->user->lname }}
+                        @else
+                            Dzēsts lietotājs
+                        @endif
+                    </p>
                 </div>
                 @if (Auth::user()->role_id == 1)
                     <div class="flex cursor-pointer items-center justify-center">
