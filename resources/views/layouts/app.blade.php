@@ -7,12 +7,11 @@
     <link rel="icon" type="image/x-icon" href="storage/images/logo/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/ee191d4cc6.js" crossorigin="anonymous"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <script src="https://kit.fontawesome.com/ee191d4cc6.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/datepicker.min.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite('resources/css/app.css')
     <title>{{ config('app.name', 'Laravel') }} - @yield('title')</title>
     @livewireStyles
     @livewireScripts
@@ -86,15 +85,7 @@
             </div>
         </div>
     </footer>
-    <script>
-        document.querySelector(".close-menu").addEventListener("click", () => {
-            document.querySelector(".navLinks").style.right = "-200px";
-        })
-
-        document.querySelector(".open-menu").addEventListener("click", () => {
-            document.querySelector(".navLinks").style.right = "0px";
-        })
-    </script>
+    <script src="/js/side-navbar.js"></script>
 </body>
 
 </html>

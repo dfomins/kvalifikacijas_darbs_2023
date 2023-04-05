@@ -22,7 +22,6 @@ class Notif extends Model
     ];
 
     protected $casts = [
-        'title' => 'encrypted',
         'body' => 'encrypted',
     ];
 

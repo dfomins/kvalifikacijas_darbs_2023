@@ -10,13 +10,13 @@ use App\Models\WorkObject;
 use App\Models\ObjectToUser;
 
 use Validator;
+use DB;
 
 class AllUsers extends Component
 {
 
     public $editIndex;
-    public $object_to_user = [0];
-    public $object;
+    public $search;
 
     public function remove($user_id)
     {
@@ -63,8 +63,16 @@ class AllUsers extends Component
 
     public function render()
     {
-        $users = User::all();
         $objects = WorkObject::all();
-        return view('livewire.all-users')->with(['users' => $users, 'objects' => $objects]);
+        return view('livewire.all-users')->with([
+
+            'users' => User::when($this->search, function($query, $search){
+                return $query->where('fname', 'LIKE', "%$search%")
+                ->orWhere('lname', 'LIKE', "%$search%")
+                ->orWhere(DB::raw("CONCAT(`fname`, ' ', `lname`)"), 'LIKE', "%$search%")
+                ->orWhere('email', 'LIKE', "%$search%");
+            })->get(),
+            'objects' => $objects
+        ]);
     }
 }

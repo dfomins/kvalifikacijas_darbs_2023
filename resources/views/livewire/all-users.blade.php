@@ -10,13 +10,13 @@
     @endif
 
     <div class="flex justify-end max-md:flex-col max-md:items-end">
-        <input
+        <input wire:model.debounce.400ms="search"
             class="mb-[10px] h-[40px] w-[300px] rounded-[3px] border border-black p-[5px] text-black outline-0 max-[420px]:w-full"
             type="search" placeholder="Meklēt...">
     </div>
 
     <div
-        class="w-[1200px] overflow-y-auto shadow-md max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90vw]">
+        class="w-[1200px] shadow-md scrollbar-thin scrollbar-thumb-[#3c3e3a] max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90vw]">
         <div>
             <table class="color-3 w-[1200px] table-fixed text-white">
                 <thead>
@@ -42,7 +42,7 @@
                 </thead>
             </table>
         </div>
-        <div class="min-lg:overflow-y-auto min-lg:scrollbar-thin min-lg:scrollbar-thumb-[#3c3e3a] max-h-[60vh]">
+        <div class="max-h-[60vh]">
             <table class="w-[1200px] table-fixed text-white">
                 <tbody>
                     @foreach ($users as $user)

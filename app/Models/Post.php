@@ -17,12 +17,11 @@ class Post extends Model
     ];
 
     protected $hidden = [
-        'title',
+        // 'title',
         'body'
     ];
 
     protected $casts = [
-        'title' => 'encrypted',
         'body' => 'encrypted',
     ];
 

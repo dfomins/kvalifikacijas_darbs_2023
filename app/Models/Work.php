@@ -10,13 +10,20 @@ class Work extends Model
 {
     protected $table = 'work';
     public $primaryKey = 'id';
+    // public $timestamps = false;
 
-    // protected $fillable = [
-    //     'work_date',
-    // ];
+    protected $fillable = [
+        'user_id',
+        'work_date',
+        'hours',
+    ];
 
     // public function setWorkDateAttribute($value) {
     //     $this->attributes['work_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     // }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 
 }

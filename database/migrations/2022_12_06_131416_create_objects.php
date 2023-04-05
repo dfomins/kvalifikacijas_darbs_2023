@@ -19,6 +19,7 @@ return new class extends Migration
             $table->mediumText('city', 50);
             $table->mediumText('street', 50);
             $table->mediumText('body', 1000)->nullable();
+            $table->string('object_img')->default('no_photo.png');
             $table->timestamps();
         });
     }

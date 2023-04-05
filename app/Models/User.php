@@ -62,9 +62,14 @@ class User extends Authenticatable
         return $this->belongsToMany(WorkObject::class, 'object_to_user_relation', 'user_id', 'object_id');
     }
 
+    public function work() {
+        return $this->hasMany(Work::class, 'user_id', 'id');
+    }
+
     public function getPictureAttribute($profila_bilde) {
         if (empty($profila_bilde)) {
             return asset('img/users/default.jpg');
         }
     }
+
 }

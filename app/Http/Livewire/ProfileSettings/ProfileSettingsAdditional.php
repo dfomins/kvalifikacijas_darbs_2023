@@ -6,6 +6,13 @@ use Livewire\Component;
 
 class ProfileSettingsAdditional extends Component
 {
+
+    protected $listeners = ['setBirthDate'];
+
+    public function setBirthDate($data){
+        $this->date_of_birth = $data;
+    }
+
     public function update_profile_additional()
     {
 
@@ -18,6 +25,8 @@ class ProfileSettingsAdditional extends Component
             'street' => 'max:50',
             'house_number' => 'max:10',
         ]);
+
+        dd($this->date_of_birth);
 
         $user->update([
             'personal_code' => $this->personal_code,
