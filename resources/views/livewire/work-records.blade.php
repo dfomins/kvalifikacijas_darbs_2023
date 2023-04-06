@@ -1,5 +1,5 @@
 <div>
-    <input wire:model="date" id="date" type="date">
+    <input wire:model="date" {{ $editIndex != null ? 'disabled' : '' }} id="date" type="date">
     {{ $this->date }}
     <table class="mx-auto">
         <tr>

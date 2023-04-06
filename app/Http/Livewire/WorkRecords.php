@@ -11,7 +11,7 @@ use App\Models\Work;
 
 class WorkRecords extends Component
 {
-    public $editIndex;
+    public $editIndex = null;
 
     public function edit($user)
     {
@@ -31,8 +31,9 @@ class WorkRecords extends Component
 
     public function save($user)
     {
+        $work = Work::find($user['work_id']);
+
         if ($this->hours == null) {
-            $work = Work::find($user['work_id']);
             if ($work) {
                 $work->delete();
                 $this->editIndex = null;
@@ -40,7 +41,6 @@ class WorkRecords extends Component
                 $this->editIndex = null;
             }
         } else {
-            $work = Work::find($user['work_id']);
             if (!$work) {
                 Work::create([
                     'user_id' => $user['id'],
@@ -49,6 +49,9 @@ class WorkRecords extends Component
                 ]);
                 $this->editIndex = null;
             } else {
+                $work->update([
+                    'hours' => $this->hours,
+                ]);
                 $this->editIndex = null;
             }
         }

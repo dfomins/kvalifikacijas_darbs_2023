@@ -42,7 +42,11 @@
                     </div>
                     <div class="flex h-[230px] flex-col items-center justify-center text-[5.5vw] text-white sm:text-[25px]">
                         <p>Statuss:</p>
-                        </p>Nostrādātās stundas:</p>
+                        </p>Nostrādātās stundas:
+                        @foreach ($work as $list)
+                            {{ $list->hours }}
+                        @endforeach
+                        </p>
                     </div>
                 </div>
                 <div
