@@ -9,21 +9,25 @@ use Carbon\Carbon;
 class Work extends Model
 {
     protected $table = 'work';
-    public $primaryKey = 'id';
+    public $primaryKey = 'work_id';
     // public $timestamps = false;
 
     protected $fillable = [
         'user_id',
-        'work_date',
+        'date',
         'hours',
     ];
+
+    // protected $dates = [
+    //     'work_date',
+    // ];
 
     // public function setWorkDateAttribute($value) {
     //     $this->attributes['work_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     // }
 
-    public function user() {
-        return $this->belongsTo(User::class);
+    public function users() {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 }

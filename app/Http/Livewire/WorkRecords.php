@@ -5,33 +5,61 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 
 use Carbon\Carbon;
-use DB;
 
 use App\Models\User;
 use App\Models\Work;
 
 class WorkRecords extends Component
 {
+    public $editIndex;
 
-    public $editIndex = 0;
-
-    public function edit(User $user)
+    public function edit($user)
     {
-        $editIndex = 1;
-        dd($user->work);
-        // $this->hours = $user->work->pluck('id')->where('work_date', $this->work_date);
+        $this->hours = $user['hours'];
+        $this->editIndex = $user['id'];
     }
 
     public function mount()
     {
-        $this->work_date = Carbon::today()->toDateString();
+        $this->date = Carbon::today()->toDateString();
+    }
+
+    public function cancel()
+    {
+        $this->editIndex = null;
+    }
+
+    public function save($user)
+    {
+        if ($this->hours == null) {
+            $work = Work::find($user['work_id']);
+            if ($work) {
+                $work->delete();
+                $this->editIndex = null;
+            } else {
+                $this->editIndex = null;
+            }
+        } else {
+            $work = Work::find($user['work_id']);
+            if (!$work) {
+                Work::create([
+                    'user_id' => $user['id'],
+                    'date' => $this->date,
+                    'hours' => $this->hours,
+                ]);
+                $this->editIndex = null;
+            } else {
+                $this->editIndex = null;
+            }
+        }
     }
 
     public function render()
     {
-        $users = User::All();
-        $work = Work::All();
+        $users = User::leftJoin('work', function($join) {
+            $join->on('work.user_id', '=', 'users.id')->whereDate('date', $this->date);
+        })->get();
 
-        return view('livewire.work-records')->with(['users' => $users, 'work' => $work]);
+        return view('livewire.work-records')->with(['users' => $users]);
     }
 }
