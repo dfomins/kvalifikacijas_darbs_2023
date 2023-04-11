@@ -10,10 +10,10 @@
             <h2 class="mb-[50px] text-center text-[25px] font-semibold tracking-wide">Paziņojumi</h2>
             @livewire('show-notifs')
             @if (Auth::user()->role_id == 1)
-                <div class="text-center">
+                <div class="flex justify-center">
                     <a href="{{ route('notifications') }}/jauns"><button
-                            class="cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[15px] text-white duration-300 hover:bg-[#52ab98]">Izveidot
-                            jaunu</button>
+                            class="group flex h-[50px] w-[50px] cursor-pointer items-center justify-center rounded-full bg-[#2b6777] text-white duration-300 hover:bg-[#52ab98]"><i
+                                class="fa-solid fa-plus text-[20px] duration-300 group-hover:rotate-90"></i></button>
                     </a>
                 </div>
             @endif

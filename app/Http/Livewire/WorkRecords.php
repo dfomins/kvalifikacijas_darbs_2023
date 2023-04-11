@@ -34,6 +34,7 @@ class WorkRecords extends Component
         $work = Work::find($user['work_id']);
 
         $this->validate([
+            'date' => ['required', 'before:tomorrow'],
             'hours' => ['in:1,2,3,4,5,6,7,8'],
         ]);
 

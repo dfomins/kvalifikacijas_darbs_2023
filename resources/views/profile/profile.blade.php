@@ -20,13 +20,14 @@
                             src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                     </div>
                     <div class="text-center text-[18px] leading-[3]">
-                        <a href="{{ route('edit_profile') }}">Profila iestatījumi</a>
+                        <a class="group" href="{{ route('edit_profile') }}">Profila iestatījumi <i
+                                class="fa-solid fa-gear duration-300 group-hover:rotate-45"></i></a>
                         @if (Auth::user()->role_id == 1)
                             <a href="registracija">
-                                <p>Izveidot jaunu lietotāju</p>
+                                <p>Izveidot jaunu lietotāju <i class="fa-solid fa-user-plus"></i></p>
                             </a>
                             <a href="{{ route('allusers') }}">
-                                <p>Visi lietotāji</p>
+                                <p>Visi lietotāji <i class="fa-solid fa-users"></i></p>
                             </a>
                         @endif
                     </div>

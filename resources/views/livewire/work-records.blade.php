@@ -1,6 +1,7 @@
 <div>
     <input class="mb-[10px] h-[40px] w-[200px] border p-[5px]" wire:model="date"
-        {{ $editIndex != null ? 'disabled' : '' }} id="date" type="date">
+        {{ $editIndex != null ? 'disabled' : '' }} name="setTodaysDate" type="date">
+    {{-- <input type="text" id="datepicker"> --}}
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="mb-[10px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
@@ -48,4 +49,10 @@
             @endforeach
         </table>
     </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementsByName("setTodaysDate")[0].setAttribute('max', today);
+        }
+    </script>
 </div>

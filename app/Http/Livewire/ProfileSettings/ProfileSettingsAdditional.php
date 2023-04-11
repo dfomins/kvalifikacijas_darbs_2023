@@ -26,8 +26,6 @@ class ProfileSettingsAdditional extends Component
             'house_number' => 'max:10',
         ]);
 
-        dd($this->date_of_birth);
-
         $user->update([
             'personal_code' => $this->personal_code,
             'date_of_birth' => $this->date_of_birth,

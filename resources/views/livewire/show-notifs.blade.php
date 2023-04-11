@@ -1,14 +1,16 @@
 <div class="mb-[20px]">
     <div class="flex justify-end max-md:flex-col max-md:items-end">
-        <div class="mb-[10px] flex items-center justify-end max-[420px]:w-full">
-            <p class="mr-[10px] max-[420px]:hidden">Kārtot pēc:</p>
-            <select
-                class="h-[40px] w-[200px] cursor-pointer appearance-none rounded-[3px] border border-black bg-[url('https://www.svgrepo.com/show/80156/down-arrow.svg')] bg-[length:12px_12px] bg-[calc(100%-10px)] bg-no-repeat px-[5px] !text-[15px] outline-0 max-[420px]:w-full md:mr-[10px]"
-                wire:model="sort">
-                <option value="desc">Jaunākie</option>
-                <option value="asc">Vecākie</option>
-            </select>
-        </div>
+        @if (count($notifs) > 1)
+            <div class="mb-[10px] flex items-center justify-end max-[420px]:w-full">
+                <p class="mr-[10px] max-[420px]:hidden">Kārtot pēc:</p>
+                <select
+                    class="h-[40px] w-[200px] cursor-pointer appearance-none rounded-[3px] border border-black bg-[url('https://www.svgrepo.com/show/80156/down-arrow.svg')] bg-[length:12px_12px] bg-[calc(100%-10px)] bg-no-repeat px-[5px] !text-[15px] outline-0 max-[420px]:w-full md:mr-[10px]"
+                    wire:model="sort">
+                    <option value="desc">Jaunākie</option>
+                    <option value="asc">Vecākie</option>
+                </select>
+            </div>
+        @endif
         <input wire:model.debounce.400ms="search"
             class="mb-[10px] h-[40px] w-[300px] rounded-[3px] border border-black p-[5px] text-black outline-0 max-[420px]:w-full"
             type="search" placeholder="Meklēt pēc nosaukuma...">
