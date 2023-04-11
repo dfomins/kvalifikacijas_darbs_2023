@@ -15,8 +15,6 @@ class ShowNotifs extends Component
 
     public function render()
     {
-        // $notifs = Notif::orderBy('created_at', 'desc')->get();
-
         return view('livewire.show-notifs', [
             'notifs' => Notif::when($this->search, function($query, $search){
                 return $query->where('title', 'LIKE', "%$search%");

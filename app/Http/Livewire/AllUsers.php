@@ -65,7 +65,8 @@ class AllUsers extends Component
     {
         return view('livewire.all-users')->with([
             'users' => User::when($this->search, function($query, $search){
-                return $query->where('fname', 'LIKE', "%$search%")
+                return $query->where('id', 'LIKE', "$search")
+                ->orWhere('fname', 'LIKE', "%$search%")
                 ->orWhere('lname', 'LIKE', "%$search%")
                 ->orWhere(DB::raw("CONCAT(`fname`, ' ', `lname`)"), 'LIKE', "%$search%")
                 ->orWhere('email', 'LIKE', "%$search%");

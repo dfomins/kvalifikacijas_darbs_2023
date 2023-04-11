@@ -4,6 +4,8 @@ namespace App\Http\Livewire\ProfileSettings;
 
 use Livewire\Component;
 
+use RealRashid\SweetAlert\Facades\Alert;
+
 class ProfileSettingsBase extends Component
 {
     public function update_profile_base()

@@ -33,6 +33,10 @@ class WorkRecords extends Component
     {
         $work = Work::find($user['work_id']);
 
+        $this->validate([
+            'hours' => ['in:1,2,3,4,5,6,7,8'],
+        ]);
+
         if ($this->hours == null) {
             if ($work) {
                 $work->delete();

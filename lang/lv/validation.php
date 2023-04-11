@@ -192,6 +192,7 @@ return [
         'street' => 'Iela',
         'fname' => 'Vārds',
         'lname' => 'Uzvārds',
+        'hours' => 'Stundas',
     ],
 
 ];

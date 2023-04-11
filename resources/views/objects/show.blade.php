@@ -26,7 +26,7 @@
                             'method' => 'DELETE',
                             'class' => 'btn',
                         ]) !!}
-                        {{ Form::button('<i class="fa-solid fa-trash fa-xl ml-[15px]"></i>', ['type' => 'submit']) }}
+                        <button class="delete" type="button"><i class="fa-solid fa-trash fa-xl ml-[15px]"></i></button>
                         {!! Form::close() !!}
                     </div>
                 </div>
@@ -45,7 +45,6 @@
                             </h4>
                             <h4 class="mb-[5px] text-[20px]"><strong>Iela:</strong> {{ $object->street }}</h4>
                             <h4 class="mb-[5px] text-[20px]">
-                                {{-- <strong>Brigadieris:</strong>{{ dd($object->objecttouser) }} --}}
                             </h4>
                         </div>
                     </div>
@@ -63,4 +62,20 @@
             </div>
         @endif
     </div>
+    <script>
+        $(document).on('click', 'button.delete', function() {
+            Swal.fire({
+                title: 'Dzēst objektu?',
+                showCancelButton: true,
+                confirmButtonColor: '#2b6777',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Atcelt',
+                confirmButtonText: 'Dzēst'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                }
+            });
+        });
+    </script>
 @endsection
