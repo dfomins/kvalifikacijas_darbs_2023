@@ -19,7 +19,7 @@ class ShowPosts extends Component
         $user = User::find($user_id);
 
         return view('livewire.show-posts', [
-            'posts' => Post::when($this->search, function($query, $search){
+            'posts' => Post::where('user_id', auth()->id())->when($this->search, function($query, $search){
                 return $query->where('title', 'LIKE', "%$search%");
             })->orderBy('created_at', $this->sort)->get()
         ]);

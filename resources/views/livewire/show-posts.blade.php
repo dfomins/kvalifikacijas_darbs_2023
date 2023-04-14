@@ -19,24 +19,29 @@
         <ol>
             @if (count($posts) > 0)
                 @foreach ($posts as $post)
-                    @if ($loop->last)
-                        <a class="text-white" href="{{ route('posts') }}/{{ $post->id }}">
-                            <li class="flex w-full bg-[#2b6777] p-[10px] duration-300 hover:bg-[#2b6777ef]">
-                                <div>
-                                    <h3>{{ $post->title }}</h3>
-                                    <p>Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
-                                </div>
-                            </li>
-                        </a>
-                    @else
-                        <a class="text-white" href="{{ route('posts') }}/{{ $post->id }}">
-                            <li class="mb-[10px] flex w-full bg-[#2b6777] p-[10px] duration-300 hover:bg-[#2b6777ef]">
-                                <div>
-                                    <h3>{{ $post->title }}</h3>
-                                    <p>Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
-                                </div>
-                            </li>
-                        </a>
+                    @can('view', $post)
+                        @if ($loop->last)
+                            <a class="text-white" href="{{ route('posts') }}/{{ $post->id }}">
+                                <li class="flex w-full bg-[#2b6777] p-[10px] duration-300 hover:bg-[#2b6777ef]">
+                                    <div>
+                                        <h3>{{ $post->title }}</h3>
+                                        <p>Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
+                                    </div>
+                                </li>
+                            </a>
+                        @else
+                            <a class="text-white" href="{{ route('posts') }}/{{ $post->id }}">
+                                <li class="mb-[10px] flex w-full bg-[#2b6777] p-[10px] duration-300 hover:bg-[#2b6777ef]">
+                                    <div>
+                                        <h3>{{ $post->title }}</h3>
+                                        <p>Izveidota: {{ $post->created_at->format('d-m-Y') }}</p>
+                                    </div>
+                                </li>
+                            </a>
+                        @endif
+                    @endcan
+                    @if (count($posts) == 0)
+                        <p class="text-center text-black">Piezīmju nav</p>
                     @endif
                 @endforeach
             @else

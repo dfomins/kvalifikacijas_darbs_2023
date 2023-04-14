@@ -27,10 +27,13 @@ Auth::routes(['login' => false, 'register' => false, 'logout' => false]);
 Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm');
 Route::post('/', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 
-Route::group(['middleware'=>['isAdmin']], function() {
-    Route::get('registracija', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm');
-    Route::post('registracija', 'App\Http\Controllers\Auth\RegisterController@register')->name('register');
+Route::middleware(['isAdmin'])->group(function() {
+
+    Route::post('registracija', [RegisterController::class, 'register'])->name('register');
+    Route::get('registracija', [RegisterController::class, 'showRegistrationForm']);
     Route::get('lietotaji', [AllUsersController::class, 'index'])->name('allusers');
+    Route::get('atskaites', [WorkRecordsController::class, 'index'])->name('work');
+
 });
 
 Route::group(['middleware'=>['auth']], function(){
@@ -43,42 +46,34 @@ Route::group(['middleware'=>['auth']], function(){
     Route::post('profila_iestatijumi', [ProfileController::class, 'update_profile'])->name('update_profile');
 });
 
+// Route::resource('piezimes', 'PostsController')->name('posts');
+
 Route::group(['middleware'=>['auth']], function(){
-    Route::get('piezimes', 'App\Http\Controllers\PostsController@index')->name('posts');
-    Route::get('piezimes/jauns', 'App\Http\Controllers\PostsController@create');
-    Route::post('piezimes', 'App\Http\Controllers\PostsController@store');
-    Route::get('piezimes/{id}', 'App\Http\Controllers\PostsController@show');
-    Route::get('piezimes/{id}/rediget', 'App\Http\Controllers\PostsController@edit');
-    Route::put('piezimes/{id}', 'App\Http\Controllers\PostsController@update');
-    Route::delete('piezimes/{id}', 'App\Http\Controllers\PostsController@destroy');
+    Route::get('piezimes', [PostsController::class, 'index'])->name('posts');
+    Route::get('piezimes/jauns', [PostsController::class, 'create']);
+    Route::post('piezimes', [PostsController::class, 'store']);
+    Route::get('piezimes/{id}', [PostsController::class, 'show']);
+    Route::get('piezimes/{id}/rediget', [PostsController::class, 'edit']);
+    Route::put('piezimes/{id}', [PostsController::class, 'update']);
+    Route::delete('piezimes/{id}', [PostsController::class, 'destroy']);
 });
 
 Route::group(['middleware'=>['auth']], function(){
-    Route::get('objekti', 'App\Http\Controllers\ObjectsController@index')->name('objects');
-    Route::get('objekti/jauns', 'App\Http\Controllers\ObjectsController@create')->middleware('isAdmin');
-    Route::post('objekti', 'App\Http\Controllers\ObjectsController@store')->middleware('isAdmin');
-    Route::get('objekti/{id}', 'App\Http\Controllers\ObjectsController@show');
-    Route::get('objekti/{id}/rediget', 'App\Http\Controllers\ObjectsController@edit')->middleware('isAdmin');
-    Route::put('objekti/{id}', 'App\Http\Controllers\ObjectsController@update')->middleware('isAdmin');
-    Route::delete('objekti/{id}', 'App\Http\Controllers\ObjectsController@destroy')->middleware('isAdmin');
+    Route::get('objekti', [ObjectsController::class, 'index'])->name('objects');
+    Route::get('objekti/jauns', [ObjectsController::class, 'create']);
+    Route::post('objekti', [ObjectsController::class, 'store']);
+    Route::get('objekti/{id}', [ObjectsController::class, 'show']);
+    Route::get('objekti/{id}/rediget', [ObjectsController::class, 'edit']);
+    Route::put('objekti/{id}', [ObjectsController::class, 'update']);
+    Route::delete('objekti/{id}', [ObjectsController::class, 'destroy']);
 });
 
 Route::group(['middleware'=>['auth']], function(){
     Route::get('pazinojumi', 'App\Http\Controllers\NotifsController@index')->name('notifications');
-    Route::get('pazinojumi/jauns', 'App\Http\Controllers\NotifsController@create')->middleware('isAdmin');
-    Route::post('pazinojumi', 'App\Http\Controllers\NotifsController@store')->middleware('isAdmin');
+    Route::get('pazinojumi/jauns', 'App\Http\Controllers\NotifsController@create');
+    Route::post('pazinojumi', 'App\Http\Controllers\NotifsController@store');
     Route::get('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@show');
-    Route::get('pazinojumi/{id}/rediget', 'App\Http\Controllers\NotifsController@edit')->middleware('isAdmin');
-    Route::put('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@update')->middleware('isAdmin');
-    Route::delete('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@destroy')->middleware('isAdmin');
-});
-
-Route::group(['middleware'=>['isAdmin']], function(){
-    Route::get('darbs', 'App\Http\Controllers\WorkRecordsController@index')->name('work');
-    Route::get('darbs/jauns', 'App\Http\Controllers\WorkRecordsController@create');
-    Route::post('darbs', 'App\Http\Controllers\WorkRecordsController@store');
-    Route::get('darbs/{id}', 'App\Http\Controllers\WorkRecordsController@show');
-    Route::get('darbs/{id}/rediget', 'App\Http\Controllers\WorkRecordsController@edit');
-    Route::put('darbs/{id}', 'App\Http\Controllers\WorkRecordsController@update');
-    Route::delete('darbs/{id}', 'App\Http\Controllers\WorkRecordsController@destroy');
+    Route::get('pazinojumi/{id}/rediget', 'App\Http\Controllers\NotifsController@edit');
+    Route::put('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@update');
+    Route::delete('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@destroy');
 });

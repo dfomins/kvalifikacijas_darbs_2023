@@ -17,8 +17,8 @@ class Post extends Model
     ];
 
     protected $hidden = [
-        // 'title',
-        'body'
+        'title',
+        'body',
     ];
 
     protected $casts = [

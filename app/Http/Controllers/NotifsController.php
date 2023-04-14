@@ -16,7 +16,8 @@ class NotifsController extends Controller
      */
     public function index()
     {
-        return view('notifs.index');
+        $notif = Notif::all();
+        return view('notifs.index')->with(['notif' => $notif]);
     }
 
     /**
@@ -26,6 +27,7 @@ class NotifsController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Notif::class);
         return view ('notifs.create');
     }
 
@@ -37,15 +39,13 @@ class NotifsController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate(Notif::$rules);
-
+        $this->authorize('create', Notif::class);
         $notif = new Notif;
         $notif->title = $request->input('title');
         $notif->body = $request->input('body');
         $notif->user_id = auth()->user()->id;
         $notif->save();
-
         return redirect()->route('notifications');
     }
 
@@ -70,9 +70,7 @@ class NotifsController extends Controller
     public function edit($id)
     {
         $notif = Notif::find($id);
-        if (auth()->user()->role_id !==1) {
-            return redirect()->route('notifications');
-        }
+        $this->authorize('update', $notif);
         return view('notifs.edit')->with('notif', $notif);
     }
 
@@ -85,14 +83,12 @@ class NotifsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate(Notif::$rules);
-
         $notif = Notif::find($id);
+        $this->authorize('update', $notif);
         $notif->title = $request->input('title');
         $notif->body = $request->input('body');
         $notif->save();
-
         return redirect()->route('notifications');
     }
 
@@ -105,9 +101,7 @@ class NotifsController extends Controller
     public function destroy($id)
     {
         $notif = Notif::find($id);
-        if (auth()->user()->role_id !==1) {
-            return redirect()->route('notifications');
-        }
+        $this->authorize('delete', $notif);
         $notif->delete();
         return redirect()->route('notifications');
     }

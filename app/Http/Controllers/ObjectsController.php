@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\WorkObject;
-
-use Intervention\Image\ImageManagerStatic;
-
 use App\Models\User;
 
-use Storage;
+use Illuminate\Http\Request;
 
 class ObjectsController extends Controller
 {
@@ -32,6 +27,7 @@ class ObjectsController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', WorkObject::class);
         return view ('objects.create');
     }
 
@@ -43,9 +39,8 @@ class ObjectsController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate(WorkObject::$rules);
-
+        $this->authorize('create', WorkObject::class);
         $object = new WorkObject;
         $object->title = $request->input('title');
         $object->city = $request->input('city');
@@ -68,7 +63,7 @@ class ObjectsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\WorkObject  $workObject
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,15 +76,13 @@ class ObjectsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\WorkObject  $workObject
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $object = WorkObject::find($id);
-        if (auth()->user()->role_id !==1) {
-            return redirect()->route('objects');
-        }
+        $this->authorize('update', $object);
         return view('objects.edit')->with('object', $object);
     }
 
@@ -97,14 +90,13 @@ class ObjectsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\WorkObject  $workObject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, WorkObject $workObject)
     {
-
         $request->validate(WorkObject::$rules);
-
+        $this->authorize('update', $object);
         $object = WorkObject::find($id);
         $object->title = $request->input('title');
         $object->city = $request->input('city');
@@ -133,16 +125,13 @@ class ObjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\WorkObject  $workObject
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-
         $object = WorkObject::find($id);
-        if (auth()->user()->role_id !==1) {
-            return redirect()->route('objects');
-        }
+        $this->authorize('delete', $object);
         $object->delete();
         return redirect()->route('objects');
     }

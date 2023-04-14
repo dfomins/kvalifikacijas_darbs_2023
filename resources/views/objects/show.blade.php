@@ -19,15 +19,19 @@
                         <h1 class="break-all text-[25px]">{{ $object->title }}</h1>
                     </div>
                     <div class="flex cursor-pointer items-center justify-center">
-                        <a href="{{ route('objects') }}/{{ $object->id }}/rediget"><i
-                                class="fa-solid fa-pen-to-square fa-lg ml-[15px]"></i></a>
-                        {!! Form::open([
-                            'action' => ['App\Http\Controllers\ObjectsController@destroy', $object->id],
-                            'method' => 'DELETE',
-                            'class' => 'btn',
-                        ]) !!}
-                        <button class="delete" type="button"><i class="fa-solid fa-trash fa-xl ml-[15px]"></i></button>
-                        {!! Form::close() !!}
+                        @can('update', $object)
+                            <a href="{{ route('objects') }}/{{ $object->id }}/rediget"><i
+                                    class="fa-solid fa-pen-to-square fa-lg ml-[15px]"></i></a>
+                        @endcan
+                        @can('delete', $object)
+                            {!! Form::open([
+                                'action' => ['App\Http\Controllers\ObjectsController@destroy', $object->id],
+                                'method' => 'DELETE',
+                                'class' => 'btn',
+                            ]) !!}
+                            <button class="delete" type="button"><i class="fa-solid fa-trash fa-xl ml-[15px]"></i></button>
+                            {!! Form::close() !!}
+                        @endcan
                     </div>
                 </div>
             </div>

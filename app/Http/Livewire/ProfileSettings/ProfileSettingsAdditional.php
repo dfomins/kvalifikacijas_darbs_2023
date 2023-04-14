@@ -19,7 +19,7 @@ class ProfileSettingsAdditional extends Component
         $user = auth()->user();
 
         $this->validate([
-            'personal_code' => 'required|max:12',
+            'personal_code' => 'max:12',
             'date_of_birth' => 'nullable|before:today',
             'city' => 'max:50',
             'street' => 'max:50',
