@@ -7,6 +7,9 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 
+use Intervention\Image\ImageManagerStatic;
+use Storage;
+
 class ObjectsController extends Controller
 {
     /**
@@ -93,11 +96,11 @@ class ObjectsController extends Controller
      * @param  \App\Models\WorkObject  $workObject
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WorkObject $workObject)
+    public function update(Request $request, $id)
     {
         $request->validate(WorkObject::$rules);
-        $this->authorize('update', $object);
         $object = WorkObject::find($id);
+        $this->authorize('update', $object);
         $object->title = $request->input('title');
         $object->city = $request->input('city');
         $object->street = $request->input('street');

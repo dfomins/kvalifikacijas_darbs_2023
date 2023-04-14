@@ -1,5 +1,4 @@
 <div>
-
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="mb-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
@@ -8,13 +7,11 @@
             </div>
         @endforeach
     @endif
-
     <div class="flex justify-end max-md:flex-col max-md:items-end">
         <input wire:model.debounce.400ms="search"
             class="mb-[10px] h-[40px] w-[300px] rounded-[3px] border border-black p-[5px] text-black outline-0 max-[420px]:w-full"
             type="search" placeholder="Meklēt...">
     </div>
-
     <div
         class="w-[1200px] shadow-md scrollbar-thin scrollbar-thumb-[#3c3e3a] max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90vw]">
         <div>
@@ -120,8 +117,8 @@
                                     @if ($user->id != Auth::user()->id)
                                         <i class="fa-regular fa-pen-to-square mr-[5px] cursor-pointer text-[20px]"
                                             wire:click="edit({{ $user->id }})"></i>
-                                        <i class="fa-regular fa-trash-can ml-[5px] cursor-pointer text-[20px]"
-                                            wire:click="remove({{ $user->id }})"></i>
+                                        <i wire:click="$emit('deleteUser',{{ $user->id }})"
+                                            class="fa-regular fa-trash-can ml-[5px] cursor-pointer text-[20px]"></i>
                                     @else
                                         <i class="fa-regular fa-pen-to-square mr-[5px] cursor-pointer text-[20px]"
                                             wire:click="edit({{ $user->id }})"></i>
@@ -161,4 +158,24 @@
             </table>
         </div>
     </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            @this.on('deleteUser', id => {
+                Swal.fire({
+                    title: 'Dzēst lietotāju?',
+                    html: "Visi lietotāja dati tiks dzēsti!",
+                    icon: 'warning',
+                    confirmButtonText: 'Dzēst',
+                    confirmButtonColor: '#2b6777',
+                    showCancelButton: true,
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Atcelt',
+                }).then((result) => {
+                    if (result.value) {
+                        @this.call('remove', id)
+                    }
+                });
+            });
+        })
+    </script>
 </div>

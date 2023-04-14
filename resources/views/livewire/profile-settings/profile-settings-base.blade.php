@@ -3,12 +3,6 @@
     <form wire:submit.prevent="update_profile_base">
         @csrf
         <div class="mb-[10px] flex flex-col">
-            @if (session('base_success'))
-                <div class="mt-[15px] rounded-[3px] bg-green-600 p-[10px] text-white" data-closable>
-                    <i class="fa-solid fa-check"></i> Informācija veiksmīgi atjaunota! <button
-                        onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                </div>
-            @endif
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>

@@ -24,9 +24,9 @@ class ProfileSettingsPassword extends Component
             $user->update([
                 'password' => Hash::make($this->new_password)
             ]);
-            session()->flash('password_success');
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'success', 'title' => 'Parole tika veiksmīgi atjaunota!']);
         } else {
-            session()->flash('password_error');
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'error', 'title' => 'Vecā parole tika nepareizi ievadīta!']);
         }
 
         $this->reset(['old_password', 'new_password', 'confirm_password']);

@@ -3,18 +3,6 @@
     <div class="w-2/3 max-lg:w-full">
         <form wire:submit.prevent="update_profile_password">
             @csrf
-            @if (session('password_success'))
-                <div class="mt-[15px] rounded-[3px] bg-green-600 p-[10px] text-white" data-closable>
-                    <i class="fa-solid fa-check"></i> Parole tika veiksmīgi atjaunota! <button
-                        onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                </div>
-            @endif
-            @if (session('password_error'))
-                <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
-                    <i class="fa-solid fa-triangle-exclamation"></i> Vecā parole tika nepareizi ievadīta <button
-                        onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                </div>
-            @endif
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>

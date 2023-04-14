@@ -70,11 +70,13 @@
         $(document).on('click', 'button.delete', function() {
             Swal.fire({
                 title: 'Dzēst objektu?',
-                showCancelButton: true,
+                html: 'Informācija tiks dzēsta bez atjaunošanas iespējas',
+                icon: 'warning',
                 confirmButtonColor: '#2b6777',
+                confirmButtonText: 'Dzēst',
+                showCancelButton: true,
                 cancelButtonColor: '#d33',
                 cancelButtonText: 'Atcelt',
-                confirmButtonText: 'Dzēst'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $(this).parent('form').trigger('submit')

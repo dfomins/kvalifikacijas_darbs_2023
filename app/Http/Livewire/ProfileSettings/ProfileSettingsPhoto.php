@@ -28,7 +28,7 @@ class ProfileSettingsPhoto extends Component
         $user = auth()->user();
 
         if(!$this->image) {
-            return null;
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Nav izvēlēta bilde!']);
         } else {
 
             $this->validate([
@@ -49,16 +49,12 @@ class ProfileSettingsPhoto extends Component
             $user->update([
                 'profila_bilde' => $filename,
             ]);
-
-            session()->flash('photo_success');
-
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'success', 'title' => 'Profila bilde veiksmīgi atjaunota!']);
         }
-
     }
 
     public function delete_profile_photo()
     {
-
         $user = auth()->user();
 
         if ($user->profila_bilde != 'default.jpg') {
@@ -66,15 +62,12 @@ class ProfileSettingsPhoto extends Component
             if(Storage::exists($destination)) {
                 Storage::delete($destination);
             }
-
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Profila bilde tika dzēsta']);
             $user->update([
                 'profila_bilde' => 'default.jpg',
             ]);
-
-            session()->flash('delete_photo_success');
-
         } else {
-            return null;
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'error', 'title' => 'Kļūda']);
         }
     }
 

@@ -15,7 +15,7 @@
             class="mb-[10px] h-[40px] w-[300px] rounded-[3px] border border-black p-[5px] text-black outline-0 max-[420px]:w-full"
             type="search" placeholder="Meklēt pēc nosaukuma...">
     </div>
-    <div class="h-[60vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-[#3c3e3a]">
+    <div class="mb-[20px] h-[60vh] overflow-y-auto text-white scrollbar-thin scrollbar-thumb-[#3c3e3a]">
         <ol>
             @if (count($notifs) > 0)
                 @foreach ($notifs as $notif)

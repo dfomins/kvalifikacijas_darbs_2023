@@ -12,19 +12,22 @@ class ProfileSettingsBase extends Component
     {
         $user = auth()->user();
 
-        $this->validate([
-            'fname' => 'required|string|max:50',
-            'lname' => 'required|string|max:50',
-            'email' => 'required|string|email|max:100|unique:users,email,'.auth()->user()->id,
-        ]);
-    
-        $user->update([
-            'fname' => $this->fname,
-            'lname' => $this->lname,
-            'email' => $this->email,
-        ]);
-
-        session()->flash('base_success');
+        if($this->fname == $user->fname && $this->lname == $user->lname && $this->email == $user->email) {
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Cita informācija netika ievadīta!']);
+        } else {
+            $this->validate([
+                'fname' => 'required|string|max:50',
+                'lname' => 'required|string|max:50',
+                'email' => 'required|string|email|max:100|unique:users,email,'.auth()->user()->id,
+            ]);
+        
+            $user->update([
+                'fname' => $this->fname,
+                'lname' => $this->lname,
+                'email' => $this->email,
+            ]);
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'success', 'title' => 'Informācija atjaunota!']);
+        }
     }
 
     public function render()

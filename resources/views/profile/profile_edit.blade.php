@@ -17,6 +17,16 @@
         </div>
     </div>
     <script>
+        window.addEventListener('process-swall', event => {
+            let type = event.detail.type;
+            let title = event.detail.title;
+            let icon = type;
+            Swal.fire({
+                title,
+                icon,
+                confirmButtonColor: '#2b6777',
+            });
+        });
         window.livewire.on('fileChoosen', () => {
 
             let file = document.getElementById('image').files[0];

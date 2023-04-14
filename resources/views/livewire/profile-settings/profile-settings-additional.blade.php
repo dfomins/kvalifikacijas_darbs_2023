@@ -4,12 +4,6 @@
         <form wire:submit.prevent="update_profile_additional">
             @csrf
             <div class="flex flex-col">
-                @if (session('additional_success'))
-                    <div class="mt-[15px] rounded-[3px] bg-green-600 p-[10px] text-white" data-closable>
-                        <i class="fa-solid fa-check"></i> Informācija tika veiksmīgi atjaunota! <button
-                            onclick="this.parentNode.remove(); return false;" class="float-right">&times</button>
-                    </div>
-                @endif
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <div class="mt-[15px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
