@@ -25,9 +25,9 @@
         <a href="{{ route('profile') }}"><img src="/img/logo/logo.png" alt="Logo"
                 class="block max-h-[75px] w-auto" /></a>
         <div
-            class="navLinks max-lg:fixed max-lg:right-[-200px] max-lg:top-0 max-lg:h-full max-lg:w-[200px] max-lg:bg-white max-lg:text-left max-lg:shadow-md max-lg:duration-300">
+            class="navLinks max-[1050px]:fixed max-[1050px]:right-[-200px] max-[1050px]:top-0 max-[1050px]:h-full max-[1050px]:w-[200px] max-[1050px]:bg-white max-[1050px]:text-left max-[1050px]:shadow-md max-[1050px]:duration-300">
             <i
-                class="fa-solid fa-xmark close-menu mt-[20px] ml-[20px] block cursor-pointer text-[22px] text-black lg:hidden"></i>
+                class="fa-solid fa-xmark close-menu mt-[20px] ml-[20px] block cursor-pointer text-[22px] text-black min-[1050px]:hidden"></i>
             <ul class="p-[20px]">
                 <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]"
@@ -45,6 +45,9 @@
                 @endif
                 <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]"
+                        href="{{ route('work_show') }}">Darbs</a></li>
+                <li class="relative inline-block py-[10px] px-[12px]"><a
+                        class="tracking-widest duration-300 hover:text-[#52ab98]"
                         href="{{ route('objects') }}">Objekti</a></li>
                 <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]" href="">Kontakti</a>
@@ -55,14 +58,14 @@
                 </a>
             </ul>
         </div>
-        <i class="fa-solid fa-bars open-menu text-[22px] lg:hidden"></i>
+        <i class="fa-solid fa-bars open-menu text-[22px] min-[1050px]:hidden"></i>
     </nav>
     <main>
         @yield('content')
     </main>
     <footer class="color-3 flex min-h-[300px] justify-center shadow-md">
         <div
-            class="max-lg my-[40px] grid w-[1200px] grid-cols-4 gap-x-10 text-white max-xl:w-[900px] max-lg:w-[700px] max-lg:grid-cols-1 max-md:w-[580px] max-sm:w-[90%] max-sm:gap-0">
+            class="my-[40px] grid w-[1200px] grid-cols-4 gap-x-10 text-white max-xl:w-[900px] max-[1050px]:w-[700px] max-[1050px]:grid-cols-1 max-md:w-[580px] max-sm:w-[90%] max-sm:gap-0">
             <div class="col-span-2 max-sm:mb-[20px] max-[420px]:col-span-1">
                 <h3 class="text-[20px] font-semibold">Par mums</h3>
                 <p class="mt-[10px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa autem quia odio

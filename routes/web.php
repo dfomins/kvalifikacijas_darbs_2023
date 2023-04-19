@@ -6,7 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\NotifsController;
-use App\Http\Controllers\WorkrecordsController;
+use App\Http\Controllers\WorkRecordsController;
+use App\Http\Controllers\WorkShowController;
 use App\Http\Controllers\ObjectsController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AllUsersController;
@@ -28,17 +29,16 @@ Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm');
 Route::post('/', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 
 Route::middleware(['isAdmin'])->group(function() {
-
     Route::post('registracija', [RegisterController::class, 'register'])->name('register');
     Route::get('registracija', [RegisterController::class, 'showRegistrationForm']);
     Route::get('lietotaji', [AllUsersController::class, 'index'])->name('allusers');
     Route::get('atskaites', [WorkRecordsController::class, 'index'])->name('work');
-
 });
 
 Route::group(['middleware'=>['auth']], function(){
     Route::get('profils', [ProfileController::class, 'profile'])->name('profile');
     Route::get('iziet', [LogoutController::class, 'perform'])->name('logout');
+    Route::get('darbs', [WorkShowController::class, 'index'])->name('work_show');
 });
 
 Route::group(['middleware'=>['auth']], function(){
