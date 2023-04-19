@@ -13,7 +13,7 @@ class ProfileSettingsBase extends Component
         $user = auth()->user();
 
         if($this->fname == $user->fname && $this->lname == $user->lname && $this->email == $user->email) {
-            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Cita informācija netika ievadīta!']);
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Nekas netika mainīts!']);
         } else {
             $this->validate([
                 'fname' => 'required|string|max:50',

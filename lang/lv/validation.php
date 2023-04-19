@@ -188,11 +188,15 @@ return [
         'role_id' => 'Lomas nosaukums',
         'title' => 'Nosaukums',
         'body' => 'Saturs',
-        'city' => 'Pilsēta',
+        'city' => 'Pilsētas nosaukums',
         'street' => 'Iela',
         'fname' => 'Vārds',
         'lname' => 'Uzvārds',
         'hours' => 'Stundas',
+        'object_img' => 'Objekta bilde',
+        'personal_code' => 'Personas kods',
+        'house_number' => 'Mājas numurs',
+        'date' => 'Datums',
     ],
 
 ];

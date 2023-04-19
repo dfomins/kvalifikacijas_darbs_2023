@@ -16,6 +16,7 @@ class WorkObject extends Model
         'city',
         'street',
         'body',
+        'object_img',
     ];
 
     public static $rules = [
@@ -23,7 +24,7 @@ class WorkObject extends Model
         'city' => 'required|max: 50',
         'street' => 'required|max: 50',
         'body' => 'max:1000',
-        'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'object_img' => 'image|mimes:jpeg,png,jpg,svg|max:1024',
     ];
 
     public function user() {

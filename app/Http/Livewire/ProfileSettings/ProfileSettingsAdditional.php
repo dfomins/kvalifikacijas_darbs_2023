@@ -18,7 +18,7 @@ class ProfileSettingsAdditional extends Component
         $user = auth()->user();
 
         if ($this->personal_code == $user->personal_code && $this->date_of_birth == $user->date_of_birth && $this->city == $user->city && $this->street == $user->street && $this->house_number == $user->house_number) {
-            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Cita informācija netika ievadīta!']);
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Nekas netika mainīts!']);
         } else {
             $this->validate([
                 'personal_code' => 'max:12',

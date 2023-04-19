@@ -31,9 +31,9 @@ class ProfileSettingsPhoto extends Component
             $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Nav izvēlēta bilde!']);
         } else {
 
-            $this->validate([
-                'image.*' =>  'required|image|mimes:jpg,jpeg,png,gif|max:2048',
-            ]);
+            // $this->validate([
+            //     'img' =>  'required|image|mimes:jpg,jpeg,png|max:1024',
+            // ]);
 
             if ($user->profila_bilde != 'default.jpg') {
                 $destination = 'public/images/users/'.$user->profila_bilde;
@@ -49,6 +49,7 @@ class ProfileSettingsPhoto extends Component
             $user->update([
                 'profila_bilde' => $filename,
             ]);
+
             $this->dispatchBrowserEvent('process-swall', ['type' => 'success', 'title' => 'Profila bilde veiksmīgi atjaunota!']);
         }
     }
@@ -62,7 +63,7 @@ class ProfileSettingsPhoto extends Component
             if(Storage::exists($destination)) {
                 Storage::delete($destination);
             }
-            $this->dispatchBrowserEvent('process-swall', ['type' => 'warning', 'title' => 'Profila bilde tika dzēsta']);
+            $this->dispatchBrowserEvent('process-swall', ['type' => 'success', 'title' => 'Profila bilde tika dzēsta']);
             $user->update([
                 'profila_bilde' => 'default.jpg',
             ]);

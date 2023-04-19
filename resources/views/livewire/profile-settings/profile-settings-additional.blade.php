@@ -44,7 +44,7 @@
             <div>
                 <button
                     class="mt-[20px] cursor-pointer rounded-[3px] bg-white py-[10px] px-[15px] text-black duration-300 hover:bg-[#c8d8e4]"
-                    type="submit">Atjaunot
+                    type="submit">Saglabāt
                 </button>
             </div>
         </form>
