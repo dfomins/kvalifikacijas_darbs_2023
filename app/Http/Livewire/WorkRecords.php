@@ -21,7 +21,7 @@ class WorkRecords extends Component
 
     public function mount()
     {
-        $this->date = Carbon::today()->toDateString();
+        $this->date = Carbon::today()->format('d/m/Y');
     }
 
     public function cancel()
@@ -32,12 +32,7 @@ class WorkRecords extends Component
     public function save($user)
     {
         $work = Work::find($user['work_id']);
-
-        $this->validate([
-            'date' => ['required', 'before:tomorrow'],
-            'hours' => ['in:1,2,3,4,5,6,7,8'],
-        ]);
-
+        $this->validate(Work::$rules);
         if ($this->hours == null) {
             if ($work) {
                 $work->delete();
@@ -65,7 +60,7 @@ class WorkRecords extends Component
     public function render()
     {
         $users = User::leftJoin('work', function($join) {
-            $join->on('work.user_id', '=', 'users.id')->whereDate('date', $this->date);
+            $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
         })->get();
 
         return view('livewire.work-records')->with(['users' => $users]);

@@ -18,16 +18,23 @@ class Work extends Model
         'hours',
     ];
 
-    // protected $dates = [
-    //     'work_date',
-    // ];
-
-    // public function setWorkDateAttribute($value) {
-    //     $this->attributes['work_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-    // }
+    public static $rules = [
+        'date' => 'required|date_format:d/m/Y|before:tomorrow',
+        'hours' => 'in:1,2,3,4,5,6,7,8',
+    ];
 
     public function users() {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+    }
+
+    public function getDateAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['date'])->format('d/m/Y');
     }
 
 }

@@ -1,6 +1,8 @@
 <div>
-    <input class="mb-[10px] h-[40px] w-[200px] border p-[5px]" wire:model="date"
-        {{ $editIndex != null ? 'disabled' : '' }} type="date">
+    <input wire:model="date" class="mb-[10px] h-[40px] w-[200px] cursor-pointer border p-[5px] outline-0"
+        autocomplete="off" readonly type="text" id="datepicker" {{ $editIndex != null ? 'disabled' : '' }}>
+    {{-- <input class="mb-[10px] h-[40px] w-[200px] border p-[5px]" wire:model="date"
+        {{ $editIndex != null ? 'disabled' : '' }} type="date"> --}}
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="mb-[10px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>
@@ -48,4 +50,15 @@
             @endforeach
         </table>
     </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/lv.js"></script>
+    <script>
+        flatpickr("#datepicker", {
+            'locale': 'lv',
+            'dateFormat': "d/m/Y",
+            'maxDate': 'today'
+        });
+    </script>
 </div>

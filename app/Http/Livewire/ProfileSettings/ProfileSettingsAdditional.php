@@ -4,6 +4,8 @@ namespace App\Http\Livewire\ProfileSettings;
 
 use Livewire\Component;
 
+use Carbon\Carbon;
+
 class ProfileSettingsAdditional extends Component
 {
 
@@ -45,7 +47,7 @@ class ProfileSettingsAdditional extends Component
         $user = auth()->user();
 
         $this->personal_code = $user->personal_code;
-        $this->date_of_birth = $user->date_of_birth;
+        $this->date_of_birth = Carbon::createFromFormat('Y-m-d', $user->date_of_birth)->format('d/m/Y');
         $this->city = $user->city;
         $this->street = $user->street;
         $this->house_number = $user->house_number;
