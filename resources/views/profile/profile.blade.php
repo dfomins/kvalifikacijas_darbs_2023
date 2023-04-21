@@ -46,9 +46,7 @@
                     </div>
                     <div class="flex h-[230px] flex-col items-center justify-center text-[5.5vw] text-white sm:text-[25px]">
                         </p>Nostrādātās stundas:
-                        @foreach ($work as $list)
-                            {{ $list->hours }}
-                        @endforeach
+                        {{ $user->work->where('date', Carbon\Carbon::now()->format('d/m/Y'))->first()->hours }}
                         </p>
                     </div>
                 </div>

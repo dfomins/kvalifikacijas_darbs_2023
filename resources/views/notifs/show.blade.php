@@ -17,7 +17,7 @@
                 <div class="inline-block w-full overflow-hidden">
                     <h1 class="break-all text-[20px]"">{{ $notif->title }}</h1>
                     <p class="truncate text-[15px]">{{ $notif->created_at->format('d-m-Y | H:i') }} ||
-                        @if ($notif->user != null)
+                        @if ($notif->user_id != null)
                             {{ $notif->user->fname }}
                             {{ $notif->user->lname }}
                         @else

@@ -1,8 +1,11 @@
 <div>
-    <input wire:model="date" class="mb-[10px] h-[40px] w-[200px] cursor-pointer border p-[5px] outline-0"
-        autocomplete="off" readonly type="text" id="datepicker" {{ $editIndex != null ? 'disabled' : '' }}>
-    {{-- <input class="mb-[10px] h-[40px] w-[200px] border p-[5px]" wire:model="date"
-        {{ $editIndex != null ? 'disabled' : '' }} type="date"> --}}
+    <div class="mb-[10px] inline-block" id="datepicker" data-wrap="true" data-click-opens="false">
+        <input wire:model="date" class="h-[40px] w-[200px] cursor-default rounded-[3px] border p-[5px] outline-0"
+            autocomplete="off" type="text" data-input readonly {{ $editIndex != null ? 'disabled' : '' }}>
+        <button class="border-grey h-[40px] w-[40px] rounded-[3px] border bg-white" data-toggle>
+            <i class="fa-regular fa-calendar-days cursor-pointer"></i>
+        </button>
+    </div>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="mb-[10px] rounded-[3px] bg-red-600 p-[10px] text-white" data-closable>

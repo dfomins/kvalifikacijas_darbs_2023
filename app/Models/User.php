@@ -52,6 +52,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $dates = [
+        'date',
+    ];
+
     public function posts() {
         return $this->hasMany('App\Models\Post');
     }
