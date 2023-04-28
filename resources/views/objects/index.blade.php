@@ -14,17 +14,19 @@
                     @foreach ($objects as $object)
                         <li>
                             <div class="border border-black">
-                                <a href="{{ route('objects') }}/{{ $object->id }}">
-                                    <img class="hover: h-[300px] w-[400px] object-cover"
+                                <a class="group" href="{{ route('objects') }}/{{ $object->id }}">
+                                    <img class="h-[300px] w-[400px] object-cover"
                                         src="{{ asset('storage/images/objects/' . $object->object_img) }}"
                                         alt="Objekta bilde">
+                                    <div class="color-1 group-hover:color-4 flex h-[38px] items-center duration-300">
+                                        <div class="flex h-full w-[38px] items-center justify-center border-r">
+                                            <h3 class="truncate text-center text-white">{{ $object->id }}</h3>
+                                        </div>
+                                        <div class="px-[10px]">
+                                            <h3 class="truncate text-white">{{ $object->title }}</h3>
+                                        </div>
+                                    </div>
                                 </a>
-                                <div
-                                    class="color-1 hover:color-4 flex flex-col justify-center py-[7px] px-[10px] duration-300">
-                                    <a href="{{ route('objects') }}/{{ $object->id }}">
-                                        <h3 class="truncate text-white">{{ $object->title }}</h3>
-                                    </a>
-                                </div>
                             </div>
                         </li>
                     @endforeach

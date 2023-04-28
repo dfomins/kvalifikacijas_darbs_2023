@@ -55,13 +55,21 @@
                             </button>
                         </td>
                     @else
-                        <td class="text-center"><i
-                                class="fa-regular fa-pen-to-square mr-[5px] cursor-pointer text-[20px]"
-                                wire:click="edit({{ $user }})"></i></td>
+                        <td class="flex h-[40px] items-center justify-center">
+                            @if ($user->objects->isEmpty())
+                                <i class="fa-solid fa-triangle-exclamation mr-[10px] text-[20px]"></i>
+                            @endif
+                            <i class="fa-regular fa-pen-to-square mb-[2px] cursor-pointer text-[20px]"
+                                wire:click="edit({{ $user }})"></i>
+                        </td>
                     @endif
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div class="my-[10px]">
+        <i class="fa-solid fa-triangle-exclamation mr-[5px] text-[20px]"></i> - darbiniekam nav piesaistīti darba
+        objekti.
     </div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">

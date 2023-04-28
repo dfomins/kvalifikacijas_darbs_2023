@@ -137,7 +137,7 @@
                             <tr class="color-1">
                                 <td class="border-t" colspan="7">
                                     <div class="p-[10px] text-white">
-                                        <h3 class="mb-[5px]">Izvēlieties objektus darbiniekam
+                                        <h3 class="mb-[5px]">Izvēlieties darba objektus darbiniekam
                                             {{ $user->fname }}
                                             {{ $user->lname }}</h3>
                                         <div class="flex flex-col">

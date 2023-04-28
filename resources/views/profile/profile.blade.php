@@ -19,6 +19,16 @@
                         <img class="h-full w-full rounded-full object-cover"
                             src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                     </div>
+                    <div class="text-center">
+                        Mani darba objekti:
+                        @if (!$user->objects->isEmpty())
+                            @foreach ($user->objects as $list)
+                                {{ $list->id }}{{ $loop->last ? '' : ',' }}
+                            @endforeach
+                        @else
+                            nav
+                        @endif
+                    </div>
                     <div class="text-center text-[18px] leading-[3]">
                         <a class="group" href="{{ route('edit_profile') }}">Profila iestatījumi <i
                                 class="fa-solid fa-gear duration-300 group-hover:rotate-45"></i></a>
