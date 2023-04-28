@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\WorkRecords;
 
 use Livewire\Component;
 
@@ -10,8 +10,9 @@ use App\Models\User;
 use App\Models\Work;
 use App\Models\ObjectToUser;
 
-class WorkRecords extends Component
+class ForemanWorkRecords extends Component
 {
+
     public $editIndex = null;
     public $object_filter;
 
@@ -62,30 +63,11 @@ class WorkRecords extends Component
 
     public function render()
     {
-        $users = User::leftJoin('work', function($join) {
-            $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
-        })->get();
-
-        // $users = User::all();
-        // foreach($users as $user){
-        // dd(User::where('users->work', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'))->dd());
-        // }
-        // $users = User::where('users->work', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'))->dd();
-
-        // $users = User::select('users.*', 'work.*')
-        //     ->leftJoin('work', function($join) {
-        //         $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
-        //     })->dd();
-
-            // $user = User::find(1);
-            // dd($user->objects());
-
-
-        // if (auth()->user()->role->id == 1) {
-        $objrels = ObjectToUser::all();
-        // } else if (auth()->user()->role->id === 2) {
-        //     $objrels = ObjectToUser::where('user_id', auth()->id())->get();
-        // }
-        return view('livewire.work-records')->with(['users' => $users, 'objrels' => $objrels]);
+        // $users = User::leftJoin('work', function($join) {
+        //     $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
+        // })->get()->dd();
+        dd($user = User::find(1)->objects);
+        $objrels = ObjectToUser::where('user_id', auth()->user()->id)->get();
+        return view('livewire.work-records.foreman-work-records')->with(['users' => $users, 'objrels' => $objrels]);
     }
 }

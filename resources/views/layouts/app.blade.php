@@ -38,10 +38,14 @@
                 <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]"
                         href="{{ route('notifications') }}">Paziņojumi</a></li>
-                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                @if (Auth::user()->role_id == 1)
                     <li class="relative inline-block py-[10px] px-[12px]"><a
                             class="tracking-widest duration-300 hover:text-[#52ab98]"
-                            href="{{ route('work') }}">Atskaites</a></li>
+                            href="{{ route('isAdmin.work') }}">Atskaites</a></li>
+                @elseif (Auth::user()->role_id == 2)
+                    <li class="relative inline-block py-[10px] px-[12px]"><a
+                            class="tracking-widest duration-300 hover:text-[#52ab98]"
+                            href="{{ route('isForeman.work') }}">Atskaites</a></li>
                 @endif
                 <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]"

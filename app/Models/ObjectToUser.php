@@ -16,4 +16,8 @@ class ObjectToUser extends Model
         'user_id',
         'object_id',
     ];
+
+    public function object() {
+        return $this->hasOne(WorkObject::class, 'id', 'object_id');
+    }
 }

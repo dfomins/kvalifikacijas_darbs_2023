@@ -47,7 +47,11 @@ class ProfileSettingsAdditional extends Component
         $user = auth()->user();
 
         $this->personal_code = $user->personal_code;
-        $this->date_of_birth = Carbon::createFromFormat('Y-m-d', $user->date_of_birth)->format('d/m/Y');
+        if ($user->date_of_birth != null) { 
+            $this->date_of_birth = Carbon::createFromFormat('Y-m-d', $user->date_of_birth)->format('d/m/Y');
+        } else {
+            $this->date_of_birth = $user->date_of_birth;
+        }
         $this->city = $user->city;
         $this->street = $user->street;
         $this->house_number = $user->house_number;

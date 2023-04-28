@@ -6,7 +6,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\NotifsController;
-use App\Http\Controllers\WorkRecordsController;
+use App\Http\Controllers\WorkRecords\AdminWorkRecordsController;
+use App\Http\Controllers\WorkRecords\ForemanWorkRecordsController;
+// use App\Http\Controllers\ForemanWorkRecords;
 use App\Http\Controllers\WorkShowController;
 use App\Http\Controllers\ObjectsController;
 use App\Http\Controllers\LogoutController;
@@ -28,11 +30,18 @@ Auth::routes(['login' => false, 'register' => false, 'logout' => false]);
 Route::get('/', 'App\Http\Controllers\Auth\LoginController@showLoginForm');
 Route::post('/', 'App\Http\Controllers\Auth\LoginController@login')->name('login');
 
+Route::prefix('vaditajs')->middleware('isAdmin')->group(function() {
+    Route::get('atskaites', [AdminWorkRecordsController::class, 'index'])->name('isAdmin.work');
+});
+
+Route::prefix('brigadieris')->middleware('isForeman')->group(function() {
+    Route::get('atskaites', [ForemanWorkRecordsController::class, 'index'])->name('isForeman.work');
+});
+
 Route::middleware(['isAdmin'])->group(function() {
     Route::post('registracija', [RegisterController::class, 'register'])->name('register');
     Route::get('registracija', [RegisterController::class, 'showRegistrationForm']);
     Route::get('lietotaji', [AllUsersController::class, 'index'])->name('allusers');
-    Route::get('atskaites', [WorkRecordsController::class, 'index'])->name('work');
 });
 
 Route::group(['middleware'=>['auth']], function(){
@@ -45,8 +54,6 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('profila_iestatijumi', [ProfileController::class, 'edit_profile'])->name('edit_profile');
     Route::post('profila_iestatijumi', [ProfileController::class, 'update_profile'])->name('update_profile');
 });
-
-// Route::resource('piezimes', 'PostsController')->name('posts');
 
 Route::group(['middleware'=>['auth']], function(){
     Route::get('piezimes', [PostsController::class, 'index'])->name('posts');

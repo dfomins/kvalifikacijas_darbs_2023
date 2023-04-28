@@ -1,10 +1,19 @@
 <div>
     <div class="mb-[10px] inline-block" id="datepicker" data-wrap="true" data-click-opens="false">
-        <input wire:model="date" class="h-[40px] w-[200px] cursor-default rounded-[3px] border p-[5px] outline-0"
-            autocomplete="off" type="text" data-input readonly {{ $editIndex != null ? 'disabled' : '' }}>
-        <button class="border-grey h-[40px] w-[40px] rounded-[3px] border bg-white" data-toggle>
+        <input wire:model="date"
+            class="h-[40px] w-[200px] cursor-default rounded-[3px] border p-[5px] shadow-sm outline-0" autocomplete="off"
+            type="text" data-input readonly {{ $editIndex != null ? 'disabled' : '' }}>
+        <button class="border-grey h-[40px] w-[40px] rounded-[3px] border bg-white shadow-sm" data-toggle>
             <i class="fa-regular fa-calendar-days cursor-pointer"></i>
         </button>
+        <select wire:model="object_filter"
+            class="border-grey h-[40px] cursor-pointer border px-[5px] shadow-sm outline-0">
+            <option value="">Visi</option>
+            @foreach ($objrels as $objrel)
+                <option value="{{ $objrel->object->id }}">{{ $objrel->object->id }}. {{ $objrel->object->title }}
+                </option>
+            @endforeach
+        </select>
     </div>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
