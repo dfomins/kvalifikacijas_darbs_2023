@@ -24,7 +24,7 @@ class ForemanWorkRecords extends Component
 
     public function mount()
     {
-        // $this->object_filter =;
+        // $this->object_filter = auth()->user()->objects->first()->id;
         $this->date = Carbon::today()->format('d/m/Y');
     }
 
@@ -63,11 +63,25 @@ class ForemanWorkRecords extends Component
 
     public function render()
     {
-        // $users = User::leftJoin('work', function($join) {
-        //     $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
-        // })->get()->dd();
-        dd($user = User::find(1)->objects);
-        $objrels = ObjectToUser::where('user_id', auth()->user()->id)->get();
+        // Objekti, kuriem tiek piesaistīts brigadieris
+        $foreman_objects = auth()->user()->objects->pluck('id')->toArray();
+
+        // Ja filtrēšanas izvēlnē izvēlēts "Visi", tad attēlo visus darbiniekus no objektiem, pie kuriem tiek piesaistīts brigadieris
+        if ($this->object_filter != null) {
+            $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
+                $query->whereIn('object_id', $foreman_objects)->where('object_id', $this->object_filter)
+            )->leftJoin('work', function($join) {
+                $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
+            })->get();
+        // Ja filtrēšanas izvēlnē izvēlēts konkrēts objekts, tad attēlo visus darbiniekus no tā
+        } else {
+            $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
+                $query->whereIn('object_id', $foreman_objects)
+            )->leftJoin('work', function($join) {
+                $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
+            })->get();
+        }
+        $objrels = ObjectToUser::all()->where('user_id', auth()->user()->id)->unique('object_id')->sortBy('object_id');
         return view('livewire.work-records.foreman-work-records')->with(['users' => $users, 'objrels' => $objrels]);
     }
 }

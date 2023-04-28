@@ -25,7 +25,6 @@ class AdminWorkRecords extends Component
 
     public function mount()
     {
-        // $this->object_filter =;
         $this->date = Carbon::today()->format('d/m/Y');
     }
 
@@ -65,7 +64,7 @@ class AdminWorkRecords extends Component
     public function render()
     {
         if ($this->object_filter != null) {
-            $users = User::withWhereHas('objects', fn($query) =>
+            $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
                 $query->where('object_id', $this->object_filter)
             )->leftJoin('work', function($join) {
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
@@ -76,7 +75,7 @@ class AdminWorkRecords extends Component
             })->get();
         }
 
-        $objrels = ObjectToUser::all()->unique('object_id');
+        $objrels = ObjectToUser::all()->unique('object_id')->sortBy('object_id');
         // $objects = WorkObject::all();
 
         return view('livewire.work-records.admin-work-records')->with(['users' => $users, 'objrels' => $objrels]);

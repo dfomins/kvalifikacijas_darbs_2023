@@ -7,7 +7,8 @@
             <i class="fa-regular fa-calendar-days cursor-pointer"></i>
         </button>
         <select wire:model="object_filter"
-            class="border-grey h-[40px] cursor-pointer border px-[5px] shadow-sm outline-0">
+            class="border-grey h-[40px] cursor-pointer border px-[5px] shadow-sm outline-0"
+            {{ $editIndex != null ? 'disabled' : '' }}>
             <option value="">Visi</option>
             @foreach ($objrels as $objrel)
                 <option value="{{ $objrel->object->id }}">{{ $objrel->object->id }}. {{ $objrel->object->title }}
