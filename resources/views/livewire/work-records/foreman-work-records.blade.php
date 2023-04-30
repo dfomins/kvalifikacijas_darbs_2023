@@ -1,20 +1,24 @@
 <div>
-    <div class="mb-[10px] inline-block" id="datepicker" data-wrap="true" data-click-opens="false">
-        <input wire:model="date"
-            class="h-[40px] w-[200px] cursor-default rounded-[3px] border p-[5px] shadow-sm outline-0" autocomplete="off"
-            type="text" data-input readonly {{ $editIndex != null ? 'disabled' : '' }}>
-        <button class="border-grey h-[40px] w-[40px] rounded-[3px] border bg-white shadow-sm" data-toggle>
-            <i class="fa-regular fa-calendar-days cursor-pointer"></i>
-        </button>
-        <select wire:model="object_filter"
-            class="border-grey h-[40px] cursor-pointer border px-[5px] shadow-sm outline-0">
-            <option value="">Visi</option>
-            @foreach ($objrels as $objrel)
-                <option value="{{ $objrel->object->id }}">{{ $objrel->object->id }}. {{ $objrel->object->title }}
-                </option>
-            @endforeach
-            {{ $this->object_filter }}
-        </select>
+    <div class="mb-[10px] flex max-[556px]:flex-col" id="datepicker" data-wrap="true" data-click-opens="false">
+        <div class="mr-[5px] flex max-[556px]:mr-0 max-[556px]:mb-[5px]">
+            <input wire:model="date"
+                class="mr-[5px] h-[40px] w-[200px] cursor-default rounded-[3px] border p-[5px] shadow-sm outline-0 max-[556px]:w-[calc(100%-45px)]"
+                autocomplete="off" type="text" data-input readonly {{ $editIndex != null ? 'disabled' : '' }}>
+            <button class="border-grey h-[40px] w-[40px] items-end rounded-[3px] border bg-white shadow-sm" data-toggle>
+                <i class="fa-regular fa-calendar-days cursor-pointer"></i>
+            </button>
+        </div>
+        <div>
+            <select wire:model="object_filter"
+                class="border-grey h-[40px] cursor-pointer rounded-[3px] border px-[5px] shadow-sm outline-0 max-[556px]:w-full"
+                {{ $editIndex != null ? 'disabled' : '' }}>
+                <option value="">Visi</option>
+                @foreach ($objrels as $objrel)
+                    <option value="{{ $objrel->object->id }}">{{ $objrel->object->id }}. {{ $objrel->object->title }}
+                    </option>
+                @endforeach
+            </select>
+        </div>
     </div>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
@@ -62,6 +66,10 @@
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div class="mt-[10px] rounded-[3px] bg-red-600 p-[10px] text-white">
+        <i class="fa-solid fa-triangle-exclamation text-[18px]"></i> - darbiniekam nav piesaistīti darba
+        objekti.
     </div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">

@@ -28,7 +28,8 @@
                     </tr>
                     <tr class="h-[40px]">
                         <th class="border-r">
-                            <select class="cursor-pointer rounded-[3px] p-[2px] font-normal text-black outline-0">
+                            <select
+                                class="option-cursor-pointer cursor-pointer rounded-[3px] p-[2px] font-normal text-black outline-0">
                                 <option value="0" selected>Bez filtra</option>
                                 <option value="1">Vadītājs</option>
                                 <option value="2">Brigadieris</option>
