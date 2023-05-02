@@ -91,7 +91,7 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate(Post::$rules);
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $this->authorize('update', $post);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
@@ -107,7 +107,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         $this->authorize('delete', $post);
         $post->delete();
         return redirect()->route('posts');

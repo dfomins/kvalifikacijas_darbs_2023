@@ -72,7 +72,7 @@ class ObjectsController extends Controller
     public function show($id)
     {
         $users = User::all();
-        $object = WorkObject::find($id);
+        $object = WorkObject::findOrFail($id);
         return view('objects.show')->with(['object' => $object, 'users' => $users]);
     }
 
@@ -84,7 +84,7 @@ class ObjectsController extends Controller
      */
     public function edit($id)
     {
-        $object = WorkObject::find($id);
+        $object = WorkObject::findOrFail($id);
         $this->authorize('update', $object);
         return view('objects.edit')->with('object', $object);
     }
@@ -99,7 +99,7 @@ class ObjectsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate(WorkObject::$rules);
-        $object = WorkObject::find($id);
+        $object = WorkObject::findOrFail($id);
         $this->authorize('update', $object);
         $object->title = $request->input('title');
         $object->city = $request->input('city');
@@ -133,7 +133,7 @@ class ObjectsController extends Controller
      */
     public function destroy($id)
     {
-        $object = WorkObject::find($id);
+        $object = WorkObject::findOrFail($id);
         $this->authorize('delete', $object);
         $object->delete();
         return redirect()->route('objects');

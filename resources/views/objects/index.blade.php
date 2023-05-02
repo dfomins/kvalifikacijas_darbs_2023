@@ -36,7 +36,7 @@
                     <p class="col-start-2 text-center text-black">Informācijas par objektiem nav</p>
                 </div>
             @endif
-            @can('create', $object)
+            @if (auth()->user()->role_id === 1)
                 <div class="flex justify-center">
                     <a href="{{ route('objects') }}/jauns">
                         <button
@@ -44,7 +44,7 @@
                                 class="fa-solid fa-plus text-[20px] duration-300 group-hover:rotate-90"></i></button>
                     </a>
                 </div>
-            @endcan
+            @endif
         </div>
     </section>
 @endsection

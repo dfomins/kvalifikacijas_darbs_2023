@@ -30,7 +30,7 @@ class NotifPolicy
      */
     public function view(User $user, Notif $notif)
     {
-        // 
+        //
     }
 
     /**
@@ -41,7 +41,7 @@ class NotifPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id === 1;
+        return true;
     }
 
     /**

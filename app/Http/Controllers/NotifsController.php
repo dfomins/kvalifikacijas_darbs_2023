@@ -57,7 +57,7 @@ class NotifsController extends Controller
      */
     public function show($id)
     {
-        $notif = Notif::find($id);
+        $notif = Notif::findOrFail($id);
         return view('notifs.show')->with('notif', $notif);
     }
 
@@ -69,7 +69,7 @@ class NotifsController extends Controller
      */
     public function edit($id)
     {
-        $notif = Notif::find($id);
+        $notif = Notif::findOrFail($id);
         $this->authorize('update', $notif);
         return view('notifs.edit')->with('notif', $notif);
     }
@@ -84,7 +84,7 @@ class NotifsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate(Notif::$rules);
-        $notif = Notif::find($id);
+        $notif = Notif::findOrFail($id);
         $this->authorize('update', $notif);
         $notif->title = $request->input('title');
         $notif->body = $request->input('body');
@@ -100,7 +100,7 @@ class NotifsController extends Controller
      */
     public function destroy($id)
     {
-        $notif = Notif::find($id);
+        $notif = Notif::findOrFail($id);
         $this->authorize('delete', $notif);
         $notif->delete();
         return redirect()->route('notifications');

@@ -7,7 +7,7 @@
 @section('content')
     <div class="section-min-height color-2 w-full overflow-y-auto">
         <div class="flex min-h-[100px] items-center justify-center bg-[#2b6777] py-[20px] text-white">
-            <div class="flex w-[1200px] max-xl:w-[900px] max-lg:w-[700px] max-md:w-[580px] max-sm:w-[90%]">
+            <div class="flex w-[1200px] items-center max-xl:w-[900px] max-lg:w-[700px] max-md:w-[580px] max-sm:w-[90%]">
                 <a href="{{ route('objects') }}">
                     <div
                         class="mr-[3vw] flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full bg-[#1B9AAA] text-center md:mr-[15px]">

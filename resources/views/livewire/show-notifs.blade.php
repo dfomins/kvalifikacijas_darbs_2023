@@ -46,12 +46,12 @@
 
         </ol>
     </div>
-    @can('create', $notif)
+    @if (auth()->user()->role_id === 1)
         <div class="flex justify-center">
             <a href="{{ route('notifications') }}/jauns"><button
                     class="group flex h-[50px] w-[50px] cursor-pointer items-center justify-center rounded-full bg-[#2b6777] text-white duration-300 hover:bg-[#52ab98]"><i
                         class="fa-solid fa-plus text-[20px] duration-300 group-hover:rotate-90"></i></button>
             </a>
         </div>
-    @endcan
+    @endif
 </div>

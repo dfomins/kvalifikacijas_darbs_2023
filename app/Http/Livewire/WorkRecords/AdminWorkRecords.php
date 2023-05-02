@@ -59,24 +59,41 @@ class AdminWorkRecords extends Component
                 $this->editIndex = null;
             }
         }
+        
+        $this->editIndex = null;
+
     }
 
     public function render()
     {
-        if ($this->object_filter != null) {
-            $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
-                $query->where('object_id', $this->object_filter)
-            )->leftJoin('work', function($join) {
-                $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
-            })->get();
-        } else {
-            $users = User::leftJoin('work', function($join) {
-                $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
-            })->get();
+        // if ($this->object_filter != null) {
+        //     $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
+        //         $query->where('object_id', $this->object_filter)
+        //     )->leftJoin('work', function($join) {
+        //         $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
+        //     })->get();
+        // } else {
+        //     $users = User::leftJoin('work', function($join) {
+        //         $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
+        //     })->get();
+        // }
+
+        $usersQuery = User::leftJoin('work', function ($join) {
+            $join->on('work.user_id', '=', 'users.id')
+                ->whereDate('work.date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
+        });
+        
+        if (!empty($this->object_filter)) {
+            $usersQuery->whereHas('objects', function ($query) {
+                $query->where('object_id', $this->object_filter);
+            });
         }
+        
+        $users = $usersQuery->orderBy('users.id', 'asc')
+                            ->groupBy('users.id', 'work.work_id')
+                            ->get();
 
         $objrels = ObjectToUser::all()->unique('object_id')->sortBy('object_id');
-        // $objects = WorkObject::all();
 
         return view('livewire.work-records.admin-work-records')->with(['users' => $users, 'objrels' => $objrels]);
     }
