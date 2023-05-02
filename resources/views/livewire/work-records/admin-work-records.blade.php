@@ -1,4 +1,4 @@
-<div>admin
+<div>
     <div class="mb-[10px] flex max-[556px]:flex-col" id="datepicker" data-wrap="true" data-click-opens="false">
         <div class="mr-[5px] flex max-[556px]:mr-0 max-[556px]:mb-[5px]">
             <input wire:model="date"
