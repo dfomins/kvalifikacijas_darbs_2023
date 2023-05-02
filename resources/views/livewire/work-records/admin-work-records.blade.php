@@ -1,4 +1,4 @@
-<div>
+<div>admin
     <div class="mb-[10px] flex max-[556px]:flex-col" id="datepicker" data-wrap="true" data-click-opens="false">
         <div class="mr-[5px] flex max-[556px]:mr-0 max-[556px]:mb-[5px]">
             <input wire:model="date"
@@ -7,6 +7,7 @@
             <button class="border-grey h-[40px] w-[40px] items-end rounded-[3px] border bg-white shadow-sm" data-toggle>
                 <i class="fa-regular fa-calendar-days cursor-pointer"></i>
             </button>
+            {{ $this->editIndex }}
         </div>
         <div>
             <select wire:model="object_filter"

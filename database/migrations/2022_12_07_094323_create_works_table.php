@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('work', function (Blueprint $table) {
-            $table->id();
+            $table->id('work_id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('date');
