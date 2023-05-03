@@ -51,17 +51,22 @@
                     @endif
                     @if ($editIndex == $user->id)
                         <td class="text-center">
-                            <button wire:click.prevent="save({{ $user }})"><i
+                            <button wire:click="save({{ $user }})"><i
                                     class="fa-solid fa-check mr-[5px] cursor-pointer text-[20px]"></i>
                             </button>
-                            <button wire:click.prevent="cancel()">
+                            <button wire:click="cancel()">
                                 <i class="fa-solid fa-xmark ml-[5px] text-[20px]"></i>
                             </button>
                         </td>
                     @else
-                        <td class="text-center"><i
-                                class="fa-regular fa-pen-to-square mr-[5px] cursor-pointer text-[20px]"
-                                wire:click="edit({{ $user }})"></i></td>
+                        <td class="flex h-[40px] items-center justify-center">
+                            @if ($user->objects->isEmpty())
+                                <i class="fa-solid fa-triangle-exclamation mr-[10px] text-[20px]"></i>
+                            @endif
+                            <button wire:click="edit({{ $user }})">
+                                <i class="fa-regular fa-pen-to-square mb-[2px] cursor-pointer text-[20px]"></i>
+                            </button>
+                        </td>
                     @endif
                 </tr>
             @endforeach

@@ -40,9 +40,6 @@ class AdminWorkRecords extends Component
         if ($this->hours == null) {
             if ($work) {
                 $work->delete();
-                $this->editIndex = null;
-            } else {
-                $this->editIndex = null;
             }
         } else {
             if (!$work) {
@@ -51,32 +48,32 @@ class AdminWorkRecords extends Component
                     'date' => $this->date,
                     'hours' => $this->hours,
                 ]);
-                $this->editIndex = null;
             } else {
                 $work->update([
                     'hours' => $this->hours,
                 ]);
-                $this->editIndex = null;
             }
         }
+        $this->editIndex = null;
     }
 
     public function render()
     {
+        // Ja filtrēšanas izvēlnē izvēlēts "Visi", tad attēlo visus darbiniekus no visiem objektiem
         if ($this->object_filter != null) {
             $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
                 $query->where('object_id', $this->object_filter)
             )->leftJoin('work', function($join) {
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
             })->get();
+        // Ja filtrēšanas izvēlnē izvēlēts konkrēts objekts, tad attēlo visus darbiniekus no tā
         } else {
             $users = User::leftJoin('work', function($join) {
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
             })->get();
         }
-
+        
         $objrels = ObjectToUser::all()->unique('object_id')->sortBy('object_id');
-
         return view('livewire.work-records.admin-work-records')->with(['users' => $users, 'objrels' => $objrels]);
     }
 }

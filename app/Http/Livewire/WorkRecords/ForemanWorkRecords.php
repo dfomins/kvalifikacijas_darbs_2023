@@ -24,7 +24,6 @@ class ForemanWorkRecords extends Component
 
     public function mount()
     {
-        // $this->object_filter = auth()->user()->objects->first()->id;
         $this->date = Carbon::today()->format('d/m/Y');
     }
 
@@ -41,8 +40,6 @@ class ForemanWorkRecords extends Component
             if ($work) {
                 $work->delete();
                 $this->editIndex = null;
-            } else {
-                $this->editIndex = null;
             }
         } else {
             if (!$work) {
@@ -51,14 +48,13 @@ class ForemanWorkRecords extends Component
                     'date' => $this->date,
                     'hours' => $this->hours,
                 ]);
-                $this->editIndex = null;
             } else {
                 $work->update([
                     'hours' => $this->hours,
                 ]);
-                $this->editIndex = null;
             }
         }
+        $this->editIndex = null;
     }
 
     public function render()
@@ -81,6 +77,7 @@ class ForemanWorkRecords extends Component
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
             })->get();
         }
+        
         $objrels = ObjectToUser::all()->where('user_id', auth()->user()->id)->unique('object_id')->sortBy('object_id');
         return view('livewire.work-records.foreman-work-records')->with(['users' => $users, 'objrels' => $objrels]);
     }

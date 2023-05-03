@@ -7,7 +7,6 @@
             <button class="border-grey h-[40px] w-[40px] items-end rounded-[3px] border bg-white shadow-sm" data-toggle>
                 <i class="fa-regular fa-calendar-days cursor-pointer"></i>
             </button>
-            {{ $this->editIndex }}
         </div>
         <div>
             <select wire:model="object_filter"
@@ -52,10 +51,10 @@
                     @endif
                     @if ($editIndex == $user->id)
                         <td class="text-center">
-                            <button wire:click.prevent="save({{ $user }})"><i
+                            <button wire:click="save({{ $user }})"><i
                                     class="fa-solid fa-check mr-[5px] cursor-pointer text-[20px]"></i>
                             </button>
-                            <button wire:click.prevent="cancel()">
+                            <button wire:click="cancel()">
                                 <i class="fa-solid fa-xmark ml-[5px] text-[20px]"></i>
                             </button>
                         </td>
@@ -64,8 +63,9 @@
                             @if ($user->objects->isEmpty())
                                 <i class="fa-solid fa-triangle-exclamation mr-[10px] text-[20px]"></i>
                             @endif
-                            <i class="fa-regular fa-pen-to-square mb-[2px] cursor-pointer text-[20px]"
-                                wire:click="edit({{ $user }})"></i>
+                            <button wire:click="edit({{ $user }})">
+                                <i class="fa-regular fa-pen-to-square mb-[2px] cursor-pointer text-[20px]"></i>
+                            </button>
                         </td>
                     @endif
                 </tr>
