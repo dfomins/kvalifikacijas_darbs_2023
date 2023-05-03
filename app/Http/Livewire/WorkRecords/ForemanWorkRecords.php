@@ -62,15 +62,15 @@ class ForemanWorkRecords extends Component
         // Objekti, kuriem tiek piesaistīts brigadieris
         $foreman_objects = auth()->user()->objects->pluck('id')->toArray();
 
-        // Ja filtrēšanas izvēlnē izvēlēts "Visi", tad attēlo visus darbiniekus no objektiem, pie kuriem tiek piesaistīts brigadieris
+        // Ja filtrēšanas izvēlnē izvēlēts konkrēts objekts, tad attēlo visus darbiniekus no tā
         if ($this->object_filter != null) {
             $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
                 $query->whereIn('object_id', $foreman_objects)->where('object_id', $this->object_filter)
             )->leftJoin('work', function($join) {
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
             })->get();
-        // Ja filtrēšanas izvēlnē izvēlēts konkrēts objekts, tad attēlo visus darbiniekus no tā
         } else {
+        // Ja filtrēšanas izvēlnē izvēlēts "Visi", tad attēlo visus darbiniekus no objektiem, pie kuriem tiek piesaistīts brigadieris
             $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
                 $query->whereIn('object_id', $foreman_objects)
             )->leftJoin('work', function($join) {

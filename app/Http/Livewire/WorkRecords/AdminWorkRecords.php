@@ -59,14 +59,14 @@ class AdminWorkRecords extends Component
 
     public function render()
     {
-        // Ja filtrēšanas izvēlnē izvēlēts "Visi", tad attēlo visus darbiniekus no visiem objektiem
+        // Ja filtrēšanas izvēlnē izvēlēts konkrēts objekts, tad attēlo visus darbiniekus no tā
         if ($this->object_filter != null) {
             $users = User::orderBy('id', 'asc')->withWhereHas('objects', fn($query) =>
                 $query->where('object_id', $this->object_filter)
             )->leftJoin('work', function($join) {
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
             })->get();
-        // Ja filtrēšanas izvēlnē izvēlēts konkrēts objekts, tad attēlo visus darbiniekus no tā
+        // Ja filtrēšanas izvēlnē izvēlēts "Visi", tad attēlo visus darbiniekus no visiem objektiem
         } else {
             $users = User::leftJoin('work', function($join) {
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
