@@ -68,7 +68,7 @@ class AdminWorkRecords extends Component
             })->get();
         // Ja filtrēšanas izvēlnē izvēlēts "Visi", tad attēlo visus darbiniekus no visiem objektiem
         } else {
-            $users = User::leftJoin('work', function($join) {
+            $users = User::orderBy('id', 'asc')->leftJoin('work', function($join) {
                 $join->on('work.user_id', '=', 'users.id')->whereDate('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d'));
             })->get();
         }
