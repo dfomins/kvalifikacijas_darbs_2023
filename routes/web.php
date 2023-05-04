@@ -8,7 +8,8 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\NotifsController;
 use App\Http\Controllers\WorkRecords\AdminWorkRecordsController;
 use App\Http\Controllers\WorkRecords\ForemanWorkRecordsController;
-// use App\Http\Controllers\ForemanWorkRecords;
+use App\Http\Controllers\WorkShow\AdminWorkShowController;
+use App\Http\Controllers\WorkShow\UserWorkShowController;
 use App\Http\Controllers\WorkShowController;
 use App\Http\Controllers\ObjectsController;
 use App\Http\Controllers\LogoutController;
@@ -32,6 +33,7 @@ Route::post('/', 'App\Http\Controllers\Auth\LoginController@login')->name('login
 
 Route::prefix('vaditajs')->middleware('isAdmin')->group(function() {
     Route::get('atskaites', [AdminWorkRecordsController::class, 'index'])->name('isAdmin.work');
+    Route::get('darbs', [AdminWorkShowController::class, 'index'])->name('isAdmin.workshow');
 });
 
 Route::prefix('brigadieris')->middleware('isForeman')->group(function() {
@@ -47,7 +49,6 @@ Route::middleware(['isAdmin'])->group(function() {
 Route::group(['middleware'=>['auth']], function(){
     Route::get('profils', [ProfileController::class, 'profile'])->name('profile');
     Route::get('iziet', [LogoutController::class, 'perform'])->name('logout');
-    Route::get('darbs', [WorkShowController::class, 'index'])->name('work_show');
 });
 
 Route::group(['middleware'=>['auth']], function(){

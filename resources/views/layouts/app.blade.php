@@ -42,14 +42,19 @@
                     <li class="relative inline-block py-[10px] px-[12px]"><a
                             class="tracking-widest duration-300 hover:text-[#52ab98]"
                             href="{{ route('isAdmin.work') }}">Atskaites</a></li>
+                    <li class="relative inline-block py-[10px] px-[12px]"><a
+                            class="tracking-widest duration-300 hover:text-[#52ab98]"
+                            href="{{ route('isAdmin.workshow') }}">Darbs</a></li>
                 @elseif (Auth::user()->role_id == 2)
                     <li class="relative inline-block py-[10px] px-[12px]"><a
                             class="tracking-widest duration-300 hover:text-[#52ab98]"
                             href="{{ route('isForeman.work') }}">Atskaites</a></li>
                 @endif
-                <li class="relative inline-block py-[10px] px-[12px]"><a
-                        class="tracking-widest duration-300 hover:text-[#52ab98]"
-                        href="{{ route('work_show') }}">Darbs</a></li>
+                @if (Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
+                    <li class="relative inline-block py-[10px] px-[12px]"><a
+                            class="tracking-widest duration-300 hover:text-[#52ab98]"
+                            href="{{ route('isUser.workshow') }}">Darbs</a></li>
+                @endif
                 <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]"
                         href="{{ route('objects') }}">Objekti</a></li>
