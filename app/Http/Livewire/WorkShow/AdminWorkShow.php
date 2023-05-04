@@ -29,6 +29,6 @@ class AdminWorkShow extends Component
         $users = User::all();
         $workQuery = Work::whereBetween('date', [$qstart_date, $qend_date])->get();
         $work = $workQuery->where('user_id', $this->user_filter);
-        return view('livewire.work-show.admin-work-show')->with(['users' => $users, 'work' => $work]);
+        return view('livewire.work-show.admin-work-show')->with(['users' => $users, 'work' => $work, 'qstart_date' => $qstart_date, 'qend_date' => $qend_date]);
     }
 }

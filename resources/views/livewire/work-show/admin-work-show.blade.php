@@ -15,7 +15,7 @@
     <div>Stundu skaits par izvēlētiem datumiem {{ $this->start_date }} - {{ $this->end_date }}</div>
     <div>
         @foreach ($work as $list)
-            {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->format('F') }}:
+            {{-- {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->format('F') }}: --}}
             {{ $list->hours }}{{ $loop->last ? '' : ',' }}
         @endforeach
     </div>
