@@ -1,7 +1,7 @@
 <div>
     <div>
-        <input class="h-[40px] w-[200px] rounded-[3px] border p-[5px] shadow-sm outline-0" type="text" readonly
-            id="datepicker" wire:model="start_date"> -
+        <input class="h-[40px] w-[200px] cursor-pointer rounded-[3px] border p-[5px] shadow-sm outline-0" type="text"
+            readonly id="datepicker" wire:model="start_date"> -
         <input class="mr-[10px] h-[40px] w-[200px] cursor-pointer rounded-[3px] border p-[5px] shadow-sm outline-0"
             type="text" readonly id="datepicker" wire:model="end_date">
         <select class="border-grey h-[40px] cursor-pointer rounded-[3px] border px-[5px] shadow-sm outline-0"
@@ -11,12 +11,12 @@
                 </option>
             @endforeach
         </select>
-        {{ $this->user_filter }}
     </div>
     <div>Stundu skaits par izvēlētiem datumiem {{ $this->start_date }} - {{ $this->end_date }}</div>
     <div>
         @foreach ($work as $list)
-            {{ $list->date }}: {{ $list->hours }}{{ $loop->last ? '' : ',' }}
+            {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->format('F') }}:
+            {{ $list->hours }}{{ $loop->last ? '' : ',' }}
         @endforeach
     </div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">

@@ -27,10 +27,8 @@ class AdminWorkShow extends Component
         $qstart_date = Carbon::createFromFormat('d/m/Y', $this->start_date)->format('Y-m-d');
         $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
         $users = User::all();
-        $work = Work::whereBetween('date', [$qstart_date, $qend_date])->get();
-        // ('date', Carbon::createFromFormat('d/m/Y', $this->date)->format('Y-m-d')
-        // $work = $workQuery->whereBetween('date', [$this->start_date, $this->end_date]);
-        // $work = $workQuery->where('date', '>=', $this->start_date)->where('date', '<=', $this->end_date)->dd();
+        $workQuery = Work::whereBetween('date', [$qstart_date, $qend_date])->get();
+        $work = $workQuery->where('user_id', $this->user_filter);
         return view('livewire.work-show.admin-work-show')->with(['users' => $users, 'work' => $work]);
     }
 }
