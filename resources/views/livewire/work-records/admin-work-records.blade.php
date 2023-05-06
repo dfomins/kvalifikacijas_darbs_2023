@@ -84,7 +84,8 @@
         flatpickr("#datepicker", {
             'locale': 'lv',
             'dateFormat': "d/m/Y",
-            'maxDate': 'today'
+            'maxDate': 'today',
+            'disableMobile': 'true'
         });
     </script>
 </div>
