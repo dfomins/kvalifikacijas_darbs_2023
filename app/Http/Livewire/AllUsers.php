@@ -21,6 +21,12 @@ class AllUsers extends Component
     public function remove($user_id)
     {
         $user = User::find($user_id);
+        if ($user->profila_bilde != 'default.jpg') {
+            $destination = 'public/'.$user->profila_bilde;
+            if(Storage::exists($destination)) {
+                Storage::delete($destination);
+            }
+        }
         $user->delete();
     }
 
