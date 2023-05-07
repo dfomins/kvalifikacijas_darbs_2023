@@ -54,7 +54,7 @@ class ObjectsController extends Controller
             $file = $request->file('object_img');
             $img = ImageManagerStatic::make($file)->encode('jpg');
             $filename = time() . '.jpg';
-            Storage::put('public/images/objects/'.$filename, $img);
+            Storage::put('public/'.$filename, $img);
             $object->object_img = $filename;
         }
 
@@ -108,7 +108,7 @@ class ObjectsController extends Controller
 
         if ($request->hasfile('object_img')) {
             if ($object->object_img != 'no_photo.png') {
-                $destination = 'public/images/objects/'.$object->object_img;
+                $destination = 'public/'.$object->object_img;
                 if(Storage::exists($destination)) {
                     Storage::delete($destination);
                 }
@@ -116,7 +116,7 @@ class ObjectsController extends Controller
             $file = $request->file('object_img');
             $img = ImageManagerStatic::make($file)->encode('jpg');
             $filename = time() . '.jpg';
-            Storage::put('public/images/objects/'.$filename, $img);
+            Storage::put('public/'.$filename, $img);
             $object->object_img = $filename;
         }
 
@@ -135,6 +135,12 @@ class ObjectsController extends Controller
     {
         $object = WorkObject::findOrFail($id);
         $this->authorize('delete', $object);
+        if ($object->object_img != 'no_photo.png') {
+            $destination = 'public/'.$object->object_img;
+            if(Storage::exists($destination)) {
+                Storage::delete($destination);
+            }
+        }
         $object->delete();
         return redirect()->route('objects');
     }

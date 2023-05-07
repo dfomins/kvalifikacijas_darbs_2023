@@ -17,7 +17,7 @@
                     <div
                         class="mx-auto my-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-black">
                         <img class="h-full w-full rounded-full object-cover"
-                            src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
+                            src="{{ asset('storage/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                     </div>
                     <div class="text-center">
                         Mani darba objekti:
@@ -54,7 +54,7 @@
                         <p class="day"></p>
                         <p class="date"></p>
                     </div>
-                    <div class="flex h-[230px] flex-col items-center justify-center text-[5.5vw] text-white sm:text-[25px]">
+                    <div class="flex h-[230px] flex-col items-center justify-center text-[20px] text-white">
                         </p>Nostrādātās stundas:
                         {{ $user->work->where('date', Carbon\Carbon::now()->format('d/m/Y'))->first() != null ? $user->work->where('date', Carbon\Carbon::now()->format('d/m/Y'))->first()->hours : '' }}
                         </p>

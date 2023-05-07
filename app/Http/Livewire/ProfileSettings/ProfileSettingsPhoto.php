@@ -36,7 +36,7 @@ class ProfileSettingsPhoto extends Component
             // ]);
 
             if ($user->profila_bilde != 'default.jpg') {
-                $destination = 'public/images/users/'.$user->profila_bilde;
+                $destination = 'public/'.$user->profila_bilde;
                 if(Storage::exists($destination)) {
                     Storage::delete($destination);
                 }
@@ -44,7 +44,7 @@ class ProfileSettingsPhoto extends Component
 
             $img = ImageManagerStatic::make($this->image)->encode('jpg');
             $filename = time() . '.jpg';
-            Storage::put('public/images/users/'.$filename, $img);
+            Storage::put('public/'.$filename, $img);
 
             $user->update([
                 'profila_bilde' => $filename,
@@ -59,7 +59,7 @@ class ProfileSettingsPhoto extends Component
         $user = auth()->user();
 
         if ($user->profila_bilde != 'default.jpg') {
-            $destination = 'public/images/users/'.$user->profila_bilde;
+            $destination = 'public/'.$user->profila_bilde;
             if(Storage::exists($destination)) {
                 Storage::delete($destination);
             }

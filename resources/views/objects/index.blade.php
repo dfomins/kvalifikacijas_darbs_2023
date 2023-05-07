@@ -16,8 +16,7 @@
                             <div class="border border-black">
                                 <a class="group" href="{{ route('objects') }}/{{ $object->id }}">
                                     <img class="h-[300px] w-[400px] object-cover"
-                                        src="{{ asset('storage/images/objects/' . $object->object_img) }}"
-                                        alt="Objekta bilde">
+                                        src="{{ asset('storage/' . $object->object_img) }}" alt="Objekta bilde">
                                     <div class="color-1 group-hover:color-4 flex h-[38px] items-center duration-300">
                                         <div class="flex h-full w-[38px] items-center justify-center border-r">
                                             <h3 class="truncate text-center text-white">{{ $object->id }}</h3>

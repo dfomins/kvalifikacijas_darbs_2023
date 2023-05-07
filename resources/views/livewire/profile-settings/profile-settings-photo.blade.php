@@ -11,7 +11,7 @@
             <div
                 class="mx-auto mt-[15px] mb-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-black">
                 <img class="h-full w-full rounded-full object-cover"
-                    src="{{ asset('storage/images/users/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
+                    src="{{ asset('storage/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
             </div>
         @endif
         @error('image')
