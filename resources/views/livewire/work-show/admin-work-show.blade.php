@@ -32,6 +32,7 @@
             // "plugins": [new rangePlugin({
             //     input: "#secondRangeInput"
             // })]
+            'disableMobile': 'true'
         });
     </script>
 </div>

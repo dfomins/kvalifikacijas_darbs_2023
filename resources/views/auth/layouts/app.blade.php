@@ -21,5 +21,3 @@
 </body>
 
 </html>
-<script src={{ url('js/calendar.js') }}></script>
-<script src={{ url('js/side-navbar.js') }}></script>
