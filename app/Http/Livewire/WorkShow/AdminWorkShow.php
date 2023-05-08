@@ -26,10 +26,10 @@ class AdminWorkShow extends Component
         $this->user = User::find($this->user_filter);
         $qstart_date = Carbon::createFromFormat('d/m/Y', $this->start_date)->format('Y-m-d');
         $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
-        $result = CarbonPeriod::create(Carbon::parse($qstart_date)->firstOfMonth(), '1 month', $qend_date);
         $users = User::all();
-        $workQuery = Work::orderBy('date', 'desc')->whereBetween('date', [$qstart_date, $qend_date])->get();
+        $workQuery = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->get();
         $work = $workQuery->where('user_id', $this->user_filter);
-        return view('livewire.work-show.admin-work-show')->with(['users' => $users, 'work' => $work, 'qstart_date' => $qstart_date, 'qend_date' => $qend_date, 'result' => $result]);
+        $worksum = $work->sum('hours');
+        return view('livewire.work-show.admin-work-show')->with(['users' => $users, 'work' => $work, 'qstart_date' => $qstart_date, 'qend_date' => $qend_date, 'worksum' => $worksum]);
     }
 }
