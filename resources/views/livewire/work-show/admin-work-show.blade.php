@@ -11,12 +11,12 @@
                 </option>
             @endforeach
         </select>
-        <button class="h-[40px] rounded-[3px] border bg-white px-[20px] shadow-sm"><i class="fa-solid fa-file-pdf"></i>
-            PDF</button>
+        <button class="h-[40px] rounded-[3px] border bg-white px-[20px] shadow-sm"><i
+                class="fa-solid fa-cloud-arrow-down"></i> PDF
+        </button>
     </div>
     <div>
         <table class="w-full border-collapse shadow-md">
-
             <thead>
                 <tr class="color-3 h-[40px] text-left text-white">
                     <th class="py-[12px] px-[15px]">Datums</th>

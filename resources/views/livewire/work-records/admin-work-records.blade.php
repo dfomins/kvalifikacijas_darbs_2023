@@ -29,52 +29,60 @@
         @endforeach
     @endif
     <div class="max-h-[60vh] shadow-md scrollbar-thin scrollbar-thumb-[#3c3e3a]">
-        <table class="mx-auto w-[1200px] table-fixed text-white max-xl:w-[900px] max-lg:w-[700px] max-md:w-[580px]">
-            <tr class="color-3 h-[40px]">
-                <th class="w-[5%] border-r">ID</th>
-                <th class="w-[30%] border-r">Vārds</th>
-                <th class="w-[30%] border-r">Uzvārds</th>
-                <th class="w-[15%] border-r">Stundas</th>
-                <th class="w-[20%]">Iestatījumi</th>
-            </tr>
-            @foreach ($users as $user)
-                <tr class="color-1 h-[40px] border-t">
-                    <td class="text-center">{{ $user->id }}</td>
-                    <td class="px-[10px]">{{ $user->fname }}</td>
-                    <td class="px-[10px]">{{ $user->lname }}</td>
-                    @if ($editIndex == $user->id)
-                        <td class="text-center"><input class="w-full rounded-[2px] p-[3px] text-black outline-0"
-                                wire:model.defer="hours" type="text">
-                        </td>
-                    @else
-                        <td class="px-[10px] text-center">{{ $user->hours }}</td>
-                    @endif
-                    @if ($editIndex == $user->id)
-                        <td class="text-center">
-                            <button wire:click="save({{ $user }})"><i
-                                    class="fa-solid fa-check mr-[5px] cursor-pointer text-[20px]"></i>
-                            </button>
-                            <button wire:click="cancel()">
-                                <i class="fa-solid fa-xmark ml-[5px] text-[20px]"></i>
-                            </button>
-                        </td>
-                    @else
-                        <td class="flex h-[40px] items-center justify-center">
-                            @if ($user->objects->isEmpty())
-                                <i class="fa-solid fa-triangle-exclamation mr-[10px] text-[20px]"></i>
-                            @endif
-                            <button wire:click="edit({{ $user }})">
-                                <i class="fa-regular fa-pen-to-square mb-[2px] cursor-pointer text-[20px]"></i>
-                            </button>
-                        </td>
-                    @endif
+        <table class="w-full border-collapse shadow-md">
+            <thead>
+                <tr class="color-3 h-[40px] text-left text-white">
+                    <th class="w-[5%] py-[12px] px-[15px]">ID</th>
+                    <th class="w-[30%] py-[12px] px-[15px]">Vārds</th>
+                    <th class="w-[30%] py-[12px] px-[15px]">Uzvārds</th>
+                    <th class="w-[15%] py-[12px] px-[15px]">Stundas</th>
+                    <th class="w-[20%] py-[12px] px-[15px]">Iestatījumi</th>
                 </tr>
-            @endforeach
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr
+                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#009879]' : '' }} h-[40px] border-b border-[#dddddd]">
+                        <td class="py-[12px] px-[15px]">{{ $user->id }}</td>
+                        <td class="py-[12px] px-[15px]">{{ $user->fname }}</td>
+                        <td class="py-[12px] px-[15px]">{{ $user->lname }}</td>
+                        @if ($editIndex == $user->id)
+                            <td class="text-center"><input
+                                    class="w-full rounded-[2px] border border-gray-400 p-[3px] text-black outline-0"
+                                    wire:model.defer="hours" type="text">
+                            </td>
+                        @else
+                            <td class="py-[12px] px-[15px]">{{ $user->hours }}</td>
+                        @endif
+                        @if ($editIndex == $user->id)
+                            <td class="py-[12px] px-[15px]">
+                                <button wire:click="save({{ $user }})"><i
+                                        class="fa-solid fa-check mr-[5px] cursor-pointer text-[20px]"></i>
+                                </button>
+                                <button wire:click="cancel()">
+                                    <i class="fa-solid fa-xmark ml-[5px] text-[20px]"></i>
+                                </button>
+                            </td>
+                        @else
+                            <td class="flex items-center py-[12px] px-[15px]">
+                                @if ($user->objects->isEmpty())
+                                    <i class="fa-solid fa-triangle-exclamation mr-[10px] text-[20px]"></i>
+                                @endif
+                                <button wire:click="edit({{ $user }})">
+                                    <i class="fa-solid fa-pen-to-square mt-[1px] cursor-pointer text-[20px]"></i>
+                                </button>
+                            </td>
+                        @endif
+                    </tr>
+                @endforeach
+                <tr class="h-[40px] bg-white text-left">
+                    <th colspan="5" class="py-[12px] px-[15px]">
+                        <i class="fa-solid fa-triangle-exclamation text-[18px]"></i> - darbiniekam nav piesaistīti darba
+                        objekti.
+                    </th>
+                </tr>
+            </tbody>
         </table>
-    </div>
-    <div class="mt-[10px] rounded-[3px] bg-red-600 p-[10px] text-white">
-        <i class="fa-solid fa-triangle-exclamation text-[18px]"></i> - darbiniekam nav piesaistīti darba
-        objekti.
     </div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
