@@ -1,5 +1,5 @@
 <div>
-    <div>
+    <div class="mb-[10px]">
         <input class="h-[40px] w-[200px] cursor-pointer rounded-[3px] border p-[5px] shadow-sm outline-0" type="text"
             readonly id="datepicker" wire:model="start_date"> -
         <input class="mr-[10px] h-[40px] w-[200px] cursor-pointer rounded-[3px] border p-[5px] shadow-sm outline-0"
@@ -12,12 +12,38 @@
             @endforeach
         </select>
     </div>
-    <div>Stundu skaits par izvēlētiem datumiem {{ $this->start_date }} - {{ $this->end_date }}</div>
     <div>
-        @foreach ($work as $list)
-            {{-- {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->format('F') }}: --}}
-            {{ $list->hours }}{{ $loop->last ? '' : ',' }}
-        @endforeach
+        <table class="w-full shadow-sm">
+            <tbody>
+                <tr class="h-[40px]">
+                    <th colspan="4">
+                        {{ Carbon\Carbon::createFromFormat('d/m/Y', $this->start_date)->translatedFormat('j. F') }} -
+                        {{ Carbon\Carbon::createFromFormat('d/m/Y', $this->end_date)->translatedFormat('j. F') }}<br>
+                        Darbinieks:
+                        {{ $this->user->fname }} {{ $this->user->lname }}
+                    </th>
+                </tr>
+                <tr class="color-3 h-[40px] text-white">
+                    <th class="border-r">Datums</th>
+                    <th class="border-r">Mēnesis</th>
+                    <th class="border-r">Gads</th>
+                    <th>Stundas</th>
+                </tr>
+                @foreach ($work->sortBy("DATE_FORMAT('d-m-Y',date), ASC") as $list)
+                    <tr class="color-1 h-[40px] text-white">
+                        <td class="text-center">
+                            {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->translatedFormat('j') }}</td>
+                        <td class="text-center">
+                            {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->translatedFormat('F') }}
+                        </td>
+                        <td class="text-center">
+                            {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->translatedFormat('Y') }}
+                        </td>
+                        <td class="text-center">{{ $list->hours }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">

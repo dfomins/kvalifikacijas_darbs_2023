@@ -6,7 +6,7 @@
 
 @section('content')
     <section class="section-min-height color-2">
-        <div class="my-[100px] mx-auto w-[100%] rounded-[3px] sm:px-[40px] md:w-[80%] lg:w-[60%]">
+        <div class="my-[100px] mx-auto w-[100%] rounded-[3px] max-sm:w-[90%] sm:px-[40px] md:w-[80%] lg:w-[60%]">
             <div class="pb-[20px]">
                 <a href="{{ route('objects') }}">
                     <button

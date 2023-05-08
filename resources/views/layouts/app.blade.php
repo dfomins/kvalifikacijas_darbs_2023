@@ -77,10 +77,8 @@
             class="my-[40px] grid w-[1200px] grid-cols-4 gap-x-10 text-white max-xl:w-[900px] max-[1050px]:w-[700px] max-[1050px]:grid-cols-1 max-md:w-[580px] max-sm:w-[90%] max-sm:gap-0">
             <div class="col-span-2 max-sm:mb-[20px] max-[420px]:col-span-1">
                 <h3 class="text-[20px] font-semibold">Par mums</h3>
-                <p class="mt-[10px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa autem quia odio
-                    veritatis cum illum
-                    explicabo animi modi? Inventore officia perferendis nam magnam! Esse minus vero accusantium error
-                    dolorem labore?</p>
+                <p class="mt-[10px]">Intek - moderns portāls, lai jūs varētu veidot darba atskaites savā uzņēmumā.
+                    Viegla atskaišu sistēma ļaus atzīmēt stundu skaitu katram darbiniekam pāris minūšu garumā.</p>
             </div>
             <div class="max-[420px]:mb-[20px]">
                 <h3 class="text-[20px] font-semibold">Saites</h3>
