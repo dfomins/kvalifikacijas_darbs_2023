@@ -53,7 +53,7 @@
                 @if (Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
                     <li class="relative inline-block py-[10px] px-[12px]"><a
                             class="tracking-widest duration-300 hover:text-[#52ab98]"
-                            href="{{ route('isUser.workshow') }}">Darbs</a></li>
+                            href="{{ route('isForemanOrUser.workshow') }}">Darbs</a></li>
                 @endif
                 <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]"

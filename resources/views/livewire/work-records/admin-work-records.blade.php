@@ -42,7 +42,7 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr
-                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#009879]' : '' }} h-[40px] border-b border-[#dddddd]">
+                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#009879]' : 'border-[#dddddd]' }} h-[40px] border-b">
                         <td class="py-[12px] px-[15px]">{{ $user->id }}</td>
                         <td class="py-[12px] px-[15px]">{{ $user->fname }}</td>
                         <td class="py-[12px] px-[15px]">{{ $user->lname }}</td>

@@ -11,8 +11,9 @@
                 </option>
             @endforeach
         </select>
-        <button class="h-[40px] rounded-[3px] border bg-white px-[20px] shadow-sm"><i
-                class="fa-solid fa-cloud-arrow-down"></i> PDF
+        <button class="h-[40px] rounded-[3px] border bg-white px-[20px] shadow-sm"
+            {{ count($work) < 1 ? 'disabled' : '' }} wire:click="export"><i class="fa-solid fa-cloud-arrow-down"></i>
+            PDF
         </button>
     </div>
     <div>
@@ -26,7 +27,7 @@
             <tbody>
                 @foreach ($work->sortBy("DATE_FORMAT('d-m-Y',date), ASC") as $list)
                     <tr
-                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#009879]' : '' }} h-[40px] border-b border-[#dddddd]">
+                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#009879]' : 'border-[#dddddd]' }} h-[40px] border-b">
                         <td class="py-[12px] px-[15px]">
                             {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->translatedFormat('j. F (Y)') }}
                         </td>
@@ -39,9 +40,20 @@
                     {{ Carbon\Carbon::createFromFormat('d/m/Y', $this->start_date)->translatedFormat('j. F') }} -
                     {{ Carbon\Carbon::createFromFormat('d/m/Y', $this->end_date)->translatedFormat('j. F') }}<br>
                     Darbinieks:
-                    {{ $this->user->fname }} {{ $this->user->lname }}</td>
+                    {{ $this->user->fname }} {{ $this->user->lname }}<br>
+                    Objekti:
+
+                    @if (!$this->user->objects->isEmpty())
+                        @foreach ($this->user->objects as $list)
+                            {{ $list->id }}{{ $loop->last ? '' : ',' }}
+                        @endforeach
+                    @else
+                        nav
+                    @endif
+                </td>
                 <td class="py-[12px] px-[15px] text-right font-semibold">Stundas kopā:
-                    {{ $worksum }}</td>
+                    {{ $worksum }}
+                </td>
             </tr>
         </table>
     </div>

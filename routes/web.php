@@ -40,21 +40,29 @@ Route::prefix('brigadieris')->middleware('isForeman')->group(function() {
     Route::get('atskaites', [ForemanWorkRecordsController::class, 'index'])->name('isForeman.work');
 });
 
+Route::middleware('isForemanOrUser')->group(function() {
+    Route::get('darbs', [UserWorkShowController::class, 'index'])->name('isForemanOrUser.workshow');
+});
+
 Route::middleware(['isAdmin'])->group(function() {
     Route::post('registracija', [RegisterController::class, 'register'])->name('register');
     Route::get('registracija', [RegisterController::class, 'showRegistrationForm']);
     Route::get('lietotaji', [AllUsersController::class, 'index'])->name('allusers');
 });
 
+// Route::group(['middleware'=>['auth']], function(){
+//     Route::get('profils', [ProfileController::class, 'profile'])->name('profile');
+//     Route::get('iziet', [LogoutController::class, 'perform'])->name('logout');
+// });
+
 Route::group(['middleware'=>['auth']], function(){
     Route::get('profils', [ProfileController::class, 'profile'])->name('profile');
     Route::get('iziet', [LogoutController::class, 'perform'])->name('logout');
-});
-
-Route::group(['middleware'=>['auth']], function(){
     Route::get('profila_iestatijumi', [ProfileController::class, 'edit_profile'])->name('edit_profile');
     Route::post('profila_iestatijumi', [ProfileController::class, 'update_profile'])->name('update_profile');
 });
+
+// PIEZĪMES
 
 Route::group(['middleware'=>['auth']], function(){
     Route::get('piezimes', [PostsController::class, 'index'])->name('posts');
@@ -66,6 +74,8 @@ Route::group(['middleware'=>['auth']], function(){
     Route::delete('piezimes/{id}', [PostsController::class, 'destroy']);
 });
 
+// OBJEKTI
+
 Route::group(['middleware'=>['auth']], function(){
     Route::get('objekti', [ObjectsController::class, 'index'])->name('objects');
     Route::get('objekti/jauns', [ObjectsController::class, 'create']);
@@ -76,12 +86,14 @@ Route::group(['middleware'=>['auth']], function(){
     Route::delete('objekti/{id}', [ObjectsController::class, 'destroy']);
 });
 
+// PAZIŅOJUMI
+
 Route::group(['middleware'=>['auth']], function(){
-    Route::get('pazinojumi', 'App\Http\Controllers\NotifsController@index')->name('notifications');
-    Route::get('pazinojumi/jauns', 'App\Http\Controllers\NotifsController@create');
-    Route::post('pazinojumi', 'App\Http\Controllers\NotifsController@store');
-    Route::get('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@show');
-    Route::get('pazinojumi/{id}/rediget', 'App\Http\Controllers\NotifsController@edit');
-    Route::put('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@update');
-    Route::delete('pazinojumi/{id}', 'App\Http\Controllers\NotifsController@destroy');
+    Route::get('pazinojumi', [NotifsController::class, 'index'])->name('notifications');
+    Route::get('pazinojumi/jauns', [NotifsController::class, 'create']);
+    Route::post('pazinojumi', [NotifsController::class, 'store']);
+    Route::get('pazinojumi/{id}', [NotifsController::class, 'show']);
+    Route::get('pazinojumi/{id}/rediget', [NotifsController::class, 'edit']);
+    Route::put('pazinojumi/{id}', [NotifsController::class, 'update']);
+    Route::delete('pazinojumi/{id}', [NotifsController::class, 'destroy']);
 });

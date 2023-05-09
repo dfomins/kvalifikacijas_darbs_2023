@@ -4,15 +4,23 @@ namespace App\Http\Livewire\WorkShow;
 
 use App\Models\User;
 use App\Models\Work;
+use App\Models\Post;
 
 use Livewire\Component;
 
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminWorkShow extends Component
 {
     public $user_filter, $start_date, $end_date;
+
+    public function export()
+    {
+        $pdf = Pdf::loadView('layouts.app')->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('invoice.pdf');
+    }
 
     public function mount()
     {
