@@ -9,7 +9,7 @@
     @endif
     <div class="flex justify-end max-md:flex-col max-md:items-end">
         <input wire:model.debounce.400ms="search"
-            class="mb-[10px] h-[40px] w-[300px] rounded-[3px] border border-black p-[5px] text-black outline-0 max-[420px]:w-full"
+            class="mb-[10px] h-[40px] w-[300px] rounded-[3px] border p-[5px] text-black outline-0 max-[420px]:w-full"
             type="search" placeholder="Meklēt...">
     </div>
     <div
@@ -142,7 +142,7 @@
                     @endif
                 @endforeach
                 <tr>
-                    <td colspan="7" class="bg-white py-[12px] px-[15px]">Kopā: </td>
+                    <td colspan="7" class="bg-white py-[12px] px-[15px]">Kopā: {{ $userssum }}</td>
                 </tr>
             </tbody>
         </table>

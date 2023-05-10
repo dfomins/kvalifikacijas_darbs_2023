@@ -77,7 +77,8 @@ class AllUsers extends Component
             ->orWhere('email', 'LIKE', "%$search%");
         })->get();
         $objects = WorkObject::all();
-        return view('livewire.all-users')->with(['users' => $users, 'objects' => $objects]);
+        $userssum = $users->count('id');
+        return view('livewire.all-users')->with(['users' => $users, 'objects' => $objects, 'userssum' => $userssum]);
     }
 }
 //

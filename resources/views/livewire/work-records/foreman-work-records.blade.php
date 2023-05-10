@@ -2,15 +2,15 @@
     <div class="mb-[10px] flex max-[556px]:flex-col" id="datepicker" data-wrap="true" data-click-opens="false">
         <div class="mr-[5px] flex max-[556px]:mr-0 max-[556px]:mb-[5px]">
             <input wire:model="date"
-                class="mr-[5px] h-[40px] w-[200px] cursor-default rounded-[3px] border p-[5px] shadow-sm outline-0 max-[556px]:w-[calc(100%-45px)]"
+                class="mr-[5px] h-[40px] w-[200px] cursor-default rounded-[3px] border p-[5px] outline-0 max-[556px]:w-[calc(100%-45px)]"
                 autocomplete="off" type="text" data-input readonly {{ $editIndex != null ? 'disabled' : '' }}>
-            <button class="border-grey h-[40px] w-[40px] items-end rounded-[3px] border bg-white shadow-sm" data-toggle>
+            <button class="h-[40px] w-[40px] items-end rounded-[3px] border bg-white" data-toggle>
                 <i class="fa-regular fa-calendar-days cursor-pointer"></i>
             </button>
         </div>
         <div>
             <select wire:model="object_filter"
-                class="border-grey h-[40px] cursor-pointer rounded-[3px] border px-[5px] shadow-sm outline-0 max-[556px]:w-full"
+                class="h-[40px] cursor-pointer rounded-[3px] border px-[5px] outline-0 max-[556px]:w-full"
                 {{ $editIndex != null ? 'disabled' : '' }}>
                 <option value="">Visi</option>
                 @foreach ($objrels as $objrel)

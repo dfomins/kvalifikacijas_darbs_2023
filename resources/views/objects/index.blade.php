@@ -13,7 +13,7 @@
                     class="mx-auto mb-[20px] grid min-h-[65vh] w-[1200px] grid-cols-1 justify-items-center gap-x-10 gap-y-8 max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90%] md:grid-cols-2 xl:grid-cols-3">
                     @foreach ($objects as $object)
                         <li>
-                            <div class="border border-black">
+                            <div class="border border-solid">
                                 <a class="group" href="{{ route('objects') }}/{{ $object->id }}">
                                     <img class="h-[300px] min-h-full w-[400px] object-cover"
                                         src="{{ asset('storage/' . $object->object_img) }}" alt="Objekta bilde">

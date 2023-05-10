@@ -15,7 +15,7 @@
                     </h2>
                     <h3 class="my-[15px] text-center text-[20px] font-medium">{{ $user->role->name }}</h3>
                     <div
-                        class="mx-auto my-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-black">
+                        class="mx-auto my-[10px] h-[50vw] max-h-[250px] w-[50vw] max-w-[250px] rounded-full border border-solid border-gray-400">
                         <img class="h-full w-full rounded-full object-cover"
                             src="{{ asset('storage/' . auth()->user()->profila_bilde) }}" alt="Profila bilde" />
                     </div>

@@ -40,7 +40,7 @@
             <div class="flex w-full justify-center">
                 <div class="w-[1200px] max-xl:w-[900px] max-lg:w-[700px] max-md:w-[580px] max-sm:w-[90%]">
                     <div class="flex flex-col md:flex-row">
-                        <img class="float-left my-[20px] h-[vw] min-h-full w-[vw] rounded-[3px] border border-black object-cover sm:h-[300px] sm:w-[350px] md:mr-[20px]"
+                        <img class="float-left my-[20px] h-[vw] min-h-full w-[vw] rounded-[3px] border border-solid object-cover sm:h-[300px] sm:w-[350px] md:mr-[20px]"
                             src="{{ asset('storage/' . $object->object_img) }}" alt="Objekta bilde">
                         <div class="break-all md:m-[20px]">
                             <h4 class="mb-[5px] text-[20px]">
@@ -50,7 +50,7 @@
                             <h4 class="mb-[5px] text-[20px]"><strong>Iela:</strong> {{ $object->street }}</h4>
                             <a href="{{ 'https://www.google.com/maps/place/' . $object->city . ', ' . $object->street }}"
                                 target="_blank"><button
-                                    class="border-grey rounded-[3px] border bg-white p-[10px] shadow-sm duration-300"><i
+                                    class="rounded-[3px] border border-solid bg-white p-[10px] shadow-sm duration-300"><i
                                         class="fa-solid fa-map-pin mr-[5px] text-[18px]"></i>Atrast Google
                                     Maps</button></a>
                         </div>
