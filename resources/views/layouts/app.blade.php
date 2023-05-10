@@ -80,18 +80,33 @@
             <div class="max-[420px]:mb-[20px]">
                 <h3 class="text-[20px] font-semibold">Saites</h3>
                 <ol class="mt-[10px]">
-                    <li><a href="">Links #1</a></li>
-                    <li><a href="">Links #2</a></li>
-                    <li><a href="">Links #3</a></li>
-                    <li><a href="">Links #4</a></li>
+                    <li><a href="{{ route('profile') }}">Profils</a></li>
+                    <li><a href="{{ route('posts') }}">Piezīmes</a></li>
+                    <li><a href="{{ route('notifications') }}">Paziņojumi</a></li>
+                    @if (Auth::user()->role_id == 1)
+                        <li><a href="{{ route('isAdmin.work') }}">Atskaites</a></li>
+                        <li><a href="{{ route('isAdmin.workshow') }}">Darbs</a></li>
+                    @elseif (Auth::user()->role_id == 2)
+                        <li><a href="{{ route('isForeman.work') }}">Atskaites</a></li>
+                    @endif
+                    @if (Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
+                        <li><a href="{{ route('isForemanOrUser.workshow') }}">Darbs</a></li>
+                    @endif
                 </ol>
             </div>
             <div>
-                <h3 class="text-[20px] font-semibold">Sociālie tīkli</h3>
+                <h3 class="text-[20px] font-semibold">Kontakti</h3>
                 <div class="mt-[10px]">
-                    <a href=""><i class="fa-brands fa-instagram text-[40px]"></i></a>
-                    <a href=""><i class="fa-brands fa-facebook ml-[10px] text-[40px]"></i></a>
-                    <a href=""><i class="fa-brands fa-tiktok ml-[10px] text-[40px]"></i></a>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-phone mr-[15px] mt-[5px] mb-[5px] text-[25px]"></i>+371 12345678
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-envelope mt-[5px] mr-[15px] mb-[5px] text-[25px]"></i>info@intek.lv
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fa-solid fa-location-dot mr-[15px] text-[25px]"></i>Krišjāņa Valdemāra iela 1C, Centra
+                        rajons, Rīga, LV-1010
+                    </div>
                 </div>
             </div>
         </div>
