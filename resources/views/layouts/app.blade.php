@@ -59,9 +59,6 @@
                         class="tracking-widest duration-300 hover:text-[#52ab98]"
                         href="{{ route('objects') }}">Objekti</a></li>
                 <li class="relative inline-block py-[10px] px-[12px]"><a
-                        class="tracking-widest duration-300 hover:text-[#52ab98]" href="">Kontakti</a>
-                </li>
-                <li class="relative inline-block py-[10px] px-[12px]"><a
                         class="tracking-widest duration-300 hover:text-[#52ab98]" href="{{ route('logout') }}"><i
                             class="logout fa-solid fa-arrow-right-from-bracket"></i></li>
                 </a>
