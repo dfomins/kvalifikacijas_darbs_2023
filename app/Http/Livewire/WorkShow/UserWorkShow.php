@@ -27,8 +27,7 @@ class UserWorkShow extends Component
         $this->user = User::find(auth()->id());
         $qstart_date = Carbon::createFromFormat('d/m/Y', $this->start_date)->format('Y-m-d');
         $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
-        $workQuery = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->get();
-        $work = $workQuery->where('user_id', $this->user->id);
+        $work = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->where('user_id', $this->user->id)->get();
         $worksum = $work->sum('hours');
         return view('livewire.work-show.user-work-show')->with(['work' => $work, 'qstart_date' => $qstart_date, 'qend_date' => $qend_date, 'worksum' => $worksum]);
     }
