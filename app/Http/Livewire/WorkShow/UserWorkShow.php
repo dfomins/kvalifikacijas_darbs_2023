@@ -15,12 +15,6 @@ class UserWorkShow extends Component
 {
     public $user_filter, $start_date, $end_date;
 
-    public function export()
-    {
-        $pdf = Pdf::loadView('layouts.app')->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('invoice.pdf');
-    }
-
     public function mount()
     {
         $this->user_filter = User::all()->first()->id;

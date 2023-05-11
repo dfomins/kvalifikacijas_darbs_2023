@@ -61,15 +61,11 @@
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/lv.js"></script>
-    {{-- <script src="https://unpkg.com/flatpickr@4.6.13/dist/plugins/rangePlugin.js"></script> --}}
     <script>
         flatpickr("#datepicker", {
             'locale': 'lv',
             'dateFormat': "d/m/Y",
             'maxDate': 'today',
-            // "plugins": [new rangePlugin({
-            //     input: "#secondRangeInput"
-            // })]
             'disableMobile': 'true'
         });
     </script>

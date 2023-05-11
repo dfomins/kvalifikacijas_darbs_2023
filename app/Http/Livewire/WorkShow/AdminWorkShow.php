@@ -4,12 +4,13 @@ namespace App\Http\Livewire\WorkShow;
 
 use App\Models\User;
 use App\Models\Work;
+use App\Exports\WorkShowExport\AdminWorkShowExport;
 
 use Livewire\Component;
 
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Excel;
 
 class AdminWorkShow extends Component
 {
@@ -17,8 +18,15 @@ class AdminWorkShow extends Component
 
     public function export()
     {
-        $pdf = Pdf::loadView('layouts.app')->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('invoice.pdf');
+        $this->user = User::find($this->user_filter);
+        $qstart_date = Carbon::createFromFormat('d/m/Y', $this->start_date)->format('Y-m-d');
+        $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
+        $users = User::all();
+        $workQuery = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->get();
+        $work = $workQuery->where('user_id', $this->user_filter);
+        $worksum = $work->sum('hours');
+        return (new AdminWorkShowExport($qstart_date, $qend_date, $this->user_filter, $worksum))->download($this->user->fname . '_' . $this->user->lname . '_' . Carbon::parse($qstart_date)->format('d-m-Y') . '-' . Carbon::parse($qend_date)->format('d-m-Y') .'.xlsx');
+        // return Excel::download(new AdminWorkShowExport, 'darbs.xlsx');
     }
 
     public function mount()

@@ -14,6 +14,7 @@ use App\Http\Controllers\WorkShowController;
 use App\Http\Controllers\ObjectsController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AllUsersController;
+use App\Http\Livewire\WorkShow\AdminWorkShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,3 +98,5 @@ Route::group(['middleware'=>['auth']], function(){
     Route::put('pazinojumi/{id}', [NotifsController::class, 'update']);
     Route::delete('pazinojumi/{id}', [NotifsController::class, 'destroy']);
 });
+
+Route::get('lejupladet', [AdminWorkShow::class, 'export']);
