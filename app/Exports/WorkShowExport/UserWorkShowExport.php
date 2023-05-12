@@ -15,16 +15,16 @@ use App\Models\Work;
 
 use Carbon\Carbon;
 
-class AdminWorkShowExport implements FromQuery, WithHeadings, WithMapping, WithTitle, WithColumnWidths, WithStyles
+class UserWorkShowExport implements FromQuery, WithHeadings, WithMapping, WithTitle, WithColumnWidths, WithStyles
 {
     use Exportable;
 
-    public function __construct($user, $userobj, $qstart_date, $qend_date, $worksum)
+    public function __construct($userobj, $qstart_date, $qend_date, $user, $worksum)
     {
-        $this->user = $user;
         $this->userobj = $userobj;
         $this->qstart_date = $qstart_date;
         $this->qend_date = $qend_date;
+        $this->user = $user;
         $this->worksum = $worksum;
         $this->date = Carbon::parse($qstart_date)->format('d/m/Y'). ' - ' .Carbon::parse($qend_date)->format('d/m/Y');
     }

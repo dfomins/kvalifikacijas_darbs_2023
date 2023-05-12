@@ -99,4 +99,4 @@ Route::group(['middleware'=>['auth']], function(){
     Route::delete('pazinojumi/{id}', [NotifsController::class, 'destroy']);
 });
 
-Route::get('lejupladet', [AdminWorkShow::class, 'export']);
+// Route::get('lejupladet', [AdminWorkShow::class, 'export']);

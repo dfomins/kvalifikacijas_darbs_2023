@@ -16,21 +16,22 @@ class AdminWorkShow extends Component
 {
     public $user_filter, $start_date, $end_date;
 
-    public function export()
-    {
-        $this->user = User::find($this->user_filter);
-        $qstart_date = Carbon::createFromFormat('d/m/Y', $this->start_date)->format('Y-m-d');
-        $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
-        $work = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->where('user_id', $this->user_filter);
-        $worksum = $work->sum('hours');
-        return (new AdminWorkShowExport($qstart_date, $qend_date, $this->user_filter, $worksum))->download($this->user->fname . '_' . $this->user->lname . '_' . Carbon::parse($qstart_date)->format('d-m-Y') . '-' . Carbon::parse($qend_date)->format('d-m-Y') .'.xlsx');
-    }
-
     public function mount()
     {
         $this->user_filter = User::all()->first()->id;
         $this->start_date = Carbon::now()->startOfMonth()->format('d/m/Y');
         $this->end_date = Carbon::today()->format('d/m/Y');
+    }
+
+    public function export()
+    {
+        $this->user = User::find($this->user_filter);
+        $userobj = $this->user->objects->pluck('id')->toArray();
+        $qstart_date = Carbon::createFromFormat('d/m/Y', $this->start_date)->format('Y-m-d');
+        $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
+        $work = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->where('user_id', $this->user_filter);
+        $worksum = $work->sum('hours');
+        return (new AdminWorkShowExport($this->user, $userobj, $qstart_date, $qend_date, $worksum))->download($this->user->fname . '_' . $this->user->lname . '_' . Carbon::parse($qstart_date)->format('d-m-Y') . '-' . Carbon::parse($qend_date)->format('d-m-Y') .'.xlsx');
     }
 
     public function render()
