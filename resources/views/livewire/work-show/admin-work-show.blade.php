@@ -8,9 +8,9 @@
                 class="ml-[5px] h-[40px] w-[200px] cursor-pointer rounded-[3px] border p-[5px] outline-0 max-[463px]:w-full lg:mr-[10px]"
                 type="text" readonly id="datepicker" wire:model="end_date">
         </div>
-        <div class="flex max-[320px]:flex-col">
+        <div class="flex max-[331px]:flex-col">
             <select
-                class="border-grey mr-[10px] h-[40px] cursor-pointer rounded-[3px] border px-[5px] outline-0 max-[320px]:mb-[5px] max-[320px]:w-full"
+                class="border-grey mr-[10px] h-[40px] cursor-pointer rounded-[3px] border px-[5px] outline-0 max-[331px]:mb-[5px] max-[331px]:w-full"
                 wire:model="user_filter">
                 @foreach ($users as $user)
                     <option value="{{ $user->id }}">{{ $user->id }}. {{ $user->fname }} {{ $user->lname }}
@@ -19,7 +19,7 @@
             </select>
             <button class="h-[40px] rounded-[3px] border bg-white px-[20px]" {{ count($work) < 1 ? 'disabled' : '' }}
                 wire:click="export"><i class="fa-solid fa-cloud-arrow-down"></i>
-                PDF
+                Excel
             </button>
         </div>
     </div>

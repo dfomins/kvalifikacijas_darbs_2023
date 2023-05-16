@@ -76,10 +76,11 @@
                     </tr>
                 @endforeach
                 <tr class="h-[40px] bg-white text-left">
-                    <th colspan="5" class="py-[12px] px-[15px]">
+                    <th colspan="3" class="py-[12px] px-[15px]">
                         <i class="fa-solid fa-triangle-exclamation text-[18px]"></i> - darbiniekam nav piesaistīti darba
-                        objekti.
+                        objekti
                     </th>
+                    <th colspan="2" class="py-[12px] px-[15px]">s - slimība | a - attaisnots</th>
                 </tr>
             </tbody>
         </table>

@@ -41,7 +41,7 @@ class AdminWorkShow extends Component
         $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
         $users = User::all();
         $work = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->where('user_id', $this->user_filter)->get();
-        $worksum = $work->sum('hours');
+        $worksum = $work->whereIn('hours', [1, 2, 3, 4, 5, 6, 7, 8])->sum('hours');
         return view('livewire.work-show.admin-work-show')->with(['users' => $users, 'work' => $work, 'qstart_date' => $qstart_date, 'qend_date' => $qend_date, 'worksum' => $worksum]);
     }
 }

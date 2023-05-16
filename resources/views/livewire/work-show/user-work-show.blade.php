@@ -1,6 +1,6 @@
 <div>
-    <div class="mb-[10px] flex max-[581px]:flex-col">
-        <div class="flex items-center max-[581px]:mb-[5px] max-[464px]:flex-col">
+    <div class="mb-[10px] flex max-[593px]:flex-col">
+        <div class="flex items-center max-[593px]:mb-[5px] max-[464px]:flex-col">
             <input
                 class="h-[40px] w-[200px] cursor-pointer rounded-[3px] border p-[5px] outline-0 max-[464px]:mb-0 max-[464px]:w-full min-[465px]:mr-[5px]"
                 type="text" readonly id="datepicker" wire:model="start_date"> -
@@ -9,10 +9,10 @@
                 type="text" readonly id="datepicker" wire:model="end_date">
         </div>
         <div>
-            <button class="h-[40px] rounded-[3px] border bg-white px-[20px] max-[581px]:w-full"
+            <button class="h-[40px] rounded-[3px] border bg-white px-[20px] max-[593px]:w-full"
                 {{ count($work) < 1 ? 'disabled' : '' }} wire:click="export"><i
                     class="fa-solid fa-cloud-arrow-down"></i>
-                PDF
+                Excel
             </button>
         </div>
     </div>

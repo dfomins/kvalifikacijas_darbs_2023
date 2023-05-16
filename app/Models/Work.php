@@ -24,7 +24,7 @@ class Work extends Model
 
     public static $rules = [
         'date' => 'required|date_format:d/m/Y|before:tomorrow',
-        'hours' => 'in:1,2,3,4,5,6,7,8',
+        'hours' => 'in:1,2,3,4,5,6,7,8,a,s',
     ];
 
     public function users() {
