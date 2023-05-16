@@ -19,7 +19,7 @@
     <div>
         <table class="w-full border-collapse shadow-md">
             <thead>
-                <tr class="color-3 h-[40px] text-left text-white">
+                <tr class="color-1 h-[40px] text-left text-white">
                     <th class="py-[12px] px-[15px]">Datums</th>
                     <th class="py-[12px] px-[15px]">Stundas</th>
                 </tr>
@@ -27,7 +27,7 @@
             <tbody>
                 @foreach ($work->sortBy("DATE_FORMAT('d-m-Y',date), ASC") as $list)
                     <tr
-                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#009879]' : 'border-[#dddddd]' }} h-[40px] border-b">
+                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#2b6777]' : 'border-[#dddddd]' }} h-[40px] border-b">
                         <td class="py-[12px] px-[15px]">
                             {{ Carbon\Carbon::createFromFormat('d/m/Y', $list->date)->translatedFormat('j. F (Y)') }}
                         </td>

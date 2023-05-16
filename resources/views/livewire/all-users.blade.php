@@ -34,7 +34,7 @@
                         <td class="w-[20%] py-[12px] px-[15px]">
 
                             @if ($user->id == $editIndex)
-                                <input class="w-full rounded-[2px] p-[5px] text-black outline-0" type="text"
+                                <input class="w-full rounded-[2px] border p-[5px] text-black outline-0" type="text"
                                     wire:model.defer="fname">
                             @else
                                 {{ $user->fname }}
@@ -44,7 +44,7 @@
                         <td class="w-[20%] py-[12px] px-[15px]">
 
                             @if ($user->id == $editIndex)
-                                <input class="w-full rounded-[2px] p-[5px] text-black outline-0" type="text"
+                                <input class="w-full rounded-[2px] border p-[5px] text-black outline-0" type="text"
                                     wire:model.defer="lname">
                             @else
                                 {{ $user->lname }}
@@ -54,7 +54,7 @@
                         <td class="w-[25%] py-[12px] px-[15px]">
 
                             @if ($user->id == $editIndex)
-                                <input class="w-full rounded-[2px] p-[5px] text-black outline-0" type="text"
+                                <input class="w-full rounded-[2px] border p-[5px] text-black outline-0" type="text"
                                     wire:model.defer="email">
                             @else
                                 {{ $user->email }}
@@ -75,7 +75,7 @@
                         <td class="py-[12px] px-[15px]">
                             @if ($user->id == $editIndex)
                                 @if ($user->id != Auth::user()->id)
-                                    <select class="cursor-pointer rounded-[2px] p-[5px] outline-0"
+                                    <select class="cursor-pointer rounded-[2px] border p-[5px] outline-0"
                                         wire:model.defer="role_id">
                                         <option value="1" {{ $user->role_id == '1' ? 'selected' : '' }}>
                                             Vadītājs

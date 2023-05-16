@@ -82,7 +82,7 @@ class AdminWorkShowExport implements FromQuery, WithHeadings, WithMapping, WithT
 
     public function title(): string
     {
-        return 'asd';
+        return $this->date;
     }
 
     public function columnWidths(): array

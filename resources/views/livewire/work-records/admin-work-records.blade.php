@@ -31,7 +31,7 @@
     <div class="max-h-[60vh] shadow-md scrollbar-thin scrollbar-thumb-[#3c3e3a]">
         <table class="w-full border-collapse shadow-md">
             <thead>
-                <tr class="color-3 h-[40px] text-left text-white">
+                <tr class="color-1 h-[40px] text-left text-white">
                     <th class="w-[5%] py-[12px] px-[15px]">ID</th>
                     <th class="w-[30%] py-[12px] px-[15px]">Vārds</th>
                     <th class="w-[30%] py-[12px] px-[15px]">Uzvārds</th>
@@ -42,7 +42,7 @@
             <tbody>
                 @foreach ($users as $user)
                     <tr
-                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#009879]' : 'border-[#dddddd]' }} h-[40px] border-b">
+                        class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3] ' : 'bg-white ' }}{{ $loop->last ? 'border-b-2 border-solid border-[#2b6777]' : 'border-[#dddddd]' }} h-[40px] border-b">
                         <td class="py-[12px] px-[15px]">{{ $user->id }}</td>
                         <td class="py-[12px] px-[15px]">{{ $user->fname }}</td>
                         <td class="py-[12px] px-[15px]">{{ $user->lname }}</td>

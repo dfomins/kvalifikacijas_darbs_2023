@@ -82,7 +82,7 @@ class UserWorkShowExport implements FromQuery, WithHeadings, WithMapping, WithTi
 
     public function title(): string
     {
-        return 'asd';
+        return $this->date;
     }
 
     public function columnWidths(): array
