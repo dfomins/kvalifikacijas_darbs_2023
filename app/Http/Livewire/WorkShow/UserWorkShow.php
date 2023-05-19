@@ -30,7 +30,7 @@ class UserWorkShow extends Component
         $qstart_date = Carbon::createFromFormat('d/m/Y', $this->start_date)->format('Y-m-d');
         $qend_date = Carbon::createFromFormat('d/m/Y', $this->end_date)->format('Y-m-d');
         $work = Work::orderBy('date', 'asc')->whereBetween('date', [$qstart_date, $qend_date])->where('user_id', $this->user->id)->get();
-        $worksum = $work->sum('hours');
+        $worksum = $work->whereIn('hours', [1, 2, 3, 4, 5, 6, 7, 8])->sum('hours');
         return (new UserWorkShowExport($userobj, $qstart_date, $qend_date, $this->user, $worksum))->download($this->user->fname . '_' . $this->user->lname . '_' . Carbon::parse($qstart_date)->format('d-m-Y') . '-' . Carbon::parse($qend_date)->format('d-m-Y') .'.xlsx');
     }
 
