@@ -21,7 +21,7 @@
                 <label class="pt-[15px] text-white" for="date_of_birth">Dzimšanas datums</label>
                 <input
                     class="my-[5px] cursor-pointer rounded-[3px] border border-solid border-black p-[10px] text-[18px] text-black outline-0"
-                    id="datepicker" wire:model.defer="date_of_birth" type="date" name="date_of_birth">
+                    id="datepicker" wire:model.defer="date_of_birth" type="text" name="date_of_birth">
             </div>
             <div class="flex flex-col">
                 <label class="pt-[15px] text-white" for="city">Pilsēta</label>

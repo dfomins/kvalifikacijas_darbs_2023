@@ -9,11 +9,11 @@ use Carbon\Carbon;
 class ProfileSettingsAdditional extends Component
 {
 
-    protected $listeners = ['setBirthDate'];
+    // protected $listeners = ['setBirthDate'];
 
-    public function setBirthDate($data){
-        $this->date_of_birth = $data;
-    }
+    // public function setBirthDate($data){
+    //     $this->date_of_birth = $data;
+    // }
 
     public function update_profile_additional()
     {

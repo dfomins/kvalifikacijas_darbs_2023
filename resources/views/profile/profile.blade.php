@@ -94,7 +94,7 @@
                     class="shadow-[rgba(0, 0, 0, 0.1) 0px 4px 12px] mt-[30px] ml-[100px] min-h-[345px] rounded-[3px] bg-[#52ab98] text-[20px] max-lg:mx-0">
                     <div
                         class="flex h-[70px] flex-col items-center justify-center bg-[#2b6777] font-bold uppercase text-white">
-                        Pēdējās piezīmes
+                        Manas piezīmes
                     </div>
                     <div class="min-h-[220px] overflow-y-auto">
                         @if (count($recent_posts) > 0)

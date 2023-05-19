@@ -11,6 +11,7 @@ use App\Models\ObjectToUser;
 
 use Validator;
 use DB;
+use Carbon\Carbon;
 
 class AllUsers extends Component
 {
@@ -38,6 +39,15 @@ class AllUsers extends Component
         $this->role_id = $user->role_id;
         $this->object_to_user = $user->objects->pluck('id')->toArray();
         $this->editIndex = $user->id;
+        $this->personal_code = $user->personal_code;
+        if ($user->date_of_birth != null) { 
+            $this->date_of_birth = Carbon::createFromFormat('Y-m-d', $user->date_of_birth)->format('d/m/Y');
+        } else {
+            $this->date_of_birth = $user->date_of_birth;
+        }
+        $this->city = $user->city;
+        $this->street = $user->street;
+        $this->house_number = $user->house_number;
     }
 
     public function cancel()
@@ -53,6 +63,11 @@ class AllUsers extends Component
             'lname' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users,email,'.$user->id],
             'role_id' => ['required', 'in:1,2,3'],
+            'personal_code' => 'max:12',
+            'date_of_birth' => 'nullable|before:today',
+            'city' => 'max:50',
+            'street' => 'max:50',
+            'house_number' => 'max:10',
         ]);
 
         $user->update([
@@ -60,6 +75,11 @@ class AllUsers extends Component
             'lname' => $this->lname,
             'email' => $this->email,
             'role_id' => $this->role_id,
+            'personal_code' => $this->personal_code,
+            'date_of_birth' => $this->date_of_birth,
+            'city' => $this->city,
+            'street' => $this->street,
+            'house_number' => $this->house_number,
         ]);
 
         $user->objects()->sync($this->object_to_user);

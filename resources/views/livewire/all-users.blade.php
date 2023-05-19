@@ -16,7 +16,7 @@
         class="w-[1200px] shadow-md scrollbar-thin scrollbar-thumb-[#3c3e3a] max-xl:w-[1000px] max-lg:w-[750px] max-md:w-[600px] max-sm:w-[90vw]">
         <table class="max-h-[60vh] w-full border-collapse shadow-md">
             <thead>
-                <tr class="color-3 h-[40px] text-left text-white">
+                <tr class="color-1 h-[40px] text-left text-white">
                     <th class="w-[5%] py-[12px] px-[15px]">ID</th>
                     <th class="w-[20%] py-[12px] px-[15px]">Vārds</th>
                     <th class="w-[20%] py-[12px] px-[15px]">Uzvārds</th>
@@ -123,6 +123,39 @@
                         <tr
                             class="{{ $loop->iteration % 2 == 0 ? 'bg-[#F3F3F3]' : 'bg-white' }} h-[40px] border-b border-[#dddddd]">
                             <td class="border-t" colspan="7">
+                                <div class="px-[15px] pt-[12px]">
+                                    <div class="flex w-1/4 flex-col">
+                                        <label class="text-[15px]" for="personal_code">Personas kods</label>
+                                        <input
+                                            class="my-[5px] rounded-[3px] border border-solid p-[5px] text-[15px] text-black outline-0"
+                                            wire:model.defer="personal_code" type="text" name="personal_code">
+                                    </div>
+                                    <div class="flex w-1/4 flex-col text-[15px]">
+                                        <label class="pt-[10px]" for="date_of_birth">Dzimšanas datums</label>
+                                        <input
+                                            class="my-[5px] cursor-pointer rounded-[3px] border p-[5px] text-[15px] text-black outline-0"
+                                            id="datepicker" wire:model.defer="date_of_birth" type="text"
+                                            name="date_of_birth">
+                                    </div>
+                                    <div class="flex w-1/4 flex-col text-[15px]">
+                                        <label class="pt-[10px]" for="city">Pilsēta</label>
+                                        <input
+                                            class="my-[5px] cursor-pointer rounded-[3px] border p-[5px] text-[15px] text-black outline-0"
+                                            wire:model.defer="city" type="text" name="city">
+                                    </div>
+                                    <div class="flex w-1/4 flex-col text-[15px]">
+                                        <label class="pt-[10px]" for="street">Iela</label>
+                                        <input
+                                            class="my-[5px] cursor-pointer rounded-[3px] border p-[5px] text-[15px] text-black outline-0"
+                                            wire:model.defer="street" type="text" name="street">
+                                    </div>
+                                    <div class="flex w-1/4 flex-col text-[15px]">
+                                        <label class="pt-[10px]" for="house_number">Mājas numurs</label>
+                                        <input
+                                            class="mt-[5px] cursor-pointer rounded-[3px] border p-[5px] text-[15px] text-black outline-0"
+                                            wire:model.defer="house_number" type="text" name="house_number">
+                                    </div>
+                                </div>
                                 <div class="py-[12px] px-[15px]">
                                     <h3 class="mb-[5px]">Izvēlieties darba objektus darbiniekam
                                         {{ $user->fname }}
@@ -147,25 +180,36 @@
             </tbody>
         </table>
     </div>
-</div>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function() {
-        @this.on('deleteUser', id => {
-            Swal.fire({
-                title: 'Dzēst lietotāju?',
-                html: "Visi lietotāja dati tiks dzēsti!",
-                icon: 'warning',
-                confirmButtonText: 'Dzēst',
-                confirmButtonColor: '#2b6777',
-                showCancelButton: true,
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'Atcelt',
-            }).then((result) => {
-                if (result.value) {
-                    @this.call('remove', id)
-                }
-            });
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/lv.js"></script>
+    <script>
+        flatpickr("#datepicker", {
+            'locale': 'lv',
+            'dateFormat': "d/m/Y",
+            'maxDate': new Date().fp_incr(-6574),
+            'disableMobile': 'true'
         });
-    })
-</script>
+    </script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            @this.on('deleteUser', id => {
+                Swal.fire({
+                    title: 'Dzēst lietotāju?',
+                    html: "Visi lietotāja dati tiks dzēsti!",
+                    icon: 'warning',
+                    confirmButtonText: 'Dzēst',
+                    confirmButtonColor: '#2b6777',
+                    showCancelButton: true,
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Atcelt',
+                }).then((result) => {
+                    if (result.value) {
+                        @this.call('remove', id)
+                    }
+                });
+            });
+        })
+    </script>
 </div>
