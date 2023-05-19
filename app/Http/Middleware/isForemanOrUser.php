@@ -18,7 +18,7 @@ class isForemanOrUser
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 3) {
+        if (Auth::check() && Auth::user()->role_id == 2 || Auth::check() && Auth::user()->role_id == 3) {
             return $next($request);
         } else {
             return redirect()->route('login');
