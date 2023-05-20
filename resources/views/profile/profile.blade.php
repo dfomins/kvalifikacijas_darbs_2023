@@ -34,7 +34,7 @@
                                 class="fa-solid fa-gear duration-300 group-hover:rotate-45"></i></a>
                         @if (Auth::user()->role_id == 1)
                             <a class="group" href="registracija">
-                                <p>Izveidot jaunu lietotāji <i class="fa-solid fa-user"></i><i
+                                <p>Izveidot jaunu lietotāju <i class="fa-solid fa-user"></i><i
                                         class="fa-solid fa-plus mb-[5px] align-middle text-[10px] duration-300 group-hover:rotate-90"></i>
                                 </p>
                             </a>
