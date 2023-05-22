@@ -41,7 +41,9 @@
             {{ Form::label('body', 'Informācija', ['class' => 'pt-[15px] text-black']) }}
             {{ Form::textarea('body', $object->body, ['class' => 'text-black p-[10px] rounded-[3px] border border-solid border-black outline-0 my-[5px] text-16px']) }}
             {{ Form::file('object_img', ['class' => 'bg-white mx-auto my-[10px] text-black w-full cursor-pointer rounded-[3px] border-2 border-dashed p-[10px] border-black file:cursor-pointer file:outline-0']) }}
-            {{ Form::submit('Apstiprināt', ['class' => 'cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[15px] mt-[20px] duration-300 hover:bg-[#52ab98]']) }}
+            <div>
+                {{ Form::submit('Apstiprināt', ['class' => 'cursor-pointer rounded-[3px] bg-[#2b6777] py-[10px] px-[15px] mt-[20px] duration-300 hover:bg-[#52ab98]']) }}
+            </div>
             {!! Form::close() !!}
         </div>
     </div>

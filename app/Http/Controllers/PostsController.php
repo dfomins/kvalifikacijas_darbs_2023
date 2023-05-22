@@ -46,6 +46,7 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
+        // validācija, izveido piezīmi un saglabā lietotāja ievadītos datus (nosaukumu, saturu, lietotāja ID), pāradresē uz piezīmju lapu
         $request->validate(Post::$rules);
         $post = new Post;
         $post->title = $request->input('title');
@@ -63,7 +64,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
+        // meklē pieprasīto piezīmi
         $post = Post::findOrFail($id);
+        // pārbauda, vai piezīmi mēģina apskatīt piezīmes autors
         $this->authorize('view', $post);
         return view('posts.show')->with('post', $post);
     }
@@ -76,7 +79,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
+        // meklē pieprasīto piezīmi
         $post = Post::findOrFail($id);
+        // pārbauda, vai piezīmi mēģina apskatīt piezīmes autors
         $this->authorize('update', $post);
         return view('posts.edit')->with('post', $post);
     }
@@ -90,6 +95,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // notiek piezīmes validācija, piezīmi var atjaunot tikai tās autors, tiek atjaunoti visi piezīmes dati
         $request->validate(Post::$rules);
         $post = Post::findOrFail($id);
         $this->authorize('update', $post);
@@ -107,6 +113,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        // meklē pieprasīto piezīmi, piezīmi var dzēst tikai tās autors
         $post = Post::findOrFail($id);
         $this->authorize('delete', $post);
         $post->delete();

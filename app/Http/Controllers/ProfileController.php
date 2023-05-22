@@ -18,10 +18,10 @@ use Carbon\Carbon;
 class ProfileController extends Controller
 {
     public function profile() {
+        // izvada visus lietotājus, 3 jaunākos paziņojumus un piezīmes, kā arī šodienas nostrādāto stundu skaitu sesijas lietotājam
         $user = Auth::User();
         $recent_notifs = Notif::latest()->limit(3)->get();
         $recent_posts = Post::where(['user_id' => auth()->user()->id])->latest()->limit(3)->get();
-        // $objrels = ObjectToUser::where(['user_id' => auth()->user()->id]);
         $work = Work::all()->where('user_id', auth()->user()->id)->where('date', Carbon::today()->toDateString());
         return view('profile.profile')->with(['user' => $user, 'recent_posts' => $recent_posts, 'recent_notifs' => $recent_notifs, 'work' => $work]);
     }

@@ -89,7 +89,7 @@ class AllUsers extends Component
 
     public function render()
     {
-        $users = User::when($this->search, function($query, $search){
+        $users = User::orderBy('id', 'asc')->when($this->search, function($query, $search){
             return $query->where('id', 'LIKE', "$search")
             ->orWhere('fname', 'LIKE', "%$search%")
             ->orWhere('lname', 'LIKE', "%$search%")
