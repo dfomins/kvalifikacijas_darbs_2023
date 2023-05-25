@@ -50,6 +50,7 @@ class ObjectsController extends Controller
         $object->street = $request->input('street');
         $object->body = $request->input('body');
 
+        // ja pieprasījumā eksistē fails, tad to pārveido jpg formātā, piešķir nosaukumu un ievieto sistēmas krātuvē
         if ($request->hasfile('object_img')) {
             $file = $request->file('object_img');
             $img = ImageManagerStatic::make($file)->encode('jpg');

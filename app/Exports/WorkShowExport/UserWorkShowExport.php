@@ -10,12 +10,14 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
 
 use App\Models\Work;
 
 use Carbon\Carbon;
 
-class UserWorkShowExport implements FromQuery, WithHeadings, WithMapping, WithTitle, WithColumnWidths, WithStyles
+class UserWorkShowExport implements FromQuery, WithHeadings, WithMapping, WithTitle, WithColumnWidths, WithStyles, WithEvents
 {
     use Exportable;
 
@@ -107,6 +109,19 @@ class UserWorkShowExport implements FromQuery, WithHeadings, WithMapping, WithTi
             'A11' => ['font' => ['italic' => true]],
             '13' => ['font' => ['bold' => true, 'size' => 12]],
             'A1' => ['font' => ['bold' => true, 'size' => 12]],
+        ];
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class    => function(AfterSheet $event) {
+   
+                $event->sheet->getDelegate()->getStyle('A:C')
+                                ->getAlignment()
+                                ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
+   
+            },
         ];
     }
 
